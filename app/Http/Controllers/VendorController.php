@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vendor;
 
 class VendorController extends Controller
 {
-    /**
+  /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $Vendor = Vendor::orderBy('id','ASC')->get();
+             return view('vendor.index',compact('vendor'));
     }
 
     /**
@@ -23,7 +25,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        //
+       return view('vendor.create');
     }
 
     /**
@@ -34,7 +36,21 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'vendor_name' => 'required',
+        ]);
+        $vendor = new Vendor;
+        $vendor->vendor_name = $request->vendor_name;
+        $vendor->email = $request->email;
+        $vendor->phone_no = $request->phone_no;
+        $vendor->user_id = $request->user_id;
+
+        try {
+            $vendor->save();
+            return redirect()->route('vendor.index');
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -45,7 +61,8 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        //
+        $vendor = Vendor::find($id);
+        return view('vendor.show',compact('vendor'));
     }
 
     /**
@@ -56,7 +73,9 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vendor = vendor::find($id);
+        // return response()->json($vendor);
+        return view('vendor.edit',compact('vendor'));
     }
 
     /**
@@ -68,7 +87,22 @@ class VendorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'vendor_name' => 'required',
+        ]);
+       
+        $vendor = Vendor::find($request->id);
+        $vendor->vendor_name = $request->vendor_name;
+        $vendor->email = $request->email;
+        $vendor->phone_no = $request->phone_no;
+        $vendor->user_id = $request->user_id;
+        try{
+            $vendor->save();
+            return redirect()->route('vendor.index');
+
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -79,6 +113,8 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vendor = Vendor::findOrFail($id);
+        $vendor->delete();
+        return redirect()->route('vendor.index');
     }
 }

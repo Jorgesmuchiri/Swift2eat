@@ -1,51 +1,128 @@
-@extends('layouts.app', ['activePage' => 'products', 'title' => 'Products', 'navName' => 'Products'])
+@extends('layouts.app', ['activePage' => 'products', 'titlePage' => __('Products')])
 
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">{{ __('Products') }}</h4>
+            <p class="card-category"></p>
+          </div>
+          <div class="card-body">
+            @if (session('status'))
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card strpied-tabled-with-hover">
-                        <div class="card-header ">
-                            <h4 class="card-title">Products</h4>
-                            <a class="btn btn-success" href="{{ route('products.create') }}"> Add Products</a>
-
-                            <!-- <p class="card-category">Here is a subtitle for this table</p> -->
-                        </div>
-                        <div class="card-body table-full-width table-responsive">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <th>Id</th>
-                                    <th>Vendor Name</th>
-                                    <th>Category Name</th>
-                                    <th>Products Name</th>
-
-
-                         
-                                    <th>Actions</th>
-                                </thead>
-                                <tbody>
-                                @foreach( $products as $product )
-                                    <tr>
-                                        <td>{{product->id}}</td>
-                                        <td>{{product->product_name}}</td>
-                                        <td>
-                                            <a class="btn btn-info" href="{{ route('products.show',product->id) }}">Show</a>
-                                            <a class="btn btn-primary" href="{{ route('products.edit',product->id) }}">Edit</a>
-                                                {!! Form::open(['method' => 'DELETE','route' => ['products.destroy', $department->id],'style'=>'display:inline']) !!}
-                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                                {!! Form::close() !!}
-                                        </td>
-                         
-                                    </tr>
-                                </tbody>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
+              <div class="col-sm-12">
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="material-icons">close</i>
+                  </button>
+                  <span>{{ session('status') }}</span>
                 </div>
-             
+              </div>
             </div>
+            @endif
+            <div class="row">
+
+              <div class="col-12 text-right">
+                <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary mb-3">{{ __('Add Product') }}</a>
+              </div>
+
+
+            </div>
+            <div class="table-responsive">
+              <table class="table" id="myTable">
+                <thead class=" text-primary">
+                  <th>
+                    {{ __('Product Name ') }}
+                  </th>
+
+                  <th>
+                    {{ __('Price') }}
+                  </th>
+                  <th>
+                    {{ __('Category') }}
+                  </th>
+
+
+                  <th></th>
+
+
+
+
+
+                </thead>
+                <tbody>
+                  @foreach( $products as $product)
+                  <tr>
+                    <td>
+                      {{$product->product_name }}
+                    </td>
+                    <td>
+                      {{$product->price }}
+                    </td>
+
+                    <td>
+                      {{$product->category->name }}
+                    </td>
+
+                    <td>
+                      {{$product->vendor->vendor_name }}
+                    </td>
+
+
+
+                    <td class="td-actions text-right">
+
+                      @if ($product->id )
+                      <form action="{{ route('products.destroy',$product) }}" method="post">
+                        @csrf
+                        @method('delete')
+
+                        <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.show',$product->id) }}" data-original-title="" title="">
+                          <i class="material-icons">edit</i>
+                          <div class="ripple-container"></div>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''">
+                          <i class="material-icons">close</i>
+                          <div class="ripple-container"></div>
+                        </button>
+                      </form>
+                      @else
+                      <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$product->id) }}" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+
+                      @endif
+                    </td>
+
+
+                  </tr>
+
+
+
+                  @endforeach
+
+
+                </tbody>
+              </table>
+              {{ $products ->links() }}
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#myTable').DataTable();
+  });
+</script>
 @endsection

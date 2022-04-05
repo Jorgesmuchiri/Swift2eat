@@ -40,10 +40,8 @@ class CategoriesController extends Controller
             'category_name' => 'required',
         ]);
         $Categories = new Categories;
-        $Categories->id = $request->ID;
         $Categories->category_name = $request->category_name;
-        $Categories->banner_id = $request->banner_id;
-        $Categories->product_id = $request->product_id;
+
         try {
             $Categories->save();
             return redirect()->route('categories.index');
@@ -90,7 +88,7 @@ class CategoriesController extends Controller
             'category_name' => 'required',
         ]);
        
-        $categories = Categories::whereId($request->id)->first();
+        $categories = Categories::find($request->id);
         $categories->category_name = $request->category_name;
         $categories->banner_id = $request->banner_id;
         $categories->product_id = $request->product_id;

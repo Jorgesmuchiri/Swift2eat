@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Products;
 
 class ProductsController extends Controller
 {
-    /**
+  /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $products = Products::orderBy('id','ASC')->get();
+             return view('products.index',compact('products'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+       return view('products.create');
     }
 
     /**
@@ -34,7 +36,23 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'products_name' => 'required',
+        ]);
+        $products = new Products;
+        $products->product_name = $request->product_name;
+        $products->quantity = $request->quantity;
+        $products->price = $request->price;
+        $products->category_id = $request->category_id;
+        $products->vendor_id = $request->vendor_id;
+        $products->image = $request->image;
+
+        try {
+            $products->save();
+            return redirect()->route('products.index');
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -45,7 +63,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Products::find($id);
+        return view('products.show',compact('products'));
     }
 
     /**
@@ -56,7 +75,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Products::find($id);
+        // return response()->json($products);
+        return view('products.edit',compact('products'));
     }
 
     /**
@@ -68,7 +89,24 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'products_name' => 'required',
+        ]);
+       
+        $products = Products::find($request->id);
+        $products->product_name = $request->product_name;
+        $products->quantity = $request->quantity;
+        $products->price = $request->price;
+        $products->category_id = $request->category_id;
+        $products->vendor_id = $request->vendor_id;
+        $products->image = $request->image;
+        try{
+            $products->save();
+            return redirect()->route('products.index');
+
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -79,6 +117,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $products = Products::findOrFail($id);
+        $products->delete();
+        return redirect()->route('products.index');
     }
 }
