@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vendor;
+use App\Models\User;
 
 class VendorController extends Controller
 {
@@ -14,8 +15,8 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $Vendor = Vendor::orderBy('id','ASC')->get();
-             return view('vendor.index',compact('vendor'));
+        $vendors = Vendor::orderBy('id','ASC')->paginate(20);
+             return view('vendor.index',compact('vendors'));
     }
 
     /**
@@ -25,7 +26,9 @@ class VendorController extends Controller
      */
     public function create()
     {
-       return view('vendor.create');
+
+        $users = User::orderBy('name','ASC')->get();
+       return view('vendor.create',compact('users'));
     }
 
     /**
@@ -47,7 +50,8 @@ class VendorController extends Controller
 
         try {
             $vendor->save();
-            return redirect()->route('vendor.index');
+      
+            return back()->withStatus(__('Vendor successfully added.'));
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }

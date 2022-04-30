@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'categories', 'title' => 'Categories', 'navName' => 'Categories', 'activeButton' => 'categories'])
+@extends('layouts.app', ['activePage' => 'vendors', 'title' => 'Vendors', 'navName' => 'Vendors', 'activeButton' => 'vendors'])
 
 @section('content')
   <div class="content">
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('Category') }}</h4>
+                <h4 class="card-title ">{{ __('Vendors') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body">
@@ -26,7 +26,7 @@
                 <div class="row">
                           
                   <div class="col-12 text-right mb-2">
-                    <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">{{ __('Add Category') }}</a>
+                    <a href="{{ route('vendors.create') }}" class="btn btn-sm btn-primary">{{ __('Add Vendor') }}</a>
                   </div>
 
                    
@@ -34,34 +34,49 @@
                 <div class="table-responsive">
                   <table class="table pt-2" id="myTable">
                     <thead class=" text-primary">
-                      <th>
+                      <!-- <th>
                           {{ __('#') }}
-                      </th>
+                      </th> -->
                   
                       <th>
-                        {{ __('Name') }}
+                        {{ __('Vendor Name') }}
+                      </th>
+
+
+                      <th>
+                        {{ __('Email') }}
+                      </th>
+
+                      <th>
+                        {{ __('Phone No') }}
                       </th>
                       <th></th>
                     </thead>
                     <tbody>
-                        @foreach( $categories as $cat)
+                        @foreach( $vendors as $vendor)
                         <tr>
-                          <td>
-                         {{$cat->id }}
-                          </td>
+                         
                            <td>
-                         {{$cat->name }}
+                         {{$vendor->vendor_name }}
                           </td>
-                          
+
+                          <td>
+                         {{$vendor->email }}
+                          </td>
+
+                          <td>
+                         {{$vendor->phone_no }}
+                          </td>
+                        
                           
                              <td class="td-actions text-right">
 
-                            @if ($cat->id )
-                              <form action="{{ route('categories.destroy',$cat->id) }}" method="post">
+                            @if ($vendor->id )
+                              <form action="{{ route('vendors.destroy',$vendor->id) }}" method="post">
                                   @csrf
                                   @method('delete')
                               
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('categories.show',$cat->id) }}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.show',$vendor->id) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
@@ -71,7 +86,7 @@
                                   </button>
                               </form>
                             @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('categories.edit',$cat->id) }}" data-original-title="" title="">
+                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="">
                                 <i class="material-icons">edit</i>
                                 <div class="ripple-container"></div>
                               </a>
@@ -89,7 +104,7 @@
                   
                     </tbody>
                   </table>
-                    {{ $categories->links() }}
+                    {{ $vendors->links() }}
                 </div>
               </div>
             </div>

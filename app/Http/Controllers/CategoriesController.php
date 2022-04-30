@@ -14,8 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Categories::orderBy('id','ASC')->get();
-             return view('categories.index',compact('categories'));
+        $categories = Categories::orderBy('id','ASC')->paginate(20);
+             return view('category.index',compact('categories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-       return view('categories.create');
+       return view('category.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $Categories = Categories::find($id);
-        return view('categories.show',compact('Categories'));
+        return view('category.show',compact('Categories'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Roles;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,4 +19,30 @@ class UserController extends Controller
     {
         return view('users.index', ['users' => $model->paginate(15)]);
     }
+
+
+
+    public function create()
+    {
+
+        $roles = Roles::orderBy('role_name','ASC')->get(); 
+        return view('users.create',compact('roles'));
+    }
+
+ 
+    public function store()
+    {
+
+     
+    
+
+
+
+
+
+    }
+
+
+
+
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Categories;
+use App\Models\Vendor;
 
 class ProductsController extends Controller
 {
@@ -14,7 +16,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::orderBy('id','ASC')->get();
+        $products = Products::orderBy('id','ASC')->paginate(20);
              return view('products.index',compact('products'));
     }
 
@@ -25,7 +27,11 @@ class ProductsController extends Controller
      */
     public function create()
     {
-       return view('products.create');
+ 
+        $category = Categories::orderBy('category_name','ASC')->get();
+        $vendors = Vendor::orderBy('vendor_name','ASC')->get(); 
+
+       return view('products.create',compact('category','vendors'));
     }
 
     /**
@@ -39,13 +45,21 @@ class ProductsController extends Controller
         $request->validate([
             'products_name' => 'required',
         ]);
+        if ($request->hasFile('image')) {
+            $image_name = $request->image->getClientOriginalName();
+            $path = $request->image->move(public_path() . '/images/product', $image_name);
+        } else {
+            $image_name = null; 
+            $path = null;
+        }
+
         $products = new Products;
         $products->product_name = $request->product_name;
         $products->quantity = $request->quantity;
         $products->price = $request->price;
         $products->category_id = $request->category_id;
         $products->vendor_id = $request->vendor_id;
-        $products->image = $request->image;
+        $products->image =  $image_name;
 
         try {
             $products->save();

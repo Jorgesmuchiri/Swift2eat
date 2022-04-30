@@ -7,7 +7,7 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="" class="simple-text">
-                {{ __("Swift2Eat") }}
+                {{ __("Swyft2Eat") }}
             </a>
         </div>
         <ul class="nav">
@@ -46,32 +46,32 @@ Tip 2: you can also add an image using data-image tag
                 </div>
             </li>
 
-            <li class="nav-item @if($activePage == 'table') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'table')}}">
+            <li class="nav-item @if($activePage == 'banners') active @endif">
+                <a class="nav-link" href="{{route('banner.index', 'banners')}}">
                     <i class="nc-icon nc-notes"></i>
                     <p>{{ __("Banners") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'typography') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'typography')}}">
+            <li class="nav-item @if($activePage == 'categories') active @endif">
+                <a class="nav-link" href="{{route('categories.index', 'categories')}}">
                     <i class="nc-icon nc-paper-2"></i>
                     <p>{{ __("Categories") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'icons') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'icons')}}">
+            <li class="nav-item @if($activePage == 'vendors') active @endif">
+                <a class="nav-link" href="{{route('vendors.index', 'vendors')}}">
                     <i class="nc-icon nc-atom"></i>
                     <p>{{ __("Vendors") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'maps') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'maps')}}">
+            <li class="nav-item @if($activePage == 'products') active @endif">
+                <a class="nav-link" href="{{route('products.index', 'products')}}">
                     <i class="nc-icon nc-pin-3"></i>
                     <p>{{ __("Products") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'notifications') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'notifications')}}">
+            <li class="nav-item @if($activePage == 'orders') active @endif">
+                <a class="nav-link" href="{{route('orders.index', 'orders')}}">
                     <i class="nc-icon nc-bell-55"></i>
                     <p>{{ __("Orders") }}</p>
                 </a>

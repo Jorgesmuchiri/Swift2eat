@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'title' => 'REACH', 'navName' => 'Dashboard', 'activeButton' => 'laravel'])
+@extends('layouts.app', ['activePage' => 'dashboard', 'title' => 'Swyft2eat', 'navName' => 'Dashboard', 'activeButton' => 'laravel'])
 
 @section('content')
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

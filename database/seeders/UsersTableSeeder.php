@@ -14,11 +14,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
+
+        DB::table('roles')->insert([
+            'role_name' => 'Admin',
+        ]);
+
+
         DB::table('users')->insert([
             'name' => 'Admin Admin',
-            'email' => 'admin@lightbp.com',
+            'email' => 'admin@swyft2eat.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
+            'password' => Hash::make('swyft2eat@2022'),
+            'role_id'=>1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

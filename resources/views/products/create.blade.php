@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'products', 'titlePage' => __('Products')])
+@extends('layouts.app', ['activePage' => 'products', 'title' => 'Products', 'navName' => 'products', 'activeButton' => 'products'])
 
 @section('content')
   <div class="content">
@@ -66,13 +66,13 @@
                             </div>
                         </div>
 
-       <div class="row pb-3">
+                <div class="row pb-3">
                             <label for="vendor" class="col-sm-2 col-form-label">
-                                {{ __('vendor') }}
+                                {{ __('Vendor') }}
                             </label>
                             <div class="col-sm-7">
                                 <select name="vendor_id" class="form-control">
-                                    @foreach($vendor as $data)
+                                    @foreach($vendors as $data)
                                         <option value=" {{ $data->id }} "> {{ $data->name }} </option>
                                     @endforeach
                                 </select>

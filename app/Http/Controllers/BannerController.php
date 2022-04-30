@@ -14,7 +14,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $Banner = Banner::orderBy('id','ASC')->get();
+        $Banner = Banner::orderBy('id','ASC')->paginate(20);
              return view('Banner.index',compact('Banner'));
     }
 

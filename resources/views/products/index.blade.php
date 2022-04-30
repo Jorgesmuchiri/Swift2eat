@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'products', 'titlePage' => __('Products')])
+@extends('layouts.app', ['activePage' => 'products', 'title' => 'Products', 'navName' => 'Products', 'activeButton' => 'products'])
 
 @section('content')
 <div class="content">
@@ -35,16 +35,31 @@
               <table class="table" id="myTable">
                 <thead class=" text-primary">
                   <th>
+                    {{ __('Vendor Name ') }}
+                  </th>
+
+                  <th>
                     {{ __('Product Name ') }}
                   </th>
+
+                  <th>
+                    {{ __('Category') }}
+                  </th>
+
+
+
+                  <th>
+                    {{ __('Image') }}
+                  </th>
+                 
 
                   <th>
                     {{ __('Price') }}
                   </th>
                   <th>
-                    {{ __('Category') }}
+                    {{ __('Quantity') }}
                   </th>
-
+                
 
                   <th></th>
 
@@ -56,19 +71,29 @@
                 <tbody>
                   @foreach( $products as $product)
                   <tr>
+                  <td>
+                      {{$product->vendors->vendor_name }}
+                    </td>
                     <td>
                       {{$product->product_name }}
                     </td>
-                    <td>
-                      {{$product->price }}
-                    </td>
+                  
 
                     <td>
                       {{$product->category->name }}
                     </td>
 
                     <td>
-                      {{$product->vendor->vendor_name }}
+                      {{$product->image }}
+                    </td>
+
+
+                    <td>
+                      {{$product->price }}
+                    </td>
+
+                    <td>
+                      {{$product->quantity}}
                     </td>
 
 
