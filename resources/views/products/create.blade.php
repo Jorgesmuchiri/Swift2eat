@@ -60,7 +60,7 @@
                             <div class="col-sm-7">
                                 <select name="category_id" class="form-control">
                                     @foreach($category as $data)
-                                        <option value=" {{ $data->id }} "> {{ $data->name }} </option>
+                                        <option value=" {{ $data->id }} "> {{ $data->category_name }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="col-sm-7">
                                 <select name="vendor_id" class="form-control">
                                     @foreach($vendors as $data)
-                                        <option value=" {{ $data->id }} "> {{ $data->name }} </option>
+                                        <option value=" {{ $data->id }} "> {{ $data->vendor_name }} </option>
                                     @endforeach
                                 </select>
                             </div>

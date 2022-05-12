@@ -76,18 +76,19 @@
                                   @csrf
                                   @method('delete')
                               
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.show',$vendor->id) }}" data-original-title="" title="">
-                                    <i class="material-icons">edit</i>
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="" style="color:green">
+                                   <i class="fa fa-pencil-square-o "></i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''">
-                                      <i class="material-icons">close</i>
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''" 
+                                  style="color:red"> 
+                                    <i class="fa fa-trash"></i>
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
                             @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="">
-                                <i class="material-icons">edit</i>
+                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="" style="color:green">
+                               "<i class="fa fa-pencil-square-o "></i>
                                 <div class="ripple-container"></div>
                               </a>
                           

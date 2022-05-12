@@ -21,10 +21,15 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
 
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::resource('products', 'App\Http\Controllers\ProductsController', ['except' => ['show']]);
 	Route::resource('categories', 'App\Http\Controllers\CategoriesController', ['except' => ['show']]);
+	
+	
+
+
 	Route::resource('orders', 'App\Http\Controllers\OrdersController', ['except' => ['show']]);
 	Route::resource('vendors', 'App\Http\Controllers\VendorController', ['except' => ['show']]);
 	Route::resource('banner', 'App\Http\Controllers\BannerController', ['except' => ['show']]);

@@ -51,7 +51,7 @@ class VendorController extends Controller
         try {
             $vendor->save();
       
-            return back()->withStatus(__('Vendor successfully added.'));
+            return redirect('vendors')->withStatus(__('New vendor created successfully'));
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }

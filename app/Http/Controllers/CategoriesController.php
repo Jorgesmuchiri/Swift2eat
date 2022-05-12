@@ -44,7 +44,8 @@ class CategoriesController extends Controller
 
         try {
             $Categories->save();
-            return redirect()->route('categories.index');
+            return redirect('categories')->withStatus(__('New category created successfully'));
+
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
@@ -94,7 +95,7 @@ class CategoriesController extends Controller
         $categories->product_id = $request->product_id;
         try{
             $categories->save();
-            return redirect()->route('categories.index');
+            return redirect('categories')->withStatus(__('Category updated successfully'));
 
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
@@ -111,6 +112,6 @@ class CategoriesController extends Controller
     {
         $categories = Categories::findOrFail($id);
         $categories->delete();
-        return redirect()->route('categories.index');
+        return redirect('categories')->withStatus(__('Category deleted successfully'));
     }
 }

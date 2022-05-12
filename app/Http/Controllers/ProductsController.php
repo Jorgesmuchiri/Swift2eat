@@ -43,7 +43,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'products_name' => 'required',
+            'product_name' => 'required',
         ]);
         if ($request->hasFile('image')) {
             $image_name = $request->image->getClientOriginalName();
