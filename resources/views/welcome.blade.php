@@ -19,7 +19,7 @@
 </head>
 <body itemscope>
     <main>
-        <div class="preloader">
+        <!-- <div class="preloader">
             <div id="cooking">
                 <div class="bubble"></div>
                 <div class="bubble"></div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         
         <header class="stick">
             <div class="topbar">
@@ -60,7 +60,9 @@
                         </select>
                     </div> -->
                     <div class="topbar-register">
-                        <a class="log-popup-btn" href="#" title="Login" itemprop="url"> VENDOR LOGIN</a>
+                    <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
+
+                        <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
                     </div>
                     <div class="social1">
                         <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
@@ -71,7 +73,7 @@
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo5.png" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
+                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
                     <nav>
                         <div class="menu-sec">
                             <ul>
@@ -85,7 +87,7 @@
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
                                 <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <ul class="sub-dropdown">
+                                    <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
                                         <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
@@ -93,12 +95,13 @@
                                         <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
                                         <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                               
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
-                            <a class="orange-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">Login</a>
+                          
+                            <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                         </div>
                     </nav><!-- Navigation -->
                 </div>
@@ -107,7 +110,7 @@
 
         <div class="responsive-header">
             <div class="responsive-topbar">
-                <div class="select-wrp">
+                <!-- <div class="select-wrp">
                     <select data-placeholder="Feel Like Eating">
                         <option>FEEL LIKE EATING</option>
                         <option>Burger</option>
@@ -115,8 +118,8 @@
                         <option>Fried Rice</option>
                         <option>Chicken Shots</option>
                     </select>
-                </div>
-                <div class="select-wrp">
+                </div> -->
+                <!-- <div class="select-wrp">
                     <select data-placeholder="Choose Location">
                         <option>CHOOSE LOCATION</option>
                         <option>New york</option>
@@ -124,89 +127,42 @@
                         <option>Chicago</option>
                         <option>Los Angeles</option>
                     </select>
-                </div>
+                </div> -->
             </div>
             <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
             </div>
             <div class="responsive-menu">
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
-                    <ul>
-                        <li class="menu-item-has-children"><a href="#" title="HOMEPAGES" itemprop="url"><span class="yellow-clr">FOOD ORDERING</span>HOMEPAGES</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
-                                <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span class="yellow-clr">REAL FOOD</span>RESTAURANTS</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url"><span class="yellow-clr">REAL FOOD</span>PAGES</a>
-                            <ul class="sub-dropdown">
-                                <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                <ul>
+                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
+                                    <!-- <ul class="sub-dropdown">
+                                        <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
+                                        <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
+                                    </ul> -->
                                 </li>
-                                <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                        <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                        <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                        <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                        <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                        <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                    </ul>
+
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+
+                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                    <!-- <ul class="sub-dropdown">
+                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
+                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
+                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
+                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
+                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
+                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
+                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
+                                    </ul> -->
                                 </li>
-                                <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                        <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
+                              
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
-                        </li>
-                        <li><a href="contact.html" title="CONTACT US" itemprop="url"><span class="yellow-clr">REAL FOOD</span>CONTACT US</a></li>
-                    </ul>
                 </div>
                 <div class="topbar-register">
-                    <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
                 </div>
                 <div class="social1">
                     <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
@@ -214,7 +170,7 @@
                     <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
                 </div>
                 <div class="register-btn">
-                    <a class="yellow-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">REGISTER RESTAURANT</a>
+                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
@@ -337,558 +293,49 @@
             </div>
         </section>
 
-
-     
-
         <section>
-            <div class="block gray-bg2 top-padd210">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-lg-12">
-							<div class="filters-wrapper">
-                            <div class="title1-wrapper text-center">
-								<div class="title1-inner">
-									<span>Your Favourite Food</span>
-									<h2 itemprop="headline">featured food</h2>
-								</div>
-							</div>
-                            
-							<ul class="filter-buttons center">
-								<li class="active"><a class="brd-rd30" data-filter="*" href="#" itemprop="url">All</a></li>
-								<li><a class="brd-rd30" data-filter=".filter-item1" href="#" itemprop="url">Beverages</a></li>
-								<li><a class="brd-rd30" data-filter=".filter-item2" href="#" itemprop="url">Burgers</a></li>
-								<li><a class="brd-rd30" data-filter=".filter-item3" href="#" itemprop="url">Pasta</a></li>
-							</ul><!-- Filter Buttons -->
-							<div class="filters-inner style2">
-								<div class="row">
-									<div class="masonry">
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.1s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img1.jpg" alt="featured-restaurant-img1.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Pork Tenderloin Marinated</a></h4>
-													<span class="price">$85.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-														<li><i class="flaticon-transport"></i> 30min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item2">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.2s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img2.jpg" alt="featured-restaurant-img2.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Baked Potato Pizza</a></h4>
-													<span class="price">$70.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $40</li>
-														<li><i class="flaticon-transport"></i> 20min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.03</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item3">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.3s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img3.jpg" alt="featured-restaurant-img3.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Grilled Pork with Preserved</a></h4>
-													<span class="price">$90.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $60</li>
-														<li><i class="flaticon-transport"></i> 45min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 5.00</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item2 filter-item3">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.4s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img4.jpg" alt="featured-restaurant-img4.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Chicken with White Sauce</a></h4>
-													<span class="price">$85.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-														<li><i class="flaticon-transport"></i> 30min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1 filter-item3">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.5s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img5.jpg" alt="featured-restaurant-img5.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Lemon-Rosemary Chicken</a></h4>
-													<span class="price">$70.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $40</li>
-														<li><i class="flaticon-transport"></i> 20min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.03</span>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1 filter-item2">
-											<div class="featured-restaurant-box wow fadeIn" data-wow-delay="0.6s">
-												<div class="featured-restaurant-thumb">
-													<a href="food-detail.html" title="" itemprop="url"><img class="brd-rd50" src="assets/images/resource/featured-restaurant-img6.jpg" alt="featured-restaurant-img6.jpg" itemprop="image"></a>
-												</div>
-												<div class="featured-restaurant-info">
-													<span class="red-clr">5th Avenue New York 68</span>
-													<h4 itemprop="headline"><a href="food-detail.html" title="" itemprop="url">Black Pepper-Honey BBQ</a></h4>
-													<span class="price">$90.00</span>
-													
-													<ul class="post-meta">
-														<li><i class="fa fa-check-circle-o"></i> Min order $60</li>
-														<li><i class="flaticon-transport"></i> 45min</li>
-													</ul>
-													<span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 5.00</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-		
-		<section>
-			<div class="block no-padding">
-				<div class="container-fluid">
-					<div class="row merged">
-						<div class="col-md-6 col-sm-12 col-xs-12">
-							<div class="tab-content">
-								<div class="tab-pane active fade in" id="link1">
-									<div class="chef-box">
-										<img src="assets/images/resource/chef.png" alt="">
-										<ul>
-											<li class="wow fadeInUp" data-wow-delay="0.2s">
-												<span class="food-price">$70.00</span>
-												<h5><a href="#" title="#">Accumsan urna orci</a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.4s">
-												<span class="food-price">$110.00</span>
-												<h5><a href="#" title="#">Biltong ribeye shank </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.6s">
-												<span class="food-price">$120.00</span>
-												<h5><a href="#" title="#">Ball prosciutto cow </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.8s">
-												<span class="food-price">$78.00</span>
-												<h5><a href="#" title="#">Bresaola capicola tail  </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-										</ul>
-										
-									</div>
-								</div>
-								<div class="tab-pane fade" id="link2">
-									<div class="chef-box">
-										<img src="assets/images/resource/chef.png" alt="">
-										<ul>
-											<li>
-												<span class="food-price">$70.00</span>
-												<h5><a href="#" title="#">Accumsan urna orci</a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$110.00</span>
-												<h5><a href="#" title="#">Biltong ribeye shank </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$120.00</span>
-												<h5><a href="#" title="#">Ball prosciutto cow </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$78.00</span>
-												<h5><a href="#" title="#">Bresaola capicola tail  </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="link3">
-									<div class="chef-box">
-										<img src="assets/images/resource/chef.png" alt="">
-										<ul>
-											<li class="wow fadeInUp" data-wow-delay="0.2s">
-												<span class="food-price">$70.00</span>
-												<h5><a href="#" title="#">Accumsan urna orci</a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.4s">
-												<span class="food-price">$110.00</span>
-												<h5><a href="#" title="#">Biltong ribeye shank </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.6s">
-												<span class="food-price">$120.00</span>
-												<h5><a href="#" title="#">Ball prosciutto cow </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li class="wow fadeInUp" data-wow-delay="0.8s">
-												<span class="food-price">$78.00</span>
-												<h5><a href="#" title="#">Bresaola capicola tail  </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="link4">
-									<div class="chef-box">
-										<img src="assets/images/resource/chef.png" alt="">
-										<ul>
-											<li>
-												<span class="food-price">$70.00</span>
-												<h5><a href="#" title="#">Accumsan urna orci</a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$110.00</span>
-												<h5><a href="#" title="#">Biltong ribeye shank </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$120.00</span>
-												<h5><a href="#" title="#">Ball prosciutto cow </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$78.00</span>
-												<h5><a href="#" title="#">Bresaola capicola tail  </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="link5">
-									<div class="chef-box">
-										<img src="assets/images/resource/chef.png" alt="">
-										<ul>
-											<li>
-												<span class="food-price">$70.00</span>
-												<h5><a href="#" title="#">Accumsan urna orci</a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$110.00</span>
-												<h5><a href="#" title="#">Biltong ribeye shank </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$120.00</span>
-												<h5><a href="#" title="#">Ball prosciutto cow </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-											<li>
-												<span class="food-price">$78.00</span>
-												<h5><a href="#" title="#">Bresaola capicola tail  </a></h5>
-												<p>Breakfast with Egg Salad</p>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>					
-						<div class="col-md-6 col-sm-12 col-xs-12">
-							<div class="food-menu-sec blackish low-opacity">
-								<div class="fit-bg" style="background-image: url(assets/images/resource/half-bg.jpg);"></div>
-								<i>Website for Restaurant and Cafe</i>
-								<h1>Resturant Menu</h1>
-								<ul class="tab tab-btn">
-									 <li><a href="#link1" data-toggle="tab"><i class="fa fa-angle-double-left"></i>
-										 all
-										 <img src="assets/images/icon7.png" alt="">
-										 </a>
-									</li>
-									 <li><a href="#link2" data-toggle="tab"><i class="fa fa-angle-double-left"></i>
-										 Alcolholic drink
-										 <img src="assets/images/icon7.png" alt="">
-										 </a>
-									</li>
-									 <li class="active"><a href="#link3" data-toggle="tab"><i class="fa fa-angle-double-left"></i>
-										 Breakfast
-										 <img src="assets/images/icon7.png" alt="">
-										 </a>
-									</li>
-									<li><a href="#link4" data-toggle="tab"><i class="fa fa-angle-double-left"></i>
-										Dinner
-										<img src="assets/images/icon7.png" alt="">
-										</a>
-									</li>
-									<li><a href="#link5" data-toggle="tab"><i class="fa fa-angle-double-left"></i>
-										Pancake
-										<img src="assets/images/icon7.png" alt="">
-										</a>
-									</li>
-								</ul>
-							</div>	
-						</div>	
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section>
-			<div class="block">
-                <div class="container">
-                    <div class="row">
-						<div class="col-md-12 col-sm-12 col-lg-12">
-							<div class="title1-wrapper text-center">
-								<div class="title1-inner">
-									<span>Website for Restaurant and Cafe</span>
-									<h2 itemprop="headline">Restaurant Services</h2>
-								</div>
-							</div>
-						</div>	
-						<div class="resturent-services remove-ext">
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.2s">
-									<figure>
-										<img src="assets/images/resource/resto-service1.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon1.png" alt=""></i>
-										<h4><a href="#" title="">High Quality Food</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.3s">
-									<figure>
-										<img src="assets/images/resource/resto-service2.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon2.png" alt=""></i>
-										<h4><a href="#" title="">Clean Eating</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.4s">
-									<figure>
-										<img src="assets/images/resource/resto-service3.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon3.png" alt=""></i>
-										<h4><a href="#" title="">Food Free Delivery</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.5s">
-									<figure>
-										<img src="assets/images/resource/resto-service4.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon4.png" alt=""></i>
-										<h4><a href="#" title="">Italian Food</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.6s">
-									<figure>
-										<img src="assets/images/resource/resto-service5.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon5.png" alt=""></i>
-										<h4><a href="#" title="">Russian Food</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="servise-box wow fadeIn" data-wow-delay="0.7s">
-									<figure>
-										<img src="assets/images/resource/resto-service6.jpg" alt="">
-									</figure>
-									<div class="uper-meta">
-										<i><img src="assets/images/icon6.png" alt=""></i>
-										<h4><a href="#" title="">American Food</a></h4>
-										<span>About electric do in market</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!-- our services -->
-		
-		<section>
-            <div class="block gray-bg">
-				<div class="top-mockup"><img src="assets/images/resource/mockup2.png" alt=""></div>
-                <div class="container">
-                    <div class="row">
-						<div class="col-md-5 col-sm-5">
-							<div class="booking-form-sec wow fadeIn" data-wow-delay="0.2s">
-								<div class="fit-bg" style="background-image: url(assets/images/resource/booking-frombg.jpg)"></div>
-								<div class="form-meta">
-									<h2>Book Your Order</h2>
-									<span>Place Your Order Now</span>
-									<form method="post">
-										<input type="text" placeholder="Name">
-										<input type="text" placeholder="Email">
-										<input type="text" placeholder="Phone No">
-										<button type="submit">place order now</button>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-7 col-sm-7">
-							<div class="upcoming-event">
-								<div class="title1-wrapper">
-									<i><img alt="" src="assets/images/resource/icon.png"></i>
-									<div class="title1-inner">
-										<span>Easiest Way To Your Favourite Food</span>
-										<h2 itemprop="headline">UPCOMING EVENT</h2>
-										<b>Place Your Order Now</b>
-									</div>
-								</div>
-								<div class="article-data">
-									<div class="article-info-meta">
-										<span>Mon</span>
-										<a title="" href="#">25 Sep 2018</a>
-										<a title="" href="#">By webinane</a>
-									</div>
-									<div class="article-meta">
-										<h3><a title="" href="#">
-												Kick-Start The New Year With The Serpentine Running
-											</a>
-										</h3>
-										<p>
-											Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo praese
-Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
-										</p>
-										
-									</div>
-								</div>
-								<div class="counter-meta">
-									<ul class="countdown">
-										<li class="white-bg">
-											<span class="days">00</span>
-											<p class="days_ref">Days</p>
-										</li>
-										<li class="white-bg">
-											<span class="hours">00</span>
-											<p class="hours_ref">Hours</p>
-										</li>
-										<li class="white-bg">
-											<span class="minutes">00</span>
-											<p class="minutes_ref">Minutes</p>
-										</li>
-										<li class="white-bg">
-											<span class="seconds">00</span>
-											<p class="seconds_ref">Seconds</p>
-										</li>
-									</ul>
-									<a class="view-more" title="" href="#">view more food</a>
-								</div>	
-							</div>
-						</div>
-					</div>	
-				</div>
-				<div class="bottom-mockup"><img src="assets/images/resource/mockup1.png" alt=""></div>
-            </div>
-        </section>
-
-        <section>
-            <div class="block bottom-padd210">
+            <div class="block">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-12">
                             <div class="title1-wrapper text-center">
                                 <div class="title1-inner">
-                                    <span>Website for Restaurant and Cafe</span>
-                                    <h2 itemprop="headline">Recent News & Updates</h2>
+                                    <!-- <span>Website for Restaurant and Cafe</span> -->
+                                    <h2 itemprop="headline">Featured Food Joints</h2>
                                 </div>
                             </div>
-                            <div class="remove-ext margn-btm">
+                            <div class="remove-ext">
                                 <div class="row">
+
+                                @foreach ($vendors as $vendor )
+          
                                     <div class="col-md-4 col-sm-6 col-lg-4">
-                                        <div class="news-box wow fadeIn" data-wow-delay="0.2s">
-                                            <div class="news-thumb">
-                                                <a class="brd-rd2" href="blog-detail-right-sidebar.html" title="" itemprop="url"><img src="assets/images/resource/news-img1.jpg" alt="news-img1.jpg" itemprop="image"></a>
-                                                <div class="news-btns">
-                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">JUNE 14</a>
-                                                    <a class="read-more" href="blog-detail-right-sidebar.html" itemprop="url">READ MORE</a>
+                                        <div class="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
+                                            <div class="popular-dish-thumb">
+                                                <a href="{{ route('restaurant-detail',$vendor->id) }}" title="" itemprop="url"><img src="assets/images/resource/popular-dish-img1.jpg" alt="popular-dish-img1.jpg" itemprop="image"></a>
+                                                <span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
+                                                <!-- <span class="likes"><i class="fa fa-heart-o"></i> 12</span> -->
+                                            </div>
+                                            <div class="popular-dish-info">
+                                                <h4 itemprop="headline"><a href="{{ route('restaurant-detail',$vendor->id) }}" title="" itemprop="url">{{$vendor->vendor_name}}</a></h4>
+                                                <!-- <p itemprop="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p> -->
+                                                <!-- <span class="price">$85.00</span> -->
+                                                <a class="brd-rd4 " href="{{ route('restaurant-detail',$vendor->id) }}" title="Order Now" itemprop="url">Order Now</a>
+                                                <div class="restaurant-info">
+                                                    <!-- <img src="assets/images/resource/restaurant-logo1.png" alt="restaurant-logo1.png" itemprop="image"> -->
+                                                    <div class="restaurant-info-inner">
+                                                        <h6 itemprop="headline"><a href="{{ route('restaurant-detail',$vendor->id) }}" title="" itemprop="url"></a></h6>
+                                                        <span class="orange-clr">Location::{{$vendor->location}}</span><br>
+                                                        <span class="orange-clr">Contact Us:{{$vendor->phone_no}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="news-info">
-                                                <h4 itemprop="headline"><a href="blog-detail-right-sidebar.html" title="" itemprop="url">Floury Bakery is The Best Choice</a></h4>
-                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
-                                            </div>
-                                        </div>
+                                        </div><!-- Popular Dish Box -->
                                     </div>
-                                    <div class="col-md-4 col-sm-6 col-lg-4">
-                                        <div class="news-box wow fadeIn" data-wow-delay="0.4s">
-                                            <div class="news-thumb">
-                                                <a class="brd-rd2" href="blog-detail-left-sidebar.html" title="" itemprop="url"><img src="assets/images/resource/news-img2.jpg" alt="news-img2.jpg" itemprop="image"></a>
-                                                <div class="news-btns">
-                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">AUGUST 14</a>
-                                                    <a class="read-more" href="blog-detail-left-sidebar.html" itemprop="url">READ MORE</a>
-                                                </div>
-                                            </div>
-                                            <div class="news-info">
-                                                <h4 itemprop="headline"><a href="blog-detail-left-sidebar.html" title="" itemprop="url">Cras venenatis erat ac massa Ultricies</a></h4>
-                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-lg-4">
-                                        <div class="news-box wow fadeIn" data-wow-delay="0.6s">
-                                            <div class="news-thumb">
-                                                <a class="brd-rd2" href="blog-detail.html" title="" itemprop="url"><img src="assets/images/resource/news-img3.jpg" alt="news-img3.jpg" itemprop="image"></a>
-                                                <div class="news-btns">
-                                                    <a class="post-date red-bg" href="#" title="" itemprop="url">APRIL 14</a>
-                                                    <a class="read-more" href="blog-detail.html" itemprop="url">READ MORE</a>
-                                                </div>
-                                            </div>
-                                            <div class="news-info">
-                                                <h4 itemprop="headline"><a href="blog-detail.html" title="" itemprop="url">Easy Homemade Shahi Tukda Recipe</a></h4>
-                                                <p itemprop="description">The only thing bad about the place was the time they .took to provide us with our food</p>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                                      
+                            @endforeach
+                                    
                                 </div>
                             </div>
                         </div>
@@ -896,9 +343,9 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                 </div>
             </div>
         </section>
-
+     
         <section>
-            <div class="block no-padding red-bg">
+            <div class="block no-padding orange-bg">
                 <img class="bottom-clouds-mockup" src="assets/images/resource/clouds2.png" alt="clouds2.png" itemprop="image">
                 <div class="container">
                     <div class="row">
@@ -906,16 +353,16 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                             <div class="app-sec">
                                 <div class="row">
                                     <div class="col-md-4 hidden-sm col-md-offset-1 col-sm-4 col-sm-offset-0 col-lg-4 col-lg-offset-1">
-                                        <div class="app-mockup text-right overlape-110 wow fadeInUp" data-wow-delay="0.2s"><img src="assets/images/resource/app-mockup.png" alt="app-mockup.png" itemprop="image"></div>
+                                        <div class="app-mockup text-right overlape-110 wow fadeInUp" data-wow-delay="0.2s"><img src="assets/images/resource/mockup-bg.png" alt="app-mockup.png" itemprop="image"></div>
                                     </div>
                                     <div class="col-md-6 col-md-offset-1 col-sm-12 col-sm-offset-0 col-lg-6 col-lg-offset-1">
                                         <div class="app-info">
-                                            <h4 itemprop="headline">The Best Food Delivery App</h4>
-                                            <p itemprop="description">We have a launch team that focuses on one city at a time. At the end of the day, we're a marketplace. In order to make an effective marketplace, you need critical mass. We need enough restaurants that  quality and variety</p>
-                                            <div class="app-download-btns">
+                                            <h4 itemprop="headline">Swyft2Eat</h4>
+                                            <p itemprop="description">With a great variety of restaurants you can order your favourite food or explore new restaurants nearby!</p>
+                                            <!-- <div class="app-download-btns">
                                                 <a class="" href="#" title="Google Play Store" itemprop="url" target="_blank"><img src="assets/images/resource/app-download-btn1.png" alt="app-download-btn1.png" itemprop="image"></a>
                                                 <a class="" href="#" title="Apple App Store" itemprop="url" target="_blank"><img src="assets/images/resource/app-download-btn2.png" alt="app-download-btn2.png" itemprop="image"></a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -935,8 +382,8 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                                 <div class="row">
                                     <div class="col-md-3 col-sm-6 col-lg-3">
                                         <div class="widget about_widget wow fadeIn" data-wow-delay="0.1s">
-                                            <div class="logo"><h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
-                                            <p itemprop="description">Food Ordering is a Premium HTML Template. Best choice for your online store. Let purchase it to enjoy now</p>
+                                            <div class="logo"><h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img src="assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                                            <!-- <p itemprop="description">Food Ordering is a Premium HTML Template. Best choice for your online store. Let purchase it to enjoy now</p> -->
                                             <div class="social2">
                                                 <a class="brd-rd50" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i></a>
                                                 <a class="brd-rd50" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
@@ -947,25 +394,21 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-lg-3">
                                         <div class="widget information_links wow fadeIn" data-wow-delay="0.2s">
-                                            <h4 class="widget-title" itemprop="headline">INFORMATION</h4>
+                                            <h4 class="widget-title" itemprop="headline">About Swyft2Eat</h4>
                                             <ul>
-                                                <li><a href="#" title="" itemprop="url">Careers</a></li>
-                                                <li><a href="#" title="" itemprop="url">Investor Relations</a></li>
-                                                <li><a href="#" title="" itemprop="url">Press Releases</a></li>
-                                                <li><a href="#" title="" itemprop="url">Shop with Points</a></li>
-                                                <li><a href="#" title="" itemprop="url">More Branches</a></li>
+                                                <li><a href="#" title="" itemprop="url">Our Story</a></li>
+                       
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6 col-lg-3">
                                         <div class="widget customer_care wow fadeIn" data-wow-delay="0.3s">
-                                            <h4 class="widget-title" itemprop="headline">CUSTOMER CARE</h4>
+                                            <h4 class="widget-title" itemprop="headline">How to join</h4>
                                             <ul>
-                                                <li><a href="#" title="" itemprop="url">Returns</a></li>
-                                                <li><a href="#" title="" itemprop="url">Shipping Info</a></li>
-                                                <li><a href="#" title="" itemprop="url">Gift Cards</a></li>
-                                                <li><a href="#" title="" itemprop="url">Size Guide</a></li>
-                                                <li><a href="#" title="" itemprop="url">Money Back</a></li>
+                                                <li><a href="#" title="" itemprop="url">Vendors</a></li>
+                                                <li><a href="#" title="" itemprop="url">Customers</a></li>
+                                                <li><a href="#" title="" itemprop="url">Partners</a></li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -973,9 +416,9 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                                         <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
                                             <h4 class="widget-title" itemprop="headline">GET IN TOUCH</h4>
                                             <ul>
-                                               <li><i class="fa fa-map-marker"></i> 123 New Design Str, ABC Building, melbourne, Australia.</li>
-                                               <li><i class="fa fa-phone"></i> (0044) 8647 1234 587</li>
-                                               <li><i class="fa fa-envelope"></i> <a href="#" title="" itemprop="url">hello@yourdomain.com</a></li>
+                                               <li><i class="fa fa-map-marker" style="color: orange;"></i> Nairobi,Kenya</li>
+                                               <li><i class="fa fa-phone" style="color: orange;"></i> +254 711 281774 | +254 797 309416</li>
+                                               <li><i class="fa fa-envelope" style="color: orange;"></i> <a href="#" title="" itemprop="url">info@swyft2eat.co.ke</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -988,7 +431,7 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
         </footer><!-- footer -->
         <div class="bottom-bar dark-bg text-center">
             <div class="container">
-                <p itemprop="description"><a target="_blank" href="https://www.templateshub.net">Swyft2Eat</a></p>
+                <p itemprop="description"><a target="_blank" href="">Swyft2Eat</a></p>
             </div>
         </div><!-- Bottom Bar -->
 
@@ -1062,11 +505,11 @@ Ut eu ligula. Class aptent taciti sociosqu ad litora torquent conubia.
                                 <input class="brd-rd3" type="password" placeholder="Confirm Password" >
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <button class="orange-bg brd-rd3" type="submit">REGISTER NOW</button>
+                                <button class="orange-bg brd-rd3" type="submit" style="color: white;">REGISTER NOW</button>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <a class="sign-btn" href="#" title="" itemprop="url">Already Registered? Sign in</a>
-                                <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a>
+                                <!-- <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a> -->
                             </div>
                         </div>
                     </form>

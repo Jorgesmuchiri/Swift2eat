@@ -42,11 +42,22 @@ class VendorController extends Controller
         $request->validate([
             'vendor_name' => 'required',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image_name = $request->image->getClientOriginalName();
+            $path = $request->image->move(public_path() . '/images/vendors', $image_name);
+        } else {
+            $image_name = null; 
+            $path = null;
+        }
+
         $vendor = new Vendor;
         $vendor->vendor_name = $request->vendor_name;
         $vendor->email = $request->email;
         $vendor->phone_no = $request->phone_no;
         $vendor->user_id = $request->user_id;
+        $vendor->vendor_logo = $image_name;
+        $vendor->location = $request->location;
 
         try {
             $vendor->save();
@@ -94,12 +105,23 @@ class VendorController extends Controller
         $request->validate([
             'vendor_name' => 'required',
         ]);
+
+
+        if ($request->hasFile('image')) {
+            $image_name = $request->image->getClientOriginalName();
+            $path = $request->image->move(public_path() . '/images/vendors', $image_name);
+        } else {
+            $image_name = null; 
+            $path = null;
+        }
        
         $vendor = Vendor::find($request->id);
         $vendor->vendor_name = $request->vendor_name;
         $vendor->email = $request->email;
         $vendor->phone_no = $request->phone_no;
         $vendor->user_id = $request->user_id;
+        $vendor->vendor_logo = $image_name;
+        $vendor->location = $request->location;
         try{
             $vendor->save();
             return redirect()->route('vendor.index');

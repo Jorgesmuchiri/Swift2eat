@@ -20,6 +20,13 @@ Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
+Route::get('/', 'App\Http\Controllers\FrontEndController@index')->name('welcome');
+
+
+Route::get('restaurant-detail/{id}', 'App\Http\Controllers\FrontEndController@restaurant_detail')->name('restaurant-detail');
+
+
+
 
 
 Route::group(['middleware' => 'auth'], function () {
