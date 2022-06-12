@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <titleSwyft2eat</title>
+    <title>Swyft2eat</title>
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-    
+
 
     <link rel="stylesheet" href="{{asset('/assets/css/icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div> -->
-        
+
         <header class="stick">
             <div class="topbar">
                 <div class="container">
@@ -71,7 +71,7 @@
                         <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
                         <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
-                </div>                
+                </div>
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
@@ -99,11 +99,22 @@
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
                                     </ul> -->
                                 </li>
-                              
+
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
-                          
-                            <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @auth
+                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
+                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
+                                <ul class="sub-dropdown">
+                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
+                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
+                                </ul> --}}
+                                @else
+
+                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @endauth
+
+                            {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
                         </div>
                     </nav><!-- Navigation -->
                 </div>
@@ -155,7 +166,7 @@
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
                                     </ul> -->
                                 </li>
-                              
+
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                 </div>
@@ -168,6 +179,7 @@
                     <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
                 </div>
                 <div class="register-btn">
+
                 <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
@@ -180,7 +192,7 @@
 					<div class="col-md-12 col-sm-12 col-lg-12">
 						<div class="page-title-inner">
 							<h1 itemprop="headline">{{$vendors->vendor_name}}</h1>
-						
+
 						</div>
 					</div>
                 </div>
@@ -212,7 +224,7 @@
                                                         <ul class="restaurant-detail-img-carousel">
                                                             <li><img class="brd-rd3" src="{{asset('https://img.freepik.com/free-photo/fried-chicken-with-french-fries-nuggets-meal_1339-78221.jpg?w=2000')}}" alt="restaurant-detail-big-img1-1.jpg" itemprop="image"></li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="restaurant-detail-title">
                                                         <h1 itemprop="headline">{{$vendors->vendor_name}}</h1>
@@ -270,8 +282,7 @@
                                                                     <input type="text" placeholder="Search here">
                                                                     <button type="submit"><i class="fa fa-search"></i></button>
                                                                 </form>
-                                                                    
-                                                              
+
                                                                 <div class="dishes-list-wrapper">
                                                                     <!-- <span class="post-rate red-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span> -->
 
@@ -285,6 +296,7 @@
                                                                                 </div>
                                                                                 <div class="featured-restaurant-info">
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$vendor->product_name}}</a></h4>
+                                                                                    {{-- <input type="text" placeholder="quantity" name="quantity"> --}}
                                                                                     <span class="price">{{$vendor->price}}</span>
                                                                                     <!-- <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p> -->
                                                                                     <!-- <ul class="post-meta">
@@ -293,19 +305,19 @@
                                                                                     </ul> -->
                                                                                 </div>
                                                                                 <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
+                                                                                    <a class="brd-rd2" href="{{ route('add_to_cart', [$vendor->id,$vendors]) }}" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
                                                                                 </div>
                                                                             </div>
                                                                         </li>
                                                                         @endforeach
-                                                                      
+
                                                                     </ul>
                                                                 </div>
 
-                                                         
-                                                             
+
                                                             </div>
-                                                       
+
+
                                                             <div class="tab-pane fade" id="tab1-3">
                                                                 <div class="customer-review-wrapper">
                                                                     <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Customer</span> Reviews</h4>
@@ -317,22 +329,22 @@
 
 
                                                                           @else
-                                                                             
-                                                                      
+
+
                                                                         <li>
                                                                             <div class="comment">
                                                                                 <img class="brd-rd50" src="assets/images/resource/review-img1.jpg" alt="review-img1.jpg" itemprop="image">
                                                                                 <div class="comment-info">
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$review->name}}</a></h4>
                                                                                     <p itemprop="description">{{$review->comment}}<</p>
-                                                                                   
+
                                                                                 </div>
                                                                             </div>
                                                                         </li>
-                                                                        @endif 
+                                                                        @endif
                                                                         @endforeach
-                                                                       
-                                                                       
+
+
                                                                     </ul>
                                                                     <div class="your-review">
                                                                         <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Write</span> Review Here</h4>
@@ -381,6 +393,9 @@
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
                                                                                 <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL"></div>
                                                                             </div>
+                                                                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                                                                <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="number" placeholder="Quantity"></div>
+                                                                            </div>
                                                                             <!-- <div class="col-md-6 col-sm-6 col-lg-6">
                                                                                 <div class="input-field brd-rd2"><i class="fa fa-calendar"></i> <input class="datepicker" type="text" placeholder="SELECT DATE"></div>
                                                                             </div>
@@ -400,7 +415,7 @@
                                                             <div class="tab-pane fade" id="tab1-5">
                                                                 <div class="restaurant-info-wrapper">
                                                                     <h3 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Contact</span> Us</h3>
-                                                                 
+
                                                                     <ul class="restaurant-info-list">
                                                                         <li>
                                                                             <i class="fa fa-map-marker red-clr"></i>
@@ -412,8 +427,8 @@
                                                                             <strong>Call us</strong>
                                                                             <span>{{$vendors->phone_no}}</span>
                                                                         </li>
-                                                                       
-                                                                       
+
+
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -425,7 +440,7 @@
                                         <div class="col-md-4 col-sm-12 col-lg-4">
                                             <div class="order-wrapper right wow fadeIn" data-wow-delay="0.2s">
                                                 <div class="order-inner gradient-brd">
-                                                    <h4 itemprop="headline">Your Order</h4>
+                                                    <h4 itemprop="headline">Your Cart</h4>
                                                     <div class="order-list-wrapper">
                                                         <ul class="order-list-inner">
                                                             @if ($orders->isEmpty())
@@ -438,37 +453,39 @@
                                                             $total = 0;
                                                             @endphp
 
-                                                            @foreach ($orders as $order )
+                                                            @foreach ($cart as $order )
 
                                                             @foreach ($order->products as $product )
-                                                                
+
                                                             @for ($i = 0; $i < count($order->products); $i++)
-                                                               
-                                                            
+
+
                                                             <li>
                                                                 <div class="dish-name">
                                                                     <i></i> <h6 itemprop="headline">{{$product->product_name}}</h6> <span class="price">{{$product->price}}</span>
                                                                 </div>
-                                                               
+
                                                                 <div class="mor-ingredients">
-                                                                    <a class="red-clr" href="#" title="" itemprop="url">Remove</a>
+                                                                    <a class="red-clr" href="{{ route('remove_from_cart', $product->id) }}" title="" itemprop="url">Remove</a>
                                                                 </div>
                                                             </li>
+                                                            @php
+                                                            $total += $product->price;
+                                                            @endphp
+
                                                             @endfor
 
                                                             @endforeach
                                                             @endforeach
 
 
-                                                     
+
                                                         </ul>
 
-                                                        @php
-                                                        $total += $product->price;
-                                                        @endphp
 
 
-                                               
+
+
                                                         <ul class="order-total">
                                                             <li><span>SubTotal</span> <i>{{$total}}</i></li>
                                                             <!-- <li><span>Delivery fee</span> <i>$70</i></li>
@@ -517,7 +534,7 @@
                                             <h4 class="widget-title" itemprop="headline">About Swyft2Eat</h4>
                                             <ul>
                                                 <li><a href="#" title="" itemprop="url">Our Story</a></li>
-                       
+
                                             </ul>
                                         </div>
                                     </div>
@@ -608,7 +625,7 @@
                         <a class="twitter brd-rd3" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
                     </div> -->
                     <!-- <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span> -->
-                   
+
                     <form method="post" action="{{ route('register') }}" autocomplete="off" class="sign-form" enctype="multipart/form-data" >
                         @csrf
                         @method('post')
@@ -640,9 +657,9 @@
 
 
 
-     
 
-    
+
+
     </main><!-- Main Wrapper -->
 
     <script src="{{asset('/assets/js/jquery.min.js')}}"></script>
@@ -651,6 +668,6 @@
     <script src="{{asset('https://maps.googleapis.com/maps/api/js?v=3.exp')}}"></script>
     <script src="{{asset('/assets/js/google-map-int.js')}}"></script>
     <script src="{{asset('/assets/js/main.js')}}"></script>
-</body>	
+</body>
 
 </html>

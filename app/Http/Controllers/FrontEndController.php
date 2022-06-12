@@ -11,6 +11,8 @@ use App\Models\User;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
 
 class FrontEndController extends Controller
 {
@@ -21,7 +23,7 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-    
+
    $vendors = Vendor::whereStatus(1)->get();
 
    $products = Products::with('vendors')->get();
@@ -29,7 +31,7 @@ class FrontEndController extends Controller
 
    return view('welcome',compact('vendors','products'));
 
-    
+
 
     }
 
@@ -37,8 +39,6 @@ class FrontEndController extends Controller
 
     public function restaurant_detail($id){
 
-
-    
 
         $vendors = Vendor::wherestatus(1)->whereid($id)->with('products.category')->first();
 
@@ -49,8 +49,11 @@ class FrontEndController extends Controller
 
         $reviews = Review::with('vendors')->where('vendor_id','=',$vendors->id)->get();
 
-        
-        return view('restaurant-detail',compact('vendors','products','orders','reviews'));
+        $cart = Cart::with('vendors')->where('user_id', '=', Auth::id())->where('vendor_id','=',$vendors->id)->get();
+
+        // return response()->json($cart);
+
+        return view('restaurant-detail',compact('vendors','products','orders','reviews', 'cart'));
 
 
         // return response()->json($orders);
@@ -77,11 +80,11 @@ class FrontEndController extends Controller
         $user = new User;
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = Hash::make($data['password']); 
+        $user->password = Hash::make($data['password']);
 
         try {
             $user->save();
-      
+
             return redirect('vendors')->withStatus(__('New user created successfully'));
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);

@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
+
+Route::post('registration', ['as' => 'register', 'uses' => 'App\Http\Controllers\CustomerController@create']);
+Route::post('login', ['as' => 'login', 'uses' => 'App\Http\Controllers\CustomerController@login']);
+
+// Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
@@ -25,7 +29,9 @@ Route::get('/', 'App\Http\Controllers\FrontEndController@index')->name('welcome'
 
 Route::get('restaurant-detail/{id}', 'App\Http\Controllers\FrontEndController@restaurant_detail')->name('restaurant-detail');
 
-
+Route::get('cart', ['as' => 'cart', 'uses' => 'App\Http\Controllers\CartController@cart']);
+Route::get('add_to_cart/{product_id}/{vendor_id}', ['as' => 'add_to_cart', 'uses' => 'App\Http\Controllers\CartController@add_to_cart']);
+Route::get('remove_from_cart/{id}', ['as' => 'remove_from_cart', 'uses' => 'App\Http\Controllers\CartController@remove_from_cart']);
 
 
 
@@ -33,8 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::resource('products', 'App\Http\Controllers\ProductsController', ['except' => ['show']]);
 	Route::resource('categories', 'App\Http\Controllers\CategoriesController', ['except' => ['show']]);
-	
-	
+
+
 
 
 	Route::resource('orders', 'App\Http\Controllers\OrdersController', ['except' => ['show']]);

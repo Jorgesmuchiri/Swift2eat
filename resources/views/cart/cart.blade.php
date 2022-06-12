@@ -1,5 +1,5 @@
-@extends('frontend.layout')
-@section('content')
+{{-- @extends('frontend.layout') --}}
+{{-- @section('content') --}}
 
     <span id="status"></span>
 
@@ -54,16 +54,16 @@
             <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td></td>
             <td></td>
-          
-                <td><a href=" {{ url('checkout') }} " class="btn btn-success text-white float-right">Checkout</a></td>
-           
 
-            
+                <td><a href=" {{ url('checkout') }} " class="btn btn-success text-white float-right">Checkout</a></td>
+
+
+
         </tr>
         </tfoot>
     </table>
 
-@endsection
+{{-- @endsection --}}
 
 @section('scripts')
 
@@ -100,11 +100,11 @@
                 url: '{{ url('update-cart') }}',
                 type: "post",
                 data: {
-                        id: ele.attr("data-id"), 
+                        id: ele.attr("data-id"),
                         quantity: quantity,
                        },
                 dataType: "json",
-                success: function (response) 
+                success: function (response)
                 {
 
                     loading.hide();
@@ -132,11 +132,11 @@
                     url: '{{ url('remove-from-cart') }}',
                     type: "DELETE",
                     data: {
-                            "_token": '{{ csrf_token() }}', 
+                            "_token": '{{ csrf_token() }}',
                             id: ele.attr("data-id"),
                           },
                     dataType: "json",
-                    success: function (response) 
+                    success: function (response)
                     {
 
                         parent_row.remove();

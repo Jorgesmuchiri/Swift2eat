@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'role_name' => 'Admin',
         ]);
 
-
         DB::table('users')->insert([
             'name' => 'Admin Admin',
             'email' => 'admin@swyft2eat.com',

@@ -8,7 +8,7 @@
     <meta name="keywords" content="" />
     <title>Swyft2eat</title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    
+
 
     <link rel="stylesheet" href="assets/css/icons.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div> -->
-        
+
         <header class="stick">
             <div class="topbar">
                 <div class="container">
@@ -69,7 +69,7 @@
                         <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
                         <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
-                </div>                
+                </div>
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
@@ -87,7 +87,7 @@
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
                                 <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
+                                    {{-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
                                         <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
@@ -95,13 +95,22 @@
                                         <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
                                         <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
+                                    </ul> --}}
                                 </li>
-                              
+
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
-                          
-                            <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @auth
+                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
+                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
+                                <ul class="sub-dropdown">
+                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
+                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
+                                </ul> --}}
+                                @else
+
+                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @endauth
                         </div>
                     </nav><!-- Navigation -->
                 </div>
@@ -157,7 +166,7 @@
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
                                     </ul> -->
                                 </li>
-                              
+
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                 </div>
@@ -211,9 +220,9 @@
                 </div>
             </div>
         </section> -->
-        
+
         <!-- top returents -->
-		
+
 		<section>
             <div class="block remove-bottom">
                 <div class="container">
@@ -238,7 +247,7 @@
 									<img src="https://images.unsplash.com/photo-1644677865374-1e16ac9b3253?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="" width="450px">
 								</div>
 							</div>
-						</div>	
+						</div>
                     </div>
                 </div>
             </div>
@@ -308,7 +317,7 @@
                                 <div class="row">
 
                                 @foreach ($vendors as $vendor )
-          
+
                                     <div class="col-md-4 col-sm-6 col-lg-4">
                                         <div class="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                                             <div class="popular-dish-thumb">
@@ -333,9 +342,9 @@
                                         </div><!-- Popular Dish Box -->
                                     </div>
 
-                                                      
+
                             @endforeach
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -343,7 +352,7 @@
                 </div>
             </div>
         </section>
-     
+
         <section>
             <div class="block no-padding orange-bg">
                 <img class="bottom-clouds-mockup" src="assets/images/resource/clouds2.png" alt="clouds2.png" itemprop="image">
@@ -397,7 +406,7 @@
                                             <h4 class="widget-title" itemprop="headline">About Swyft2Eat</h4>
                                             <ul>
                                                 <li><a href="#" title="" itemprop="url">Our Story</a></li>
-                       
+
                                             </ul>
                                         </div>
                                     </div>
@@ -450,10 +459,12 @@
                         <a class="twitter brd-rd3" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
                     </div>
                     <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span> -->
-                    <form class="sign-form">
+                    <form method="post" class="sign-form" action="{{ route('login') }}" autocomplete="off" enctype="multipart/form-data">
+                        @csrf
+                        @method('post')
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <input class="brd-rd3" type="text" placeholder="Username" name="name">
+                                <input class="brd-rd3" type="email" placeholder="Email" name="email">
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <input class="brd-rd3" type="password" placeholder="Password" name="password">
@@ -487,7 +498,7 @@
                         <a class="twitter brd-rd3" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
                     </div> -->
                     <!-- <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span> -->
-                   
+
                     <form method="post" action="{{ route('register') }}" autocomplete="off" class="sign-form" enctype="multipart/form-data" >
                         @csrf
                         @method('post')
@@ -497,6 +508,9 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <input class="brd-rd3" type="email" placeholder="Email" name="email">
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <input class="brd-rd3" type="text" placeholder="Phone Number" name="phone_no">
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <input class="brd-rd3" type="password" placeholder="Password" name="password">
@@ -522,6 +536,6 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-</body>	
+</body>
 
 </html>

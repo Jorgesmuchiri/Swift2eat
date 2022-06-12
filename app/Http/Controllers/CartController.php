@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -18,6 +20,41 @@ class CartController extends Controller
    public function cart()
     {
         return view('cart.cart');
+    }
+
+    public function add_to_cart($product_id, $vendor_id) {
+        // $request->validate([
+
+        // ]);
+        // dd($product_id, $vendor_id);
+        $cart = new Cart;
+
+        $cart->product_id = $product_id;
+        $cart->user_id = Auth::id();
+        $cart->vendor_id = $vendor_id;
+        $cart->quantity = 1;
+
+        try {
+            $cart->save();
+
+            return back()-> withSuccess('Product added to cart successfully');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function remove_from_cart($id) {
+        $product = Cart::whereproduct_id($id)->first();
+
+        // dd($product);
+
+        try {
+            $product->delete();
+
+            return back()-> withSuccess('Product added to cart successfully');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 
     public function addToCart($id)
@@ -107,7 +144,7 @@ class CartController extends Controller
              session()->flash('success', 'Cart updated successfully');
             return response()->json(['msg' => 'Cart updated successfully','total' => $total, 'subTotal' => $subTotal]);
 
-           
+
         }
     }
 
@@ -131,7 +168,7 @@ class CartController extends Controller
             session()->flash('success', 'Product removed successfully');
             return response()->json(['msg' => 'Product removed successfully','total' => $total]);
 
-            
+
         }
     }
 
@@ -146,13 +183,13 @@ class CartController extends Controller
     {
        $total = 0;
         $cart = session()->get('cart');
-        if (!$cart) 
+        if (!$cart)
         {
             return 0;
         }
         else
         {
-        foreach($cart as $id => $details) 
+        foreach($cart as $id => $details)
         {
             $total += $details['price'] * $details['quantity'];
         }

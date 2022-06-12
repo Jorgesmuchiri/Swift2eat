@@ -1,7 +1,7 @@
-@extends('frontend.layout')
+{{-- @extends('frontend.layout') --}}
 @section('content')
 
-	
+
 	<div class="row m-0 p-2 justify-content-center">
 		<div class="col-lg-6 col-md-6 col-sm-12">
 			<p class="text-center h4">Order Details</p>
@@ -29,7 +29,7 @@
 			                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 			                <tr>
 			                    <td data-th="Product">
-			                        <div class="row">                         
+			                        <div class="row">
 			                            <div class="col-sm-3 hidden-xs"><img src="/storage/{{ $details['photo'] }}" width="80px" height="80px" class="img-responsive"/></div>
 			                            <div class="col-sm-9">
 			                                <h4 class="nomargin">{{ $details['name'] }}</h4>
@@ -41,7 +41,7 @@
 			                        {{ $details['quantity'] }}
 			                    </td>
 			                    <td data-th="Subtotal" class="text-center">$<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
-			       
+
 			                </tr>
 			            @endforeach
 			        @endif
@@ -51,14 +51,14 @@
 				        <tr class="visible-xs">
 				            <td class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
 				        </tr>
-		
+
 				        </tfoot>
    			 </table>
 		</div>
 		<div class="col-md-6 col-lg-6 col-sm-12">
 			<p>Address Details</p>
 			<form method="post" action="#">
-					
+
 					<div class="form-group">
 					    <label for="inputname">Name</label>
 					    <input type="text" class="form-control" id="inputAddress" placeholder="Name" value=" {{ Auth::user()->name }} ">
@@ -77,7 +77,7 @@
 				    <label for="inputAddress">Address</label>
 				    <input type="text" class="form-control" id="inputAddress" placeholder="Utawala, Nairobi">
 				  </div>
-				 
+
 				  <button type="submit" class="btn btn-primary"Information>Confirm Billing Information</button>
 				</form>
 		</div>
@@ -104,9 +104,9 @@
 
                             <button class="btn btn-solid btn-success mt-3" id="checkoutOrder">LIPA NA MPESA
             	 </button>
-            	 
+
             	</form>
-            	
+
 
             	 <div class="recieving-payment" style="font-size:24px; display: none">
             	  Recieving Payment <i class="fa fa-circle-o-notch fa-spin btn-loading"></i>
@@ -135,7 +135,7 @@
 	$('#checkoutOrder').click(function(e)
 	{
 		e.preventDefault();
-		
+
 		// console.log('clicked');
 
 		var product_id = document.getElementsByName('prod_id[]');
@@ -147,9 +147,9 @@
 
 		var total = document.getElementById('total').value;
 		var phone_number = document.getElementById('phone_number').value;
-		// console.log(phone_number); 
-	
-		
+		// console.log(phone_number);
+
+
 		$('.recieving-payment').show();
 
 		//AJAX CALL TO INITIATE M-PESA STK-PUSH REQUEST
@@ -190,20 +190,20 @@
 						success:function(response)
 						{
 							console.log(response);
-							
+
 							$('.confirm-payment').hide();
-							
-							if (response == 0) 
+
+							if (response == 0)
 							{
 								$('.processing-order').show();
 
-								for (var i=0; i < product_id.length; i++) 
+								for (var i=0; i < product_id.length; i++)
 								{
 									datasend_id[i] = product_id[i].value;
 									datasend_qty[i] = product_qty[i].value;
 								}
-									
-								//AJAX CALL TO PLACE ORDER AUTOMATICALLY 
+
+								//AJAX CALL TO PLACE ORDER AUTOMATICALLY
 
 									$.ajax({
 
@@ -221,7 +221,7 @@
 											console.log(response);
 
 											//AJAX CALL TO REMOVE THE ORDER ITEMS FROM CART
-											for (var i = 0; i < product_id.length; i++) 
+											for (var i = 0; i < product_id.length; i++)
 											{
 												// console.log(product_id[i].value);
 
@@ -229,16 +229,16 @@
 													 url: '{{ url('remove-from-cart') }}',
 							                    type: "DELETE",
 							                    data: {
-							                            "_token": '{{ csrf_token() }}', 
+							                            "_token": '{{ csrf_token() }}',
 							                            id: product_id[i].value,
 							                          },
 							                    dataType: "json",
-							                    success: function (response) 
+							                    success: function (response)
 							                    {
-							                     	console.log('item removed from cart'); 
-							                     	window.location.href = " {{ route('store') }} ";  
+							                     	console.log('item removed from cart');
+							                     	window.location.href = " {{ route('store') }} ";
 							                    }
-																			
+
 												});
 
 											}
@@ -252,19 +252,19 @@
 							{
 								$('.mpesa-failed').show();
 							}
-							
+
 						}
-						
+
 						});
 
 					},8000);
-					
+
 				}
 
 		});
 
 		// console.log(user_id);
-		
+
 
 	});
 </script>
