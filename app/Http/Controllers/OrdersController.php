@@ -17,13 +17,21 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Orders::with('products', 'vendors', 'users')->paginate(20);
+        if (Auth::user()->role_id == 1) {
+            $orders = Orders::with('products', 'vendors', 'users')->paginate(20);
 
-        // return response()->json($orders);
+            // return response()->json($orders);
+    
+            // $products = Products::orderBy('id','ASC')->paginate(20);
+    
+            return view('orders.index',compact('orders'));
 
-        // $products = Products::orderBy('id','ASC')->paginate(20);
+        } elseif (Auth::user()->role_id == 2) {
+            $orders = Orders::with('products', 'vendors', 'users')->where('vendor_id', '=', Auth::id())->paginate(20);
 
-        return view('orders.index',compact('orders'));
+            return view('orders.index',compact('orders'));
+        }
+       
     }
 
     /**

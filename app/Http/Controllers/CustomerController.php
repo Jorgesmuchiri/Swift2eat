@@ -39,17 +39,18 @@ class CustomerController extends Controller
             'password' => 'required',
         ]);
 
-        // dd($request->email);
-
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // dd('Welcome');
-            return redirect()->intended('/')
-                        ->withSuccess("You have successfully logged in");
+            if (Auth::user()->role_id == 3) {
+                return redirect()->intended('/')
+                            ->withSuccess("You have successfully logged in");
+            } else {
+                return redirect()->intended('/home')
+                            ->withSuccess("You have successfully logged in");   
+            }
         }
 
-        // dd('Not Welcome');
         return redirect("/")
                 ->withFail('Oppes! You have entered invalid credentials');
 

@@ -36,34 +36,41 @@ Tip 2: you can also add an image using data-image tag
                                 <p>{{ __("User Profile") }}</p>
                             </a>
                         </li>
-                        <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('user.index')}}">
-                                <i class="nc-icon nc-circle-09"></i>
-                                <p>{{ __("User Management") }}</p>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role_id == 1)
+                            
+                            <li class="nav-item @if($activePage == 'user-management') active @endif">
+                                <a class="nav-link" href="{{route('user.index')}}">
+                                    <i class="nc-icon nc-circle-09"></i>
+                                    <p>{{ __("User Management") }}</p>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </li>
 
+            @if (Auth::user()->role_id == 1)
             <li class="nav-item @if($activePage == 'banners') active @endif">
                 <a class="nav-link" href="{{route('banner.index', 'banners')}}">
                     <i class="nc-icon nc-notes"></i>
                     <p>{{ __("Banners") }}</p>
                 </a>
             </li>
+
             <li class="nav-item @if($activePage == 'categories') active @endif">
                 <a class="nav-link" href="{{route('categories.index', 'categories')}}">
                     <i class="nc-icon nc-paper-2"></i>
                     <p>{{ __("Categories") }}</p>
                 </a>
             </li>
+            
             <li class="nav-item @if($activePage == 'vendors') active @endif">
                 <a class="nav-link" href="{{route('vendors.index', 'vendors')}}">
                     <i class="nc-icon nc-atom"></i>
                     <p>{{ __("Vendors") }}</p>
                 </a>
             </li>
+            @endif
             <li class="nav-item @if($activePage == 'products') active @endif">
                 <a class="nav-link" href="{{route('products.index', 'products')}}">
                     <i class="nc-icon nc-pin-3"></i>

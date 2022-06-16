@@ -58,32 +58,38 @@
     <div class="content">
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-xl-3">
-            <div class="card bg-c-blue order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Users</h6>
-                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $users }}</span></h2>
-                    <a href="{{ route('user.index') }}" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
+        @isset($users)
+                    
+            <div class="col-md-4 col-xl-3">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Users</h6>
+                        <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $users }}</span></h2>
+                        <a href="{{ route('user.index') }}" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endisset
 
+        @isset($vendors)
+                        
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-green order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Vendors</h6>
                     <h2 class="text-right"><i class="fa fa-folder f-left"></i><span>{{ $vendors }}</span></h2>
-                    <a href="" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
+                    <a href="{{ route('vendors.index') }}" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
                 </div>
             </div>
         </div>
+        @endisset
 
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Orders</h6>
                     <h2 class="text-right"><i class="fa fa-file f-left"></i><span>{{ $orders }}</span></h2>
-                    <a href="" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
+                    <a href="{{ route('orders.index') }}" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
                 </div>
             </div>
         </div>
@@ -93,7 +99,7 @@
                 <div class="card-block">
                     <h6 class="m-b-20">Products</h6>
                     <h2 class="text-right"><i class="fa fa-files-o f-left"></i><span>{{ $products }}</span></h2>
-                    <a href="" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
+                    <a href="{{ route('products.index') }}" class="btn btn-warning btn-block " style="color:white">{{ __('View More') }}</a>
                 </div>
             </div>
         </div>
