@@ -8,6 +8,7 @@ use App\Models\Customers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CustomerController extends Controller
 {
@@ -52,5 +53,14 @@ class CustomerController extends Controller
         return redirect("/")
                 ->withFail('Oppes! You have entered invalid credentials');
 
+    }
+
+    public function logout(Request $request) {
+        $request->session()->flush();
+
+        Auth::logout();
+
+        return redirect()->intended('/')
+                        ->withSuccess("You have successfully logged out");
     }
 }

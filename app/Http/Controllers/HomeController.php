@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Orders;
+use App\Models\Vendor;
+use App\Models\Products;
 
 class HomeController extends Controller
 {
@@ -23,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users = User::count();
+        $orders = Orders::count();
+        $vendors = Vendor::count();
+        $products = Products::count();
 
-        return view('dashboard');
+        return view('dashboard', compact('users', 'orders', 'vendors', 'products'));
     }
 }

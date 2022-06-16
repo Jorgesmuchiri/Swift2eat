@@ -22,42 +22,62 @@ class CartController extends Controller
         return view('cart.cart');
     }
 
-    public function add_to_cart($product_id, $vendor_id) {
-        // $request->validate([
+    // public function add_to_cart($product_id, $vendor_id) {
+    //     // $request->validate([
 
-        // ]);
-        // dd($product_id, $vendor_id);
-        $cart = new Cart;
+    //     // ]);
+    //     // dd($product_id, $vendor_id);
+    //     $cart = new Cart;
 
-        $cart->product_id = $product_id;
-        $cart->user_id = Auth::id();
-        $cart->vendor_id = $vendor_id;
-        $cart->quantity = 1;
+    //     $cart->product_id = $product_id;
+    //     $cart->user_id = Auth::id();
+    //     $cart->vendor_id = $vendor_id;
+    //     $cart->quantity = 1;
 
-        try {
-            $cart->save();
+    //     try {
+    //         $cart->save();
 
-            return back()-> withSuccess('Product added to cart successfully');
-        } catch (\Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
-        }
-    }
+    //         return back()-> withSuccess('Product added to cart successfully');
+    //     } catch (\Illuminate\Database\QueryException $e) {
+    //         return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+    //     }
+    // }
 
     public function remove_from_cart($id) {
-        $product = Cart::whereproduct_id($id)->first();
+        if ($id) {
+            $cart = session()->get('cart');
 
-        // dd($product);
+            if (isset($cart[$id])) {
+                unset($cart[$id]);
 
-        try {
-            $product->delete();
+                session()->put('cart', $cart);
+            }
 
-            return back()-> withSuccess('Product added to cart successfully');
-        } catch (\Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            // session()->flash('success', 'Product removed successfully');
+            return redirect()->back()->with('success', 'Product removed from the cart successfully!');
+
         }
+        // $product = Cart::whereproduct_id($id)->first();
+
+        // // dd($product);
+
+        // try {
+        //     $product->delete();
+
+        //     return back()-> withSuccess('Product added to cart successfully');
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        // }
     }
 
-    public function addToCart($id)
+    public function checkout() {
+        if (!Auth::id()) {
+            dd("Please log in");
+        }
+        return view('checkout.checkout');
+    }
+
+    public function add_to_cart($id, $vend_id)
     {
         $product = Products::find($id);
 
@@ -75,6 +95,7 @@ class CartController extends Controller
             $cart = [
                 $id => [
                     "prod_id"=>$product->id,
+                    "vendor_id" => $vend_id,
                     "name" => $product->product_name,
                     "quantity" => 1,
                     "price" => $product->price,
@@ -89,7 +110,8 @@ class CartController extends Controller
 
             // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
 
-            return redirect()->route('store');
+            // return redirect()->route('store');
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
         // if cart not empty then check if this product exist then increment quantity
@@ -103,13 +125,14 @@ class CartController extends Controller
 
             // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
 
-            return redirect()->route('store')->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
 
         }
 
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
             "prod_id"=>$product->id,
+            "vendor_id" => $vend_id,
             "name" => $product->product_name,
             "quantity" => 1,
             "price" => $product->price,
@@ -122,7 +145,7 @@ class CartController extends Controller
 
         // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
 
-        return redirect()->route('store')->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     public function update(Request $request)

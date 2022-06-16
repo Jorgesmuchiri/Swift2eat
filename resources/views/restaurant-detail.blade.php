@@ -443,7 +443,33 @@
                                                     <h4 itemprop="headline">Your Cart</h4>
                                                     <div class="order-list-wrapper">
                                                         <ul class="order-list-inner">
-                                                            @if ($orders->isEmpty())
+                                                            @php
+                                                                $total = 0;
+                                                            @endphp
+                                                            @if(session('cart'))
+                                                                @foreach (session('cart') as $id => $details)
+
+                                                                <li>
+                                                                    <div class="dish-name">
+                                                                        {{-- <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" /> --}}
+                                                                        <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <span style="width: 3px">{{ $details['quantity'] }}</span> <span class="price">{{$details['price']*$details['quantity'] }}</span>
+                                                                    </div>
+
+                                                                    <div class="mor-ingredients">
+                                                                        <a class="red-clr" href="{{ route('remove_from_cart', $details['prod_id']) }}" title="" itemprop="url">Remove</a>
+                                                                    </div>
+                                                                </li>
+                                                                @php
+
+                                                                $total += $details['price'] * $details['quantity'];
+                                                                @endphp
+
+                                                                @endforeach
+
+                                                            @endif
+
+
+                                                            {{-- @if ($orders->isEmpty())
 
                                                             <p> No orders placed</p>
 
@@ -476,7 +502,7 @@
                                                             @endfor
 
                                                             @endforeach
-                                                            @endforeach
+                                                            @endforeach --}}
 
 
 
@@ -494,10 +520,10 @@
                                                         <ul class="order-method brd-rd2 orange-bg">
                                                             <li><span>Total</span> <span class="price">{{$total}}</span></li>
                                                             <!-- <li><span class="radio-box cash-popup-btn"><input type="radio" name="method" id="pay1-1"><label for="pay1-1"><i class="fa fa-money"></i> Cash</label></span> <span class="radio-box card-popup-btn"><input type="radio" name="method" id="pay1-2"><label for="pay1-2"><i class="fa fa-credit-card-alt"></i> Card</label></span></li> -->
-                                                            <li><a class="brd-rd2" href="#" title="" itemprop="url"  style="background-color: orange;">CONFIRM ORDER</a></li>
+                                                            <li><a class="brd-rd2" href="{{ route('checkout') }}" title="" itemprop="url"  style="background-color: orange;">CONFIRM ORDER</a></li>
                                                         </ul>
 
-                                                        @endif
+                                                        {{-- @endif --}}
                                                     </div>
                                                 </div>
                                             </div>

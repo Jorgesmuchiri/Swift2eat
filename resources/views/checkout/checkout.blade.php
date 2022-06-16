@@ -1,6 +1,197 @@
 {{-- @extends('frontend.layout') --}}
-@section('content')
+{{-- @section('content') --}}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Swyft2eat</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+    <link rel="stylesheet" href="{{asset('/assets/css/icons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/red-color.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/yellow-color.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/responsive.css')}}">
+</head>
+<body itemscope>
+    <main>
+        <!-- <div class="preloader">
+            <div id="cooking">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+
+            <div><img src="/assets/images/logo5.png"></div>
+                <div id="area">
+                    <div id="sides">
+                        <div id="pan"></div>
+                        <div id="handle"></div>
+                    </div>
+                    <div id="pancake">
+                        <div id="pastry"></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <header class="stick">
+            <div class="topbar">
+                <div class="container">
+                    <!-- <div class="select-wrp">
+                        <select data-placeholder="Feel Like Eating">
+                            <option>FEEL LIKE EATING</option>
+                            <option>Burger</option>
+                            <option>Pizza</option>
+                            <option>Fried Rice</option>
+                            <option>Chicken Shots</option>
+                        </select>
+                    </div> -->
+                    <!-- <div class="select-wrp">
+                        <select data-placeholder="Choose Location">
+                            <option>CHOOSE LOCATION</option>
+                            <option>New york</option>
+                            <option>Washington</option>
+                            <option>Chicago</option>
+                            <option>Los Angeles</option>
+                        </select>
+                    </div> -->
+                    <div class="topbar-register">
+                    <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
+
+                        <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
+                    </div>
+                    <div class="social1">
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div><!-- Topbar -->
+            <div class="logo-menu-sec">
+                <div class="container">
+                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="{{asset('assets/images/logo5.png')}}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
+                    <nav>
+                        <div class="menu-sec">
+                            <ul>
+                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
+                                    <!-- <ul class="sub-dropdown">
+                                        <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
+                                        <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
+                                    </ul> -->
+                                </li>
+
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+
+                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                    <!-- <ul class="sub-dropdown">
+                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
+                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
+                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
+                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
+                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
+                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
+                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
+                                    </ul> -->
+                                </li>
+
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                            </ul>
+                            @auth
+                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
+                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
+                                <ul class="sub-dropdown">
+                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
+                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
+                                </ul> --}}
+                                @else
+
+                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @endauth
+
+                            {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
+                        </div>
+                    </nav><!-- Navigation -->
+                </div>
+            </div><!-- Logo Menu Section -->
+        </header><!-- Header -->
+
+        <div class="responsive-header">
+            <div class="responsive-topbar">
+                <!-- <div class="select-wrp">
+                    <select data-placeholder="Feel Like Eating">
+                        <option>FEEL LIKE EATING</option>
+                        <option>Burger</option>
+                        <option>Pizza</option>
+                        <option>Fried Rice</option>
+                        <option>Chicken Shots</option>
+                    </select>
+                </div> -->
+                <!-- <div class="select-wrp">
+                    <select data-placeholder="Choose Location">
+                        <option>CHOOSE LOCATION</option>
+                        <option>New york</option>
+                        <option>Washington</option>
+                        <option>Chicago</option>
+                        <option>Los Angeles</option>
+                    </select>
+                </div> -->
+            </div>
+            <div class="responsive-logomenu">
+                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
+            </div>
+            <div class="responsive-menu">
+                <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
+                <div class="menu-lst">
+                <ul>
+                <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+
+
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+
+                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                    <!-- <ul class="sub-dropdown">
+                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
+                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
+                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
+                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
+                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
+                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
+                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
+                                    </ul> -->
+                                </li>
+
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                            </ul>
+                </div>
+                <div class="topbar-register">
+                <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
+                </div>
+                <div class="social1">
+                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                </div>
+                <div class="register-btn">
+
+                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                </div>
+            </div><!-- Responsive Menu -->
+        </div><!-- Responsive Header -->
+<br>
+<br>
+<br><br><br><br><br><br><br><br><br>
 
 	<div class="row m-0 p-2 justify-content-center">
 		<div class="col-lg-6 col-md-6 col-sm-12">
@@ -30,7 +221,7 @@
 			                <tr>
 			                    <td data-th="Product">
 			                        <div class="row">
-			                            <div class="col-sm-3 hidden-xs"><img src="/storage/{{ $details['photo'] }}" width="80px" height="80px" class="img-responsive"/></div>
+			                            <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $details['photo'] }}" width="80px" height="80px" class="img-responsive"/></div>
 			                            <div class="col-sm-9">
 			                                <h4 class="nomargin">{{ $details['name'] }}</h4>
 			                            </div>
@@ -43,6 +234,9 @@
 			                    <td data-th="Subtotal" class="text-center">$<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
 
 			                </tr>
+                            @php
+                                $total += $details['price'] * $details['quantity'];
+                            @endphp
 			            @endforeach
 			        @endif
 
@@ -56,10 +250,11 @@
    			 </table>
 		</div>
 		<div class="col-md-6 col-lg-6 col-sm-12">
-			<p>Address Details</p>
-			<form method="post" action="#">
-
-					<div class="form-group">
+			<p>Order Information</p>
+			<form method="post" action="{{ route('store_order') }}">
+                @method('post')
+                @csrf
+					{{-- <div class="form-group">
 					    <label for="inputname">Name</label>
 					    <input type="text" class="form-control" id="inputAddress" placeholder="Name" value=" {{ Auth::user()->name }} ">
 					</div>
@@ -78,10 +273,46 @@
 				    <input type="text" class="form-control" id="inputAddress" placeholder="Utawala, Nairobi">
 				  </div>
 
-				  <button type="submit" class="btn btn-primary"Information>Confirm Billing Information</button>
+				  <button type="submit" class="btn btn-primary"Information>Confirm Billing Information</button> --}}
+                  <div class="row">
+                    {{-- <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-user"></i> <input type="text" placeholder="NAME"></div>
+                    </div> --}}
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-phone"></i> <input type="text" placeholder="PHONE" name="phone"></div>
+                    </div>
+                    <!-- <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="select-wrp2">
+                            <select>
+                                <option>Questions</option>
+                                <option>Questions No 1</option>
+                                <option>Questions No 2</option>
+                                <option>Questions No 3</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL" name="email"></div>
+                    </div>
+                    {{-- <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="time" placeholder="PickUp Time"></div>
+                    </div> --}}
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-calendar"></i> <input class="datepicker" id="datetimepicker" type="text" placeholder="SELECT DATE"></div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="input-field brd-rd2"><i class="fa fa-clock-o"></i> <input class="timepicker" type="text" placeholder="SELECT TIME"></div>
+                    </div> 
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction"></textarea></div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <button class="btn btn-primary" type="submit">Send Order</button>
+                    </div>
+                    </div>
 				</form>
 		</div>
-		<div class="col-md-10 col-lg-10 col-sm-12 mt-3 jumbotron pb-3 text-center">
+		{{-- <div class="col-md-10 col-lg-10 col-sm-12 mt-3 jumbotron pb-3 text-center">
 			 <form>
             		@csrf
             		<input type="hidden" name="id" value="{{ Auth::user()->id }}" id="user_id">
@@ -125,12 +356,22 @@
             	<div class="order-processed" style="font-size:24px; display: none">
             		Order Has Been Processed.... Thank you for Shopping with Us...
             	</div>
-		</div>
+		</div> --}}
 	</div>
 
-@endsection
+{{-- @endsection --}}
 
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker').datetimepicker();
+    });
+</script>  
+
 <script type="text/javascript">
 	$('#checkoutOrder').click(function(e)
 	{
@@ -156,7 +397,7 @@
 
 		$.ajax({
 
-				url:' {{ route('mpesa.checkout') }} ',
+				// url:'  ',
 				type:"POST",
 				data:{
 						"_token": "{{ csrf_token() }}",
@@ -180,7 +421,7 @@
 
 						$.ajax({
 
-						url:' {{ route('mpesa.confirm') }} ',
+						// url:' ',
 						type:"POST",
 						data:{
 								"_token": "{{ csrf_token() }}",
@@ -207,7 +448,7 @@
 
 									$.ajax({
 
-										url:'{{ route('order.store') }}',
+										// url:'',
 										type:"POST",
 										data:{
 												"_token": "{{ csrf_token() }}",
@@ -226,7 +467,7 @@
 												// console.log(product_id[i].value);
 
 												$.ajax({
-													 url: '{{ url('remove-from-cart') }}',
+													//  url: '',
 							                    type: "DELETE",
 							                    data: {
 							                            "_token": '{{ csrf_token() }}',
@@ -236,7 +477,7 @@
 							                    success: function (response)
 							                    {
 							                     	console.log('item removed from cart');
-							                     	window.location.href = " {{ route('store') }} ";
+							                     	window.location.href = "  ";
 							                    }
 
 												});

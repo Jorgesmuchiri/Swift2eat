@@ -49,11 +49,8 @@ class FrontEndController extends Controller
 
         $reviews = Review::with('vendors')->where('vendor_id','=',$vendors->id)->get();
 
-        $cart = Cart::with('vendors')->where('user_id', '=', Auth::id())->where('vendor_id','=',$vendors->id)->get();
 
-        // return response()->json($cart);
-
-        return view('restaurant-detail',compact('vendors','products','orders','reviews', 'cart'));
+        return view('restaurant-detail',compact('vendors','products','orders','reviews'));
 
 
         // return response()->json($orders);

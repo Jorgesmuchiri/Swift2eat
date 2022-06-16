@@ -102,11 +102,10 @@
                             </ul>
                             @auth
                                 <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
-                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
+                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li> --}}
                                 <ul class="sub-dropdown">
-                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
-                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
-                                </ul> --}}
+                                    <li><a href="{{ route('logout') }}" >Log Out</a></li>
+                                </ul>
                                 @else
 
                                 <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
@@ -117,7 +116,7 @@
             </div><!-- Logo Menu Section -->
         </header><!-- Header -->
 
-        <div class="responsive-header">
+        {{-- <div class="responsive-header">
             <div class="responsive-topbar">
                 <!-- <div class="select-wrp">
                     <select data-placeholder="Feel Like Eating">
@@ -182,7 +181,7 @@
                 <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
-        </div><!-- Responsive Header -->
+        </div><!-- Responsive Header --> --}}
 
         <section>
             <div class="block blackish opac50">

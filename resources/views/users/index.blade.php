@@ -31,8 +31,8 @@
                                     <th>Phone</th>
                                     <!-- <th>Status</th> -->
                                     <th>Role</th>
-                                    <!-- <th>isAdmin</th> -->
-                                    <th>Actions</th>
+                                    <th>isVendor</th>
+                                    <th>Delete</th>
                                 </tr>
                         </thead>
                             <tbody>
@@ -44,7 +44,13 @@
                                         <td>{{ $user->phone_number == null ? "None" : $user->phone_number }}</td>
                                     
                                         <td>{{ $user->role->role_name}}</td>
-                                       
+                                        <td>
+                                            <a title="{{ $user->role->role_name == 'Vendor' ? 'Remove as Vendor' : 'Make Vendor' }}" href="{{ route('user.change_role', $user->id) }}" style="color: #eba14e"><i class="{{ $user->role->role_name == 'Vendor' ? 'fa fa-check' : 'fa fa-times'}}"></i></a>
+                                        </td>
+                                        <td>
+                                            @method('post')
+                                            <a title="Delete user" class="ml-4" href="#" style="color: #eba14e"><i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

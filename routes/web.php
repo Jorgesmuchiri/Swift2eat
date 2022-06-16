@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
+
 
 Route::post('registration', ['as' => 'register', 'uses' => 'App\Http\Controllers\CustomerController@create']);
 Route::post('login', ['as' => 'login', 'uses' => 'App\Http\Controllers\CustomerController@login']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
 
 // Auth::routes();
 
@@ -32,7 +35,8 @@ Route::get('restaurant-detail/{id}', 'App\Http\Controllers\FrontEndController@re
 Route::get('cart', ['as' => 'cart', 'uses' => 'App\Http\Controllers\CartController@cart']);
 Route::get('add_to_cart/{product_id}/{vendor_id}', ['as' => 'add_to_cart', 'uses' => 'App\Http\Controllers\CartController@add_to_cart']);
 Route::get('remove_from_cart/{id}', ['as' => 'remove_from_cart', 'uses' => 'App\Http\Controllers\CartController@remove_from_cart']);
-
+Route::get('checkout', ['as' => 'checkout', 'uses' => 'App\Http\Controllers\CartController@checkout']);
+Route::post('store_order', ['as' => 'store_order', 'uses' => 'App\Http\Controllers\OrdersController@store']);
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -40,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('products', 'App\Http\Controllers\ProductsController', ['except' => ['show']]);
 	Route::resource('categories', 'App\Http\Controllers\CategoriesController', ['except' => ['show']]);
 
-
+    Route::get('user.change_role/{id}', ['as' => 'user.change_role', 'uses' => 'App\Http\Controllers\UserController@change_role']);
 
 
 	Route::resource('orders', 'App\Http\Controllers\OrdersController', ['except' => ['show']]);

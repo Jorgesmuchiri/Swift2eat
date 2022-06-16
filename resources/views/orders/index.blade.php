@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'products', 'title' => 'Products', 'navName' => 'Products', 'activeButton' => 'products'])
+@extends('layouts.app', ['activePage' => 'orders', 'title' => 'Orders', 'navName' => 'Orders', 'activeButton' => 'orders'])
 
 @section('content')
 <div class="content">
@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">{{ __('Products') }}</h4>
+            <h4 class="card-title ">{{ __('Orders') }}</h4>
             <p class="card-category"></p>
           </div>
           <div class="card-body">
@@ -25,9 +25,9 @@
             @endif
             <div class="row">
 
-              <div class="col-12 text-right">
+              {{-- <div class="col-12 text-right">
                 <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary mb-3">{{ __('Add Product') }}</a>
-              </div>
+              </div> --}}
 
 
             </div>
@@ -35,7 +35,7 @@
               <table class="table" id="myTable">
                 <thead class=" text-primary">
                   <th>
-                    {{ __('Vendor Name ') }}
+                    {{ __('Product Image ') }}
                   </th>
 
                   <th>
@@ -43,21 +43,33 @@
                   </th>
 
                   <th>
-                    {{ __('Category') }}
+                    {{ __('Customer Name') }}
                   </th>
 
 
 
                   <th>
-                    {{ __('Image') }}
+                    {{ __('Vendor Name') }}
                   </th>
                  
 
                   <th>
-                    {{ __('Price') }}
+                    {{ __('Quantity') }}
                   </th>
                   <th>
-                    {{ __('Quantity') }}
+                    {{ __('Amount') }}
+                  </th>
+                  <th>
+                    {{ __('Status') }}
+                  </th>
+                  <th>
+                    {{ __('Instruction') }}
+                  </th>
+                  <th>
+                    {{ __('Order Date') }}
+                  </th>
+                  <th>
+                    {{ __('Actions') }}
                   </th>
                 
 
@@ -69,43 +81,55 @@
 
                 </thead>
                 <tbody>
-                  @foreach( $products as $product)
+                  @foreach( $orders as $order)
                   <tr>
                   <td>
-                      {{$product->vendors->vendor_name }}
+                      <img src="/images/product/{{$order->products->image }}" style="width: 80px;">
                     </td>
                     <td>
-                      {{$product->product_name }}
+                      {{$order->products->product_name }}
                     </td>
                   
+                    <td>
+                      {{ $order->users->name }}
+                    </td> 
 
                     <td>
-                      {{$product->category->category_name }}
+                      {{ $order->vendors->vendor_name }}
+                    </td>
+
+
+                    <td>
+                      {{ $order->quantity  }}
                     </td>
 
                     <td>
-                        <img src="/images/product/{{$product->image }}" style="width: 80px;">
-                    </td>
-
-
-                    <td>
-                      {{$product->price }}
+                      {{ $order->total }}
                     </td>
 
                     <td>
-                      {{$product->quantity}}
+                        <a title="{{ $order->status == 'Pending' ? 'Change to Completed' : 'Change to Pending' }}" href="{{ route('orders.edit', $order->id) }}" style="color: #eba14e"><i class="{{ $order->status == 'Completed' ? 'fa fa-check' : 'fa fa-times'}}"></i></a>
+                        {{-- {{ $order->status }} --}}
+                      </td>
+
+                    <td>
+                    {{ $order->instruction }}
                     </td>
+
+                    <td>
+                        {{ $order->created_at->format('d/m/Y') }}
+                      </td>
 
 
 
                     <td class="td-actions text-right">
 
-                      @if ($product->id )
-                      <form action="{{ route('products.destroy',$product) }}" method="post">
+                      @if ($order->id )
+                      <form action="{{ route('orders.destroy',$order) }}" method="post">
                         @csrf
                         @method('delete')
 
-                        <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$product->id) }}" data-original-title="" title="" style="color:green">
+                        <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$order->id) }}" data-original-title="" title="" style="color:green">
                          <i class="fa fa-pencil-square-o "></i>
                           <div class="ripple-container"></div>
                         </a>
@@ -115,7 +139,7 @@
                         </button>
                       </form>
                       @else
-                      <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$product->id) }}" data-original-title="" title="" style="color:green">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('orders.edit',$order->id) }}" data-original-title="" title="" style="color:green">
                        <i class="fa fa-pencil-square-o "></i>
                         <div class="ripple-container"></div>
                       </a>
@@ -133,7 +157,7 @@
 
                 </tbody>
               </table>
-              {{ $products ->links() }}
+              {{ $orders->links() }}
             </div>
           </div>
         </div>
