@@ -35,5 +35,4 @@ class Vendor extends Model
         return $this->hasMany('App\Models\Products', 'vendor_id', 'id');
     }
 
-
 }

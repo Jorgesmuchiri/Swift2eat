@@ -19,14 +19,14 @@ class ProductsController extends Controller
     {
         if (Auth::user()->role_id == 1) {
             $products = Products::orderBy('id','ASC')->paginate(20);
-            
+
             return view('products.index',compact('products'));
         } else if(Auth::user()->role_id == 2) {
             $products = Products::where('vendor_id', '=', Auth::id())->paginate(20);
 
             return view('products.index',compact('products'));
         }
-        
+
     }
 
     /**
@@ -36,9 +36,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
- 
+
         $category = Categories::orderBy('category_name','ASC')->get();
-        $vendors = Vendor::orderBy('vendor_name','ASC')->get(); 
+        $vendors = Vendor::orderBy('vendor_name','ASC')->get();
 
        return view('products.create',compact('category','vendors'));
     }
@@ -58,7 +58,7 @@ class ProductsController extends Controller
             $image_name = $request->image->getClientOriginalName();
             $path = $request->image->move(public_path() . '/images/product', $image_name);
         } else {
-            $image_name = null; 
+            $image_name = null;
             $path = null;
         }
 
@@ -98,9 +98,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $products = Products::find($id);
+        $product = Products::find($id);
         // return response()->json($products);
-        return view('products.edit',compact('products'));
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -115,7 +115,7 @@ class ProductsController extends Controller
         $request->validate([
             'products_name' => 'required',
         ]);
-       
+
         $products = Products::find($request->id);
         $products->product_name = $request->product_name;
         $products->quantity = $request->quantity;

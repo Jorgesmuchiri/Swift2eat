@@ -11,7 +11,7 @@ class Review extends Model
 
 
     protected $table = 'customer_reviews';
-    
+
     public function vendor()
     {
         return $this->belongsTo('App\Models\Vendor','vendor_id');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vendor;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class VendorController extends Controller
 {
@@ -47,7 +49,7 @@ class VendorController extends Controller
             $image_name = $request->image->getClientOriginalName();
             $path = $request->image->move(public_path() . '/images/vendors', $image_name);
         } else {
-            $image_name = null; 
+            $image_name = null;
             $path = null;
         }
 
@@ -61,7 +63,7 @@ class VendorController extends Controller
 
         try {
             $vendor->save();
-      
+
             return redirect('vendors')->withStatus(__('New vendor created successfully'));
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
@@ -111,10 +113,10 @@ class VendorController extends Controller
             $image_name = $request->image->getClientOriginalName();
             $path = $request->image->move(public_path() . '/images/vendors', $image_name);
         } else {
-            $image_name = null; 
+            $image_name = null;
             $path = null;
         }
-       
+
         $vendor = Vendor::find($request->id);
         $vendor->vendor_name = $request->vendor_name;
         $vendor->email = $request->email;
@@ -142,5 +144,27 @@ class VendorController extends Controller
         $vendor = Vendor::findOrFail($id);
         $vendor->delete();
         return redirect()->route('vendor.index');
+    }
+
+
+    public function login(Request $request) {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $vendor = Vendor::where('email', $request->email)->first();
+
+        if(!is_null($vendor)) {
+            if(Hash::check($request->password, $vendor->password)) {
+                return redirect()->intended('/home')
+                                ->withSuccess("You have successfully logged in");
+            } else {
+                return redirect("/")
+                    ->withFail('Oppes! You have entered invalid credentials');
+            }
+        }
+        return redirect("/")
+            ->withFail('Oppes! You have entered invalid credentials');
     }
 }

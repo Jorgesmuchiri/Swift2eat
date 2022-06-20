@@ -21,9 +21,9 @@ class OrdersController extends Controller
             $orders = Orders::with('products', 'vendors', 'users')->paginate(20);
 
             // return response()->json($orders);
-    
+
             // $products = Products::orderBy('id','ASC')->paginate(20);
-    
+
             return view('orders.index',compact('orders'));
 
         } elseif (Auth::user()->role_id == 2) {
@@ -31,7 +31,7 @@ class OrdersController extends Controller
 
             return view('orders.index',compact('orders'));
         }
-       
+
     }
 
     /**
@@ -128,5 +128,13 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function show_orders()
+    {
+        $orders = Orders::with('products')->where('customer_id', '=', Auth::id())->orderBy( 'status', 'DESC')->paginate(10);
+
+        // return response()->json($orders);
+        return view('my_orders', compact('orders'));
     }
 }

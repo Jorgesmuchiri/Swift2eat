@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -15,6 +16,8 @@ class ReviewController extends Controller
     public function index()
     {
       $review = Review::get();
+
+      dd($review);
     }
 
     /**
@@ -36,13 +39,13 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $review = new Review;
-        $review->name= $request->name;
+        $review->name = Auth::user()->name;
         $review->comment = $request->comment;
         $review->vendor_id = $request->vendor_id;
         try {
             $review->save();
-      
-            return redirect('vendors')->withStatus(__('Review created successfully'));
+
+            return redirect()->back()->withStatus(__('Review created successfully'));
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }

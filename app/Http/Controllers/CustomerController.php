@@ -41,13 +41,13 @@ class CustomerController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials)) {
             if (Auth::user()->role_id == 3) {
                 return redirect()->intended('/')
                             ->withSuccess("You have successfully logged in");
             } else {
                 return redirect()->intended('/home')
-                            ->withSuccess("You have successfully logged in");   
+                            ->withSuccess("You have successfully logged in");
             }
         }
 

@@ -191,7 +191,7 @@
                 <div class="page-title-wrapper text-center">
 					<div class="col-md-12 col-sm-12 col-lg-12">
 						<div class="page-title-inner">
-							<h1 itemprop="headline">{{$vendors->vendor_name}}</h1>
+							<h1 itemprop="headline">My Orders</h1>
 
 						</div>
 					</div>
@@ -202,15 +202,57 @@
         <div class="bread-crumbs-wrapper">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Restaurant</a></li>
-                    <li class="breadcrumb-item active">Restaurant Details</li>
+                    <li class="breadcrumb-item"><a href="# title="" itemprop="url">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">My Orders</a></li>
+                    {{-- <li class="breadcrumb-item active">Restaurant Details</li> --}}
                 </ol>
             </div>
         </div>
 
         <section>
-            <div class="block gray-bg top-padd30">
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:50%">Product</th>
+			            <th style="width:10%">Price</th>
+			            <th style="width:8%">Quantity</th>
+                        <th style="width: 10%">Status</th>
+                        <th style="width: 10%">Instruction</th>
+			            <th style="width:22%">Subtotal</th>
+			            <th style="width:10%">Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $total = 0 ?>
+                    @foreach ($orders as $order)
+                    <?php $total += $order['total'] ?>
+                        <tr>
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $order->products['image'] }}" width="80px" height="80px" class="img-responsive"/></div>
+                                    <div class="col-sm-9">
+                                        <h4 class="nomargin">{{ $order->products['product_name'] }}</h4>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Ksh. {{ $order->products['price'] }}</td>
+                            <td>{{ $order['quantity'] }}</td>
+                            <td>{{ $order['status'] }}</td>
+                            <td>{{ $order['instruction'] }}</td>
+                            <td>Ksh. {{ $order['total'] }}</td>
+                            <td>{{ $order['created_at']->format('d/m/Y') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">Total ${{ $total }}</td>
+                    </tr>
+                </tfoot>
+
+            </table>
+            {{ $orders->links() }}
+            {{-- <div class="block gray-bg top-padd30">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -227,7 +269,7 @@
 
                                                     </div>
                                                     <div class="restaurant-detail-title">
-                                                        <h1 itemprop="headline">{{$vendors->vendor_name}}</h1>
+                                                        <h1 itemprop="headline">My Orders</h1>
                                                         <div class="info-meta">
                                                             <!-- <span>Greater Kailash (GK) 2</span> -->
                                                             <!-- <span><a href="#" title="" itemprop="url">Bakery</a>, <a href="#" title="" itemprop="url">Cafe</a></span> -->
@@ -296,13 +338,8 @@
                                                                                 </div>
                                                                                 <div class="featured-restaurant-info">
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$vendor->product_name}}</a></h4>
-                                                                                    {{-- <input type="text" placeholder="quantity" name="quantity"> --}}
                                                                                     <span class="price">{{$vendor->price}}</span>
-                                                                                    <!-- <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p> -->
-                                                                                    <!-- <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul> -->
+
                                                                                 </div>
                                                                                 <div class="ord-btn">
                                                                                     <a class="brd-rd2" href="{{ route('add_to_cart', [$vendor->id,$vendors]) }}" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
@@ -333,10 +370,10 @@
 
                                                                         <li>
                                                                             <div class="comment">
-                                                                                {{-- <img class="brd-rd50" src="assets/images/resource/review-img1.jpg" alt="review-img1.jpg" itemprop="image"> --}}
+                                                                                <img class="brd-rd50" src="assets/images/resource/review-img1.jpg" alt="review-img1.jpg" itemprop="image">
                                                                                 <div class="comment-info">
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$review->name}}</a></h4>
-                                                                                    <p itemprop="description">{{$review->comment}}</p>
+                                                                                    <p itemprop="description">{{$review->comment}}<</p>
 
                                                                                 </div>
                                                                             </div>
@@ -348,11 +385,8 @@
                                                                     </ul>
                                                                     <div class="your-review">
                                                                         <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Write</span> Review Here</h4>
-                                                                        <form class="review-form" method="post" action="{{ route('post_review') }}">
-                                                                            @method('post')
-                                                                            @csrf
-                                                                            <textarea class="brd-rd5" name="comment"></textarea>
-                                                                            <input type="hidden" value="{{ $vendors->id }}" name="vendor_id">
+                                                                        <form class="review-form">
+                                                                            <textarea class="brd-rd5"></textarea>
                                                                             <button class="brd-rd2 red-bg" type="submit">POST REVIEW</button>
 
                                                                         </form>
@@ -427,7 +461,6 @@
 
                                                                 <li>
                                                                     <div class="dish-name">
-                                                                        {{-- <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" /> --}}
                                                                         <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <span style="width: 3px">{{ $details['quantity'] }}</span> <span class="price">{{$details['price']*$details['quantity'] }}</span>
                                                                     </div>
 
@@ -445,42 +478,6 @@
                                                             @endif
 
 
-                                                            {{-- @if ($orders->isEmpty())
-
-                                                            <p> No orders placed</p>
-
-                                                            @else
-
-                                                            @php
-                                                            $total = 0;
-                                                            @endphp
-
-                                                            @foreach ($cart as $order )
-
-                                                            @foreach ($order->products as $product )
-
-                                                            @for ($i = 0; $i < count($order->products); $i++)
-
-
-                                                            <li>
-                                                                <div class="dish-name">
-                                                                    <i></i> <h6 itemprop="headline">{{$product->product_name}}</h6> <span class="price">{{$product->price}}</span>
-                                                                </div>
-
-                                                                <div class="mor-ingredients">
-                                                                    <a class="red-clr" href="{{ route('remove_from_cart', $product->id) }}" title="" itemprop="url">Remove</a>
-                                                                </div>
-                                                            </li>
-                                                            @php
-                                                            $total += $product->price;
-                                                            @endphp
-
-                                                            @endfor
-
-                                                            @endforeach
-                                                            @endforeach --}}
-
-
 
                                                         </ul>
 
@@ -490,16 +487,12 @@
 
                                                         <ul class="order-total">
                                                             <li><span>SubTotal</span> <i>{{$total}}</i></li>
-                                                            <!-- <li><span>Delivery fee</span> <i>$70</i></li>
-                                                            <li><span>Tax</span> <i>$12</i></li> -->
                                                         </ul>
                                                         <ul class="order-method brd-rd2 orange-bg">
                                                             <li><span>Total</span> <span class="price">{{$total}}</span></li>
-                                                            <!-- <li><span class="radio-box cash-popup-btn"><input type="radio" name="method" id="pay1-1"><label for="pay1-1"><i class="fa fa-money"></i> Cash</label></span> <span class="radio-box card-popup-btn"><input type="radio" name="method" id="pay1-2"><label for="pay1-2"><i class="fa fa-credit-card-alt"></i> Card</label></span></li> -->
                                                             <li><a class="brd-rd2" href="{{ route('checkout') }}" title="" itemprop="url"  style="background-color: orange;">CONFIRM ORDER</a></li>
                                                         </ul>
 
-                                                        {{-- @endif --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -510,7 +503,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
         <footer>
             <div class="block top-padd80 bottom-padd80 dark-bg">

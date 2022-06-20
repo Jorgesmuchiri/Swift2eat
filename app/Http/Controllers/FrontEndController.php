@@ -47,7 +47,7 @@ class FrontEndController extends Controller
 
         $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
 
-        $reviews = Review::with('vendors')->where('vendor_id','=',$vendors->id)->get();
+        $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
 
 
         return view('restaurant-detail',compact('vendors','products','orders','reviews'));

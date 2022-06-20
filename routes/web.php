@@ -22,7 +22,8 @@ Auth::routes();
 Route::post('registration', ['as' => 'register', 'uses' => 'App\Http\Controllers\CustomerController@create']);
 Route::post('login', ['as' => 'login', 'uses' => 'App\Http\Controllers\CustomerController@login']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
-
+Route::post('vendor_login', ['as' => 'vendor_login', 'uses' => 'App\Http\Controllers\VendorController@login']);
+Route::get('my_orders', ['as' => 'my_orders', 'uses' => 'App\Http\Controllers\OrdersController@show_orders']);
 // Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
@@ -38,6 +39,7 @@ Route::get('remove_from_cart/{id}', ['as' => 'remove_from_cart', 'uses' => 'App\
 Route::get('checkout', ['as' => 'checkout', 'uses' => 'App\Http\Controllers\CartController@checkout']);
 Route::post('store_order', ['as' => 'store_order', 'uses' => 'App\Http\Controllers\OrdersController@store']);
 
+Route::post('post_review', ['as' => 'post_review', 'uses' => 'App\Http\Controllers\ReviewController@store']);
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
