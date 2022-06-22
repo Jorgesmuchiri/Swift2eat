@@ -29,6 +29,11 @@ class Vendor extends Model
         'vendor_logo'
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
 
     public function products()
     {

@@ -127,7 +127,10 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Orders::findOrFail($id);
+
+        $order->delete();
+        return redirect()->back();
     }
 
     public function show_orders()

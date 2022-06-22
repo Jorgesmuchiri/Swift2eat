@@ -40,7 +40,7 @@
                   </div>
                 </div>
 
-             
+
                       <div class="row mt-3">
                                    <label class="col-sm-2 col-form-label">{{ __('Price') }}</label>
                   <div class="col-sm-7">
@@ -52,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                  <div class="row pb-3">
                             <label for="category" class="col-sm-2 col-form-label">
                                 {{ __('Category') }}
@@ -66,6 +66,8 @@
                             </div>
                         </div>
 
+                        @if (Auth::user()->role_id == 1)
+
                 <div class="row pb-3">
                             <label for="vendor" class="col-sm-2 col-form-label">
                                 {{ __('Vendor') }}
@@ -78,6 +80,8 @@
                                 </select>
                             </div>
                         </div>
+
+                        @endif
 
 
               <div class="card-footer ml-auto mr-auto">

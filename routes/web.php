@@ -38,6 +38,7 @@ Route::get('add_to_cart/{product_id}/{vendor_id}', ['as' => 'add_to_cart', 'uses
 Route::get('remove_from_cart/{id}', ['as' => 'remove_from_cart', 'uses' => 'App\Http\Controllers\CartController@remove_from_cart']);
 Route::get('checkout', ['as' => 'checkout', 'uses' => 'App\Http\Controllers\CartController@checkout']);
 Route::post('store_order', ['as' => 'store_order', 'uses' => 'App\Http\Controllers\OrdersController@store']);
+Route::post('update_product/{id}', ['as' => 'update_product', 'uses' => 'App\Http\Controllers\ProductsController@update']);
 
 Route::post('post_review', ['as' => 'post_review', 'uses' => 'App\Http\Controllers\ReviewController@store']);
 
@@ -47,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('categories', 'App\Http\Controllers\CategoriesController', ['except' => ['show']]);
 
     Route::get('user.change_role/{id}', ['as' => 'user.change_role', 'uses' => 'App\Http\Controllers\UserController@change_role']);
+    Route::get('vendor_status/{id}', ['as' => 'vendor_status', 'uses' => 'App\Http\Controllers\VendorController@change_status']);
 
 
 	Route::resource('orders', 'App\Http\Controllers\OrdersController', ['except' => ['show']]);

@@ -34,9 +34,9 @@
             <div class="table-responsive">
               <table class="table" id="myTable">
                 <thead class=" text-primary">
-                  <th>
+                  {{-- <th>
                     {{ __('Vendor Name ') }}
-                  </th>
+                  </th> --}}
 
                   <th>
                     {{ __('Product Name ') }}
@@ -51,7 +51,7 @@
                   <th>
                     {{ __('Image') }}
                   </th>
-                 
+
 
                   <th>
                     {{ __('Price') }}
@@ -59,9 +59,9 @@
                   <th>
                     {{ __('Quantity') }}
                   </th>
-                
 
-                  <th></th>
+
+                  <th>{{ __('Actions') }}</th>
 
 
 
@@ -71,13 +71,13 @@
                 <tbody>
                   @foreach( $products as $product)
                   <tr>
-                  <td>
+                  {{-- <td>
                       {{$product->vendors->vendor_name }}
-                    </td>
+                    </td> --}}
                     <td>
                       {{$product->product_name }}
                     </td>
-                  
+
 
                     <td>
                       {{$product->category->category_name }}

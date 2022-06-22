@@ -99,8 +99,11 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Products::find($id);
+        // return response()->json($product);
+        $category = Categories::orderBy('category_name','ASC')->get();
+        $vendors = Vendor::orderBy('vendor_name','ASC')->get();
         // return response()->json($products);
-        return view('products.edit',compact('product'));
+        return view('products.edit',compact('product', 'category', 'vendors'));
     }
 
     /**
@@ -116,11 +119,25 @@ class ProductsController extends Controller
             'products_name' => 'required',
         ]);
 
-        $products = Products::find($request->id);
+        dd(1);
+        $products = new Products;
+
+        $product = Products::find($request->id);
+
         $products->product_name = $request->product_name;
         $products->quantity = $request->quantity;
         $products->price = $request->price;
-        $products->category_id = $request->category_id;
+
+        if ($request->edited_category) {
+            $products->category_id = $request->category_id;
+            dd('Category Edited');
+        } else {
+            $product->category_id = $product->category_id;
+            dd('Category not edited');
+        }
+
+        dd('All Failed');
+
         $products->vendor_id = $request->vendor_id;
         $products->image = $request->image;
         try{

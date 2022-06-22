@@ -60,6 +60,7 @@ class VendorController extends Controller
         $vendor->user_id = $request->user_id;
         $vendor->vendor_logo = $image_name;
         $vendor->location = $request->location;
+        $vendor->password = Hash::make('swyft2eat');
 
         try {
             $vendor->save();
@@ -166,5 +167,19 @@ class VendorController extends Controller
         }
         return redirect("/")
             ->withFail('Oppes! You have entered invalid credentials');
+    }
+
+    public function change_status($id) {
+        $vendor = Vendor::find($id);
+
+        if ($vendor->status == 0) {
+            $vendor->status = 1;
+            $vendor->save();
+        } else {
+            $vendor->status = 0;
+            $vendor->save();
+        }
+
+        return redirect()->back();
     }
 }

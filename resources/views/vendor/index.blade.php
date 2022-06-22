@@ -24,12 +24,12 @@
                   </div>
                 @endif
                 <div class="row">
-                          
+
                   <div class="col-12 text-right mb-2">
                     <a href="{{ route('vendors.create') }}" class="btn btn-sm btn-primary">{{ __('Add Vendor') }}</a>
                   </div>
 
-                   
+
                 </div>
                 <div class="table-responsive">
                   <table class="table pt-2" id="myTable">
@@ -37,7 +37,7 @@
                       <!-- <th>
                           {{ __('#') }}
                       </th> -->
-                  
+
                       <th>
                         {{ __('Vendor Name') }}
                       </th>
@@ -50,12 +50,21 @@
                       <th>
                         {{ __('Phone No') }}
                       </th>
+                      <th>
+                        {{ __('Location') }}
+                      </th>
+                      <th>
+                        {{ __('Status') }}
+                      </th>
+                      <th>
+                        {{ __('IsActive?') }}
+                      </th>
                       <th></th>
                     </thead>
                     <tbody>
                         @foreach( $vendors as $vendor)
                         <tr>
-                         
+
                            <td>
                          {{$vendor->vendor_name }}
                           </td>
@@ -67,21 +76,33 @@
                           <td>
                          {{$vendor->phone_no }}
                           </td>
-                        
-                          
+
+                          <td>
+                            {{ $vendor->location }}
+                          </td>
+
+                          <td>
+                            {{ $vendor->status == '1' ? 'Active' : 'Inactive'}}
+                          </td>
+
+                          <td>
+                            <a title="{{ $vendor->status == '1' ? 'Inactivate': 'Activate'  }}" href="{{ route('vendor_status', $vendor->id) }}" ><i class="{{ $vendor->status == '1' ? 'fa fa-check' : 'fa fa-times' }}"></i></a>
+                          </td>
+
+
                              <td class="td-actions text-right">
 
                             @if ($vendor->id )
                               <form action="{{ route('vendors.destroy',$vendor->id) }}" method="post">
                                   @csrf
                                   @method('delete')
-                              
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="" style="color:green">
+
+                                  {{-- <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('vendors.edit',$vendor->id) }}" data-original-title="" title="" style="color:green">
                                    <i class="fa fa-pencil-square-o "></i>
                                     <div class="ripple-container"></div>
-                                  </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''" 
-                                  style="color:red"> 
+                                  </a> --}}
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''"
+                                  style="color:red">
                                     <i class="fa fa-trash"></i>
                                       <div class="ripple-container"></div>
                                   </button>
@@ -91,18 +112,18 @@
                                "<i class="fa fa-pencil-square-o "></i>
                                 <div class="ripple-container"></div>
                               </a>
-                          
+
                                @endif
                           </td>
-                        
-                       
+
+
                         </tr>
-                        
-                        
-                      
+
+
+
                   @endforeach
-                  
-                  
+
+
                     </tbody>
                   </table>
                     {{ $vendors->links() }}
@@ -116,7 +137,7 @@
 @endsection
 @section('scripts')
   <script type="text/javascript">
-      $(document).ready( function () 
+      $(document).ready( function ()
         {
            $('#myTable').DataTable();
         } );

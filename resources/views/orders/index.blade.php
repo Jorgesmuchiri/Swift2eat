@@ -51,7 +51,7 @@
                   <th>
                     {{ __('Vendor Name') }}
                   </th>
-                 
+
 
                   <th>
                     {{ __('Quantity') }}
@@ -71,7 +71,7 @@
                   <th>
                     {{ __('Actions') }}
                   </th>
-                
+
 
                   <th></th>
 
@@ -89,10 +89,10 @@
                     <td>
                       {{$order->products->product_name }}
                     </td>
-                  
+
                     <td>
                       {{ $order->users->name }}
-                    </td> 
+                    </td>
 
                     <td>
                       {{ $order->vendors->vendor_name }}
@@ -129,10 +129,10 @@
                         @csrf
                         @method('delete')
 
-                        <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$order->id) }}" data-original-title="" title="" style="color:green">
+                        {{-- <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('products.edit',$order->id) }}" data-original-title="" title="" style="color:green">
                          <i class="fa fa-pencil-square-o "></i>
                           <div class="ripple-container"></div>
-                        </a>
+                        </a> --}}
                         <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this program?") }}') ? this.parentElement.submit() : ''" style="color:red">
                         <i class="fa fa-trash"></i>
                           <div class="ripple-container"></div>
