@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vendor;
 use App\Models\User;
+use App\Notifications\VendorCreateNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -64,6 +65,8 @@ class VendorController extends Controller
 
         try {
             $vendor->save();
+
+            $vendor->notify(new VendorCreateNotification());
 
             return redirect('vendors')->withStatus(__('New vendor created successfully'));
         }catch (\Illuminate\Database\QueryException $e){
@@ -147,6 +150,9 @@ class VendorController extends Controller
         return redirect()->route('vendor.index');
     }
 
+    public function vendor_login(Request $request) {
+        return view('vendor.login');
+    }
 
     public function login(Request $request) {
         $request->validate([
@@ -154,19 +160,39 @@ class VendorController extends Controller
             'password' => 'required',
         ]);
 
-        $vendor = Vendor::where('email', $request->email)->first();
+        $credentials = $request->only('email', 'password');
 
-        if(!is_null($vendor)) {
-            if(Hash::check($request->password, $vendor->password)) {
-                return redirect()->intended('/home')
-                                ->withSuccess("You have successfully logged in");
-            } else {
-                return redirect("/")
-                    ->withFail('Oppes! You have entered invalid credentials');
-            }
+        if (Auth::guard('vendor')->attempt($credentials)) {
+            // return response()->json(Auth::guard('vendor')->user());
+            return redirect()->intended('/home');
+
+
+            // return redirect()->intended('/home')
+            //                     ->withSuccess("You have successfully logged in");
+        } else {
+            return 'Bad Creds';
         }
-        return redirect("/")
-            ->withFail('Oppes! You have entered invalid credentials');
+
+
+
+        // $vendor = Vendor::where('email', $request->email)->first();
+
+        // if(!is_null($vendor)) {
+        //     if(Hash::check($request->password, $vendor->password)) {
+        //         // return 'Succesfull';
+        //         return response()->json(Auth::user());
+        //         return redirect()->route('/home');
+
+        //         // return redirect()->intended('/orders')
+        //         //                 ->withSuccess("You have successfully logged in");
+        //     } else {
+        //         return 'Not successful';
+        //         // return redirect("/vendorLogin")
+        //         //     ->withFail('Oppes! You have entered invalid credentials');
+        //     }
+        // }
+        // return redirect("/vendorLogin")
+        //     ->withFail('Oppes! You have entered invalid credentials');
     }
 
     public function change_status($id) {

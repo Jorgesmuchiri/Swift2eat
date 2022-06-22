@@ -7,7 +7,7 @@
         <div class="col-md-12">
           <form method="post" action="{{ route('update_product', $product->id) }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
             @csrf
-            @method('patch')
+            @method('post')
 
             <div class="card ">
                 <div class="card-header card-header-primary">

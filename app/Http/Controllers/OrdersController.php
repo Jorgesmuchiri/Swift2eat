@@ -7,6 +7,10 @@ use App\Models\Orders;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Models\Products;
+use App\Models\Vendor;
+use App\Notifications\OrderNotification;
+use App\Models\User;
+use App\Notifications\OrderCompleteNotification;
 
 class OrdersController extends Controller
 {
@@ -27,7 +31,7 @@ class OrdersController extends Controller
             return view('orders.index',compact('orders'));
 
         } elseif (Auth::user()->role_id == 2) {
-            $orders = Orders::with('products', 'vendors', 'users')->where('vendor_id', '=', Auth::id())->paginate(20);
+            $orders = Orders::with('products', 'vendors', 'users')->orderBy('status', 'DESC')->where('vendor_id', '=', Auth::id())->paginate(20);
 
             return view('orders.index',compact('orders'));
         }
@@ -66,7 +70,11 @@ class OrdersController extends Controller
                 'email' => $request['email'],
                 'instruction' => $request['instruction'],
             ]);
+
+            $vendor = Vendor::find($cart_item['vendor_id']);
+            $vendor->notify(new OrderNotification());
         }
+
 
         // Delete the cart session after an order is made
         $request->session()->forget('cart');;
@@ -97,7 +105,12 @@ class OrdersController extends Controller
         $order= Orders::find($id);
 
         if ($order->status == 'Pending') {
+            $vendor = Vendor::where('id', '=', $order->vendor_id)->first();
+            $user = User::find($order->customer_id);
+
             $order->status = 'Completed';
+
+            $user->notify(new OrderCompleteNotification($vendor));
         } elseif ($order->status == 'Completed') {
             $order->status = 'Pending';
         }

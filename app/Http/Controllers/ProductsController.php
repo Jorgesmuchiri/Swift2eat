@@ -67,7 +67,13 @@ class ProductsController extends Controller
         $products->quantity = $request->quantity;
         $products->price = $request->price;
         $products->category_id = $request->category_id;
-        $products->vendor_id = $request->vendor_id;
+        if (Auth::user()->role_id == 1) {
+            $products->vendor_id = $request->vendor_id;
+        } else {
+            $vendor = Vendor::where('user_id', '=', Auth::id())->first();
+            $products->vendor_id = $vendor->id;
+            // $products->vendor_id = Auth::id();
+        }
         $products->image =  $image_name;
 
         try {
@@ -115,33 +121,40 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'products_name' => 'required',
-        ]);
+        // $request->validate([
+        //     'products_name' => 'required',
+        // ]);
 
-        dd(1);
+        // dd(1);
         $products = new Products;
 
         $product = Products::find($request->id);
 
-        $products->product_name = $request->product_name;
-        $products->quantity = $request->quantity;
-        $products->price = $request->price;
+        $product->product_name = $request->product_name;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
 
         if ($request->edited_category) {
-            $products->category_id = $request->category_id;
-            dd('Category Edited');
+            $product->category_id = $request->category_id;
+            // dd('Category Edited');
         } else {
             $product->category_id = $product->category_id;
-            dd('Category not edited');
+            // dd('Category not edited');
         }
 
-        dd('All Failed');
+        if ($request->hasFile('image')) {
+            $image_name = $request->image->getClientOriginalName();
+            $path = $request->image->move(public_path() . '/images/vendors', $image_name);
+        } else {
+            $image_name = $product->image;
+        }
 
-        $products->vendor_id = $request->vendor_id;
-        $products->image = $request->image;
+        // dd('All Failed');
+
+        $product->vendor_id = $request->vendor_id;
+        $product->image = $image_name;
         try{
-            $products->save();
+            $product->save();
             return redirect()->route('products.index');
 
         }catch (\Illuminate\Database\QueryException $e){

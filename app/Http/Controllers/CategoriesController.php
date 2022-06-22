@@ -71,9 +71,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $categories = Categories::find($id);
+        $category = Categories::find($id);
         // return response()->json($categories);
-        return view('categories.edit',compact('categories'));
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -83,16 +83,18 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_category(Request $request, $id)
     {
-        $request->validate([
-            'category_name' => 'required',
-        ]);
+        // $request->validate([
+        //     'category_name' => 'required',
+        // ]);
+
+        // dd($id);
        
         $categories = Categories::find($request->id);
-        $categories->category_name = $request->category_name;
-        $categories->banner_id = $request->banner_id;
-        $categories->product_id = $request->product_id;
+        $categories->category_name = $request->name;
+        // $categories->banner_id = $request->banner_id;
+        // $categories->product_id = $request->product_id;
         try{
             $categories->save();
             return redirect('categories')->withStatus(__('Category updated successfully'));

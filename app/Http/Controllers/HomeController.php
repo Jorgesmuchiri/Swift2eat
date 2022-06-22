@@ -36,7 +36,7 @@ class HomeController extends Controller
             $products = Products::count();
 
             return view('dashboard', compact('users', 'orders', 'vendors', 'products'));
-        } elseif (Auth::user()->role_id == 2) {
+        } elseif (Auth::guard('vendor')->user()->role_id == 2) {
             $products = Products::where('vendor_id', '=', Auth::id())->count();
             $orders = Orders::where('vendor_id', '=', Auth::id())->count();
 
