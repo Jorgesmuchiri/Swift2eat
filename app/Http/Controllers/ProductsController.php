@@ -22,7 +22,8 @@ class ProductsController extends Controller
 
             return view('products.index',compact('products'));
         } else if(Auth::user()->role_id == 2) {
-            $products = Products::where('vendor_id', '=', Auth::id())->paginate(20);
+            $vendor = Vendor::where('user_id', '=', Auth::id())->first();
+            $products = Products::where('vendor_id', '=', $vendor->id)->paginate(20);
 
             return view('products.index',compact('products'));
         }

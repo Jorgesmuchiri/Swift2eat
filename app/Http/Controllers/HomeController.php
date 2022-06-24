@@ -36,9 +36,11 @@ class HomeController extends Controller
             $products = Products::count();
 
             return view('dashboard', compact('users', 'orders', 'vendors', 'products'));
-        } elseif (Auth::guard('vendor')->user()->role_id == 2) {
-            $products = Products::where('vendor_id', '=', Auth::id())->count();
-            $orders = Orders::where('vendor_id', '=', Auth::id())->count();
+        } elseif (Auth::user()->role_id == 2) {
+            $vendor = Vendor::where('user_id', '=', Auth::id())->first();
+
+            $products = Products::where('vendor_id', '=', $vendor->id)->count();
+            $orders = Orders::where('vendor_id', '=', $vendor->id)->count();
 
             return view('dashboard', compact('products', 'orders'));
         } else {
@@ -50,6 +52,6 @@ class HomeController extends Controller
             return view('welcome',compact('vendors','products'));
         }
 
-        
+
     }
 }

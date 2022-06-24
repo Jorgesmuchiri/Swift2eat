@@ -56,12 +56,13 @@ class VendorController extends Controller
 
         $vendor = new Vendor;
         $vendor->vendor_name = $request->vendor_name;
+        // $vend = User::find($request->user_id);
         $vendor->email = $request->email;
         $vendor->phone_no = $request->phone_no;
         $vendor->user_id = $request->user_id;
         $vendor->vendor_logo = $image_name;
         $vendor->location = $request->location;
-        $vendor->password = Hash::make('swyft2eat');
+        // $vendor->password = Hash::make('swyft2eat');
 
         try {
             $vendor->save();

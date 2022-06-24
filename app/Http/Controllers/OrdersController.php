@@ -31,7 +31,9 @@ class OrdersController extends Controller
             return view('orders.index',compact('orders'));
 
         } elseif (Auth::user()->role_id == 2) {
-            $orders = Orders::with('products', 'vendors', 'users')->orderBy('status', 'DESC')->where('vendor_id', '=', Auth::id())->paginate(20);
+            $vendor = Vendor::where('user_id', '=', Auth::id())->first();
+            $orders = Orders::with('products', 'vendors', 'users')->orderBy('status', 'DESC')->where('vendor_id', '=', $vendor->id)->paginate(20);
+            // return response()->json($orders);
 
             return view('orders.index',compact('orders'));
         }

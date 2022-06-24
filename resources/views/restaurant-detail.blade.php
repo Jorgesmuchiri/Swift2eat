@@ -362,7 +362,7 @@
                                                             <div class="tab-pane fade" id="tab1-4">
                                                                 <div class="book-table">
                                                                     <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Make</span> Order</h4>
-                                                                    <form>
+                                                                    {{-- <form> --}}
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
                                                                                 <div class="input-field brd-rd2"><i class="fa fa-user"></i> <input type="text" placeholder="NAME"></div>
@@ -375,17 +375,18 @@
                                                                                 <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL"></div>
                                                                             </div>
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
-                                                                                <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="number" placeholder="Quantity"></div>
+                                                                                <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="number" placeholder="Quantity" name="number"></div>
                                                                             </div>
 
                                                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                                                <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction"></textarea></div>
+                                                                                <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction" class="instrxn"></textarea></div>
                                                                             </div>
                                                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                                                <button class="brd-rd2 red-bg" type="submit">Send Order</button>
+                                                                                <a href="{{ route('add_instruction') }}" class="brd-rd2 red-bg" itemprop="url"> SEND ORDER</a>
+                                                                                {{-- <button class="brd-rd2 red-bg update-cart" type="submit">Send Order</button> --}}
                                                                             </div>
                                                                         </div>
-                                                                    </form>
+                                                                    {{-- </form> --}}
                                                                 </div>
                                                             </div>
                                                             <div class="tab-pane fade" id="tab1-5">
@@ -660,9 +661,12 @@
 
 
 
-
-
     </main><!-- Main Wrapper -->
+    {{-- @section('scripts') --}}
+
+
+
+    {{-- @endsection --}}
 
     <script src="{{asset('/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('/assets/js/bootstrap.min.js')}}"></script>

@@ -474,7 +474,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <a class="sign-popup-btn" href="#" title="Register" itemprop="url">Not a member? Sign up</a>
                                 <!-- <a class="sign-btn" href="#" title="" itemprop="url">Not a member? Sign up</a> -->
-                                <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a>
+                                <a class="recover-btn" href="{{ route('forget_password') }}" title="" itemprop="url">Recover my password</a>
                             </div>
                         </div>
                     </form>

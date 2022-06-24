@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <form method="POST" action="{{ route('password.email') }}">
+                        <form method="POST" action="{{ route('password_reset') }}">
                             @csrf
                             <div class="card card-login card-hidden">
                                 <div class="card-header">{{ __('Reset Password') }}</div>
@@ -35,10 +35,10 @@
                                             </button>
                                         </div>
                                     </div>
-                    
+
                                 </div>
                             </div>
-                        </form>  
+                        </form>
                     </div>
                 </div>
             </div>

@@ -77,9 +77,11 @@ class CartController extends Controller
         return view('checkout.checkout');
     }
 
-    public function add_to_cart($id, $vend_id)
+    public function add_to_cart(Request $request, $id, $vend_id)
     {
         $product = Products::find($id);
+
+        // dd($request->number);
 
         if(!$product) {
 
@@ -148,8 +150,18 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
+    public function add_instruction(Request $request)
+    {
+        dd(1);
+        if ($request->instruction)
+        {
+            dd($request->instruction);
+        }
+    }
+
     public function update(Request $request)
     {
+
         if($request->id and $request->quantity)
         {
             $cart = session()->get('cart');

@@ -31,7 +31,7 @@
                                         <label class="form-control-label" for="input-name">
                                             <i class="w3-xxlarge fa fa-user"></i>{{ __('Name') }}
                                         </label>
-                                        <input type="text" name="name" id="input-name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+                                        <input type="text" name="name" id="input-name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ $vendor->vendor_name }}" required autofocus>
 
                                         @include('alerts.feedback', ['field' => 'name'])
                                     </div>
@@ -128,17 +128,17 @@
                             <div class="card-body">
                                 <div class="author">
                                     <a href="#">
-                                        <img class="avatar border-gray" src="{{ asset('light-bootstrap/img/faces/face-3.jpg') }}" alt="...">
-                                        <h5 class="title">{{ __('Mike Andrew') }}</h5>
+                                        <img class="avatar border-gray" src="/images/vendors/{{ $vendor->vendor_logo }}" alt="...">
+                                        <h5 class="title">{{ $vendor->vendor_name }}</h5>
                                     </a>
                                     <p class="description">
-                                        {{ __('michael24') }}
+                                        {{ $vendor->email }}
                                     </p>
                                 </div>
                                 <p class="description text-center">
-                                {{ __(' "Lamborghini Mercy') }}
-                                    <br> {{ __('Your chick she so thirsty') }}
-                                    <br> {{ __('I am in that two seat Lambo') }}
+                                {{ $vendor->location }}
+                                    <br> {{ $vendor->phone_no }}
+                                    {{-- <br> {{ __('I am in that two seat Lambo') }} --}}
                                 </p>
                             </div>
                             <hr>

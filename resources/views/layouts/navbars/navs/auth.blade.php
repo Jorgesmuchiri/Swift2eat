@@ -49,13 +49,14 @@
                         <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Log out') }} </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Log out') }}</a>
+                        {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Log out') }} </a> --}}
                     </form>
-                     
+
                     </div>
                 </li>
                 <li class="nav-item">
-                   
+
                 </li>
             </ul>
         </div>
