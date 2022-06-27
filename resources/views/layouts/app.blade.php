@@ -28,9 +28,16 @@
 
             <div class="@if (auth()->check() && request()->route()->getName() != "") main-panel @endif">
                 @include('layouts.navbars.navbar')
+                @include('flash-message')
                 @yield('content')
                 @include('layouts.footer.nav')
             </div>
+
+            {{-- <div class="container">
+                <div class="col-md-7 offset-3 mt-4">
+                    @include('flash-message')
+                </div>
+            </div> --}}
 
         </div>
 

@@ -119,7 +119,7 @@ class OrdersController extends Controller
 
         $order->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Order successfully updated');
     }
 
     /**
@@ -145,7 +145,7 @@ class OrdersController extends Controller
         $order = Orders::findOrFail($id);
 
         $order->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Order successfully deleted');
     }
 
     public function show_orders()

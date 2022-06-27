@@ -27,7 +27,7 @@ class CustomerController extends Controller
         try {
             $user->save();
 
-            return redirect()->route('welcome');
+            return redirect()->route('welcome')->with('success', 'Account has been created successfully');
         } catch (\Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
@@ -44,15 +44,15 @@ class CustomerController extends Controller
         if (Auth::guard('web')->attempt($credentials)) {
             if (Auth::user()->role_id == 3) {
                 return redirect()->intended('/')
-                            ->withSuccess("You have successfully logged in");
+                            ->with('success', "You have successfully logged in");
             } else {
                 return redirect()->intended('/home')
-                            ->withSuccess("You have successfully logged in");
+                            ->with('success', "You have successfully logged in");
             }
         }
 
         return redirect("/")
-                ->withFail('Oppes! You have entered invalid credentials');
+                ->with('error', 'Oppes! You have entered invalid credentials');
 
     }
 
@@ -62,6 +62,6 @@ class CustomerController extends Controller
         Auth::logout();
 
         return redirect()->intended('/')
-                        ->withSuccess("You have successfully logged out");
+                        ->with('success', "You have successfully logged out");
     }
 }

@@ -131,7 +131,7 @@ class VendorController extends Controller
         $vendor->location = $request->location;
         try{
             $vendor->save();
-            return redirect()->route('vendor.index');
+            return redirect()->route('vendor.index')->with('success', 'Profile Successfully Updated');
 
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
@@ -148,7 +148,7 @@ class VendorController extends Controller
     {
         $vendor = Vendor::findOrFail($id);
         $vendor->delete();
-        return redirect()->route('vendor.index');
+        return redirect()->route('vendor.index')->with('success', 'Vendor deleted successfully');
     }
 
     public function vendor_login(Request $request) {

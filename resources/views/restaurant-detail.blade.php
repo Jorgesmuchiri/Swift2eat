@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="{{asset('/assets/css/yellow-color.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/responsive.css')}}">
 </head>
+
 <body itemscope>
+    
     <main>
         <!-- <div class="preloader">
             <div id="cooking">
@@ -43,6 +45,7 @@
         <header class="stick">
             <div class="topbar">
                 <div class="container">
+                    @include('flash-message')
                     <!-- <div class="select-wrp">
                         <select data-placeholder="Feel Like Eating">
                             <option>FEEL LIKE EATING</option>
@@ -210,6 +213,7 @@
         </div>
 
         <section>
+
             <div class="block gray-bg top-padd30">
                 <div class="container">
                     <div class="row">
@@ -278,8 +282,8 @@
                                                         </ul>
                                                         <div class="tab-content">
                                                             <div class="tab-pane fade in active" id="tab1-1">
-                                                                <form class="search-dish">
-                                                                    <input type="text" placeholder="Search here">
+                                                                <form class="search-dish" action="{{ route('restaurant-detail', $rest_id) }}" method="GET">
+                                                                    <input type="text" placeholder="Search here" name="search">
                                                                     <button type="submit"><i class="fa fa-search"></i></button>
                                                                 </form>
 
@@ -362,31 +366,32 @@
                                                             <div class="tab-pane fade" id="tab1-4">
                                                                 <div class="book-table">
                                                                     <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Make</span> Order</h4>
-                                                                    {{-- <form> --}}
+                                                                    <form method="post" id="instruction" action="{{ route('instruction') }}">
+                                                                        @csrf
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
-                                                                                <div class="input-field brd-rd2"><i class="fa fa-user"></i> <input type="text" placeholder="NAME"></div>
+                                                                                <div class="input-field brd-rd2"><i class="fa fa-user"></i> <input type="text" placeholder="NAME" name="name"></div>
                                                                             </div>
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
-                                                                                <div class="input-field brd-rd2"><i class="fa fa-phone"></i> <input type="text" placeholder="PHONE"></div>
+                                                                                <div class="input-field brd-rd2"><i class="fa fa-phone"></i> <input type="text" placeholder="PHONE" name="phone"></div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
-                                                                                <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL"></div>
+                                                                                <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL" name="email"></div>
                                                                             </div>
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
                                                                                 <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="number" placeholder="Quantity" name="number"></div>
                                                                             </div>
 
                                                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                                                <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction" class="instrxn"></textarea></div>
+                                                                                <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction"></textarea></div>
                                                                             </div>
                                                                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                                                                <a href="{{ route('add_instruction') }}" class="brd-rd2 red-bg" itemprop="url"> SEND ORDER</a>
-                                                                                {{-- <button class="brd-rd2 red-bg update-cart" type="submit">Send Order</button> --}}
+                                                                                {{-- <a href="{{ route('add_instruction') }}" class="brd-rd2 red-bg" itemprop="url"> SEND ORDER</a> --}}
+                                                                                <button class="brd-rd2 red-bg update-cart" type="submit">Send Order</button>
                                                                             </div>
                                                                         </div>
-                                                                    {{-- </form> --}}
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                             <div class="tab-pane fade" id="tab1-5">
@@ -667,6 +672,62 @@
 
 
     {{-- @endsection --}}
+
+    {{-- <script type="text/javascript">
+        $('#instruction').submit(function(e) {
+            e.preventDefault();
+
+            // alert("Yes");
+
+            var form = $(this);
+            var actionUrl = form.attr('action');
+
+            $.ajax({
+                type: form.attr('method'),
+                url: url('instruction'),
+                data: form.serialize(),
+                success: function(data) {
+                    alert(data);
+                    console.log(data);
+                },
+                error: function(data) {
+                    alert('There was an error');
+                    console.log(data);
+                }
+            });
+        });
+    </script> --}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#instruction').on('submit', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: new FormData(this),
+                    processData: false,
+                    dataType: 'json',
+                    contentType: false,
+                    
+                    console.log("yes im here");
+                    alert("No way");
+                    // beforeSend: function() {
+
+                    // },
+                    success: function(data) {
+                        if (data.status == 0) {
+                            alert('There was a problem');
+                        } else {
+                            alert('The submit was successful');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
     <script src="{{asset('/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('/assets/js/bootstrap.min.js')}}"></script>

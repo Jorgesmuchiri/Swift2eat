@@ -70,7 +70,7 @@ class UserController extends Controller
                 $vendor->save();
             }
 
-            return redirect()->back();
+            return redirect()->back()->withStatus(__('Role changed successfully'));
 
         } elseif ($user->role_id == 2) {
             $user->role_id = 3;
@@ -79,7 +79,7 @@ class UserController extends Controller
 
             $user->save();
 
-            return redirect()->back();
+            return redirect()->back()->withStatus(__('Role changed successfully'));
 
         } else {
             return redirect()->back();

@@ -30,8 +30,8 @@ Route::get('forget_password', ['as' => 'forget_password', 'uses' => 'App\Http\Co
 Route::post('password_reset', ['as' => 'password_reset', 'uses' => 'App\Http\Controllers\UserController@forgetPasswordForm']);
 Route::get('reset_password/{token}', ['as' => 'reset_password', 'uses' => 'App\Http\Controllers\UserController@showResetPasswordForm']);
 Route::post('update_password', ['as' => 'update_password', 'uses' => 'App\Http\Controllers\UserController@submitResetPasswordForm']);
-Route::post('add_instruction', ['as' => 'add_instruction', 'uses' => 'App\Http\Controllers\CartController@add_instruction']);
-
+Route::post('instruction', ['as' => 'instruction', 'uses' => 'App\Http\Controllers\CartController@add_instruction']);
+Route::post('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
 
 // Auth::routes();
 
@@ -77,7 +77,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('store_order', ['as' => 'store_order', 'uses' => 'App\Http\Controllers\OrdersController@store']);
     Route::post('update_product/{id}', ['as' => 'update_product', 'uses' => 'App\Http\Controllers\ProductsController@update']);
 
-    Route::post('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
 
     Route::post('post_review', ['as' => 'post_review', 'uses' => 'App\Http\Controllers\ReviewController@store']);
 

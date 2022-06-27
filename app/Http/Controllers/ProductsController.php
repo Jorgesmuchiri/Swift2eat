@@ -79,7 +79,7 @@ class ProductsController extends Controller
 
         try {
             $products->save();
-            return redirect()->route('products.index');
+            return redirect()->route('products.index')->with('success', 'Product created successfully');
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
@@ -156,7 +156,7 @@ class ProductsController extends Controller
         $product->image = $image_name;
         try{
             $product->save();
-            return redirect()->route('products.index');
+            return redirect()->route('products.index')->with('success', 'Product updated successfully');
 
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
@@ -173,6 +173,6 @@ class ProductsController extends Controller
     {
         $products = Products::findOrFail($id);
         $products->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('sucess', 'Product deleted successfully');
     }
 }

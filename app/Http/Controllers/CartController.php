@@ -71,9 +71,14 @@ class CartController extends Controller
     }
 
     public function checkout() {
-        if (!Auth::id()) {
-            dd("Please log in");
+        if (!Auth::user()) {
+            return redirect('/')->with('error', 'Please Log In to proceed with your order');
         }
+
+        if (empty(session()->get('cart'))) {
+            return back()->with('error', 'Kindly Add an item to the cart');
+        }
+
         return view('checkout.checkout');
     }
 
@@ -116,47 +121,56 @@ class CartController extends Controller
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
-        // if cart not empty then check if this product exist then increment quantity
-        if(isset($cart[$id])) {
+        // Checks if the user is ordering from the same or different vendor. 
+        if ($cart) {
+            if ($vend_id != $cart[array_key_first($cart)]['vendor_id']) {
+                return back()->with('error', 'You are trying to order a meal from two different vendors. Kindly finish an order from one vendor before proceeding to the next.');
+    
+            } else {
+                // if cart not empty then check if this product exist then increment quantity
+                if(isset($cart[$id])) {
 
-            $cart[$id]['quantity']++;
+                    $cart[$id]['quantity']++;
 
-            session()->put('cart', $cart);
+                    session()->put('cart', $cart);
 
-            // $htmlCart = view('cart._header_cart')->render();
+                    // $htmlCart = view('cart._header_cart')->render();
 
-            // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
+                    // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+                    return back()->with('success', 'Product added to cart successfully!');
 
+                }
+
+                // if item not exist in cart then add to cart with quantity = 1
+                $cart[$id] = [
+                    "prod_id"=>$product->id,
+                    "vendor_id" => $vend_id,
+                    "name" => $product->product_name,
+                    "quantity" => 1,
+                    "price" => $product->price,
+                    "photo" => $product->image
+                ];
+
+                session()->put('cart', $cart);
+
+                // $htmlCart = view('cart._header_cart')->render();
+
+                // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
+
+                return back()->with('success', 'Product added to cart successfully!');
+            }
         }
-
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "prod_id"=>$product->id,
-            "vendor_id" => $vend_id,
-            "name" => $product->product_name,
-            "quantity" => 1,
-            "price" => $product->price,
-            "photo" => $product->image
-        ];
-
-        session()->put('cart', $cart);
-
-        // $htmlCart = view('cart._header_cart')->render();
-
-        // return response()->json(['msg' => 'Product added to cart successfully!', 'data' => $htmlCart]);
-
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     public function add_instruction(Request $request)
     {
-        dd(1);
+        dd(session()->get('cart'));
         if ($request->instruction)
         {
             dd($request->instruction);
         }
+        dd('No');
     }
 
     public function update(Request $request)
@@ -176,7 +190,7 @@ class CartController extends Controller
 
             // $htmlCart = view('cart._header_cart')->render();
 
-             session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', 'Cart updated successfully');
             return response()->json(['msg' => 'Cart updated successfully','total' => $total, 'subTotal' => $subTotal]);
 
 

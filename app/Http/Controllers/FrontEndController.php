@@ -39,18 +39,54 @@ class FrontEndController extends Controller
 
     public function restaurant_detail($id){
 
+        $search = request()->query('search');
 
-        $vendors = Vendor::wherestatus(1)->whereid($id)->with('products.category')->first();
+        if($search) {
+            $products = Products::where('product_name', 'LIKE', "%{$search}%");
 
-        $products = Products::with('vendors')->get();
+            $vendors = Vendor::wherestatus(1)->whereid($id)->with('products.category')->first();
 
-
-        $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
-
-        $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
+            // $products = Products::with('vendors')->get();
 
 
-        return view('restaurant-detail',compact('vendors','products','orders','reviews'));
+            $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
+
+            $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
+
+            $products = Products::where('product_name', '=', $search)->get();
+            // return response()->json($vendors);
+        } else {
+            // $vendors = Vendor::wherestatus(1)->whereid($id)->with('products.category')->first();
+
+            // $products = Products::with('vendors')->get();
+            $vendors = Vendor::with('products.category')->wherestatus(1)->whereid($id)->first();
+
+
+            $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
+
+            $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
+
+            $products = Products::with('vendors')->get();
+
+            // return response()->json($products);
+
+        }
+
+        $rest_id = $id;
+
+
+        // $vendors = Vendor::with('products.category')->wherestatus(1)->whereid($id)->first();
+
+
+        // $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
+
+        // $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
+
+        // $products = Products::with('vendors')->get();
+
+
+
+        return view('restaurant-detail',compact('vendors','products','orders','reviews', 'rest_id'));
 
 
         // return response()->json($orders);
