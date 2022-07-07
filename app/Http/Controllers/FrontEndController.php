@@ -26,7 +26,7 @@ class FrontEndController extends Controller
 
    $vendors = Vendor::whereStatus(1)->get();
 
-   $products = Products::with('vendors')->get();
+   $products = Products::with('vendors')->where('status', '=', 1)->get();
 
 
    return view('welcome',compact('vendors','products'));
@@ -53,7 +53,9 @@ class FrontEndController extends Controller
 
             $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
 
-            $products = Products::where('product_name', '=', $search)->get();
+            $products = Products::where('vendor_id', $id)->where('status', 1)->where('product_name', 'LIKE', "%{$search}%")->get();
+
+            // $products = Products::where('product_name', '=', $search)->get();
             // return response()->json($vendors);
         } else {
             // $vendors = Vendor::wherestatus(1)->whereid($id)->with('products.category')->first();
@@ -61,12 +63,20 @@ class FrontEndController extends Controller
             // $products = Products::with('vendors')->get();
             $vendors = Vendor::with('products.category')->wherestatus(1)->whereid($id)->first();
 
+            // $vendors = Vendor::join('products', 'products.vendor_id', '=', 'vendors.id')
+            //                 ->where('vendors.status', 1)
+            //                 ->where('vendors.id', $id)
+            //                 ->where('products.status', 1)
+            //                 ->first();
+
+            // return response()->json($vendors);
 
             $orders = Orders::with('products')->where('vendor_id','=',$vendors->id)->get();
 
             $reviews = Review::with('vendor')->where('vendor_id','=',$vendors->id)->get();
 
-            $products = Products::with('vendors')->get();
+            // $products = Products::with('vendors')->get();
+            $products = Products::where('vendor_id', $id)->where('status', 1)->get();
 
             // return response()->json($products);
 

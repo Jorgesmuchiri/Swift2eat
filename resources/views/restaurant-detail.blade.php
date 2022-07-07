@@ -19,7 +19,7 @@
 </head>
 
 <body itemscope>
-    
+
     <main>
         <!-- <div class="preloader">
             <div id="cooking">
@@ -78,20 +78,20 @@
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="{{asset('assets/images/logo5.png')}}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
+                    <div class="logo"><h1 itemprop="headline"><a href="{{ url('/') }}" src="{{asset('assets/images/logo5.png')}}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
                     <nav>
                         <div class="menu-sec">
                             <ul>
-                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
+                                <li class="menu-item-has-children"><a href="{{ url('/') }}" title="home" itemprop="url"><span></span>HOME</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
                                         <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="{{ url('/') }}" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -103,7 +103,7 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                             @auth
                                 <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
@@ -153,12 +153,12 @@
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
                 <ul>
-                <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+                <li><a href="{{ url('/') }}" title="HOME" itemprop="url"> <span></span> HOME</a></li>
 
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -170,7 +170,7 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                 </div>
                 <div class="topbar-register">
@@ -253,7 +253,7 @@
                                                                         <i>4.0</i>
                                                                     </div>
                                                                 </div>
-                                                                <div class="share-wrapper">
+                                                                {{-- <div class="share-wrapper">
                                                                     <div class="fb-share">
                                                                         <label class="switch">
                                                                             <input type="checkbox">
@@ -268,7 +268,7 @@
                                                                         </label>
                                                                         <a class="twitter brd-rd2" href="#" title="" itemprop="url"><i class="fa fa-twitter"></i> Share on Twitter</a>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -277,7 +277,7 @@
                                                             <li class="active"><a href="#tab1-1" data-toggle="tab"><i class="fa fa-cutlery"></i> Menu</a></li>
                                                             <!-- <li><a href="#tab1-2" data-toggle="tab"><i class="fa fa-picture-o"></i> Gallery</a></li> -->
                                                             <li><a href="#tab1-3" data-toggle="tab"><i class="fa fa-star"></i> Reviews</a></li>
-                                                            <li><a href="#tab1-4" data-toggle="tab"><i class="fa fa-book"></i>Make Order</a></li>
+                                                            {{-- <li><a href="#tab1-4" data-toggle="tab"><i class="fa fa-book"></i>Make Order</a></li> --}}
                                                             <li><a href="#tab1-5" data-toggle="tab"><i class="fa fa-info"></i> Restaurant Info</a></li>
                                                         </ul>
                                                         <div class="tab-content">
@@ -291,7 +291,7 @@
                                                                     <!-- <span class="post-rate red-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span> -->
 
                                                                     <ul class="dishes-list">
-                                                                    @foreach ( $vendors->products as $vendor )
+                                                                    @foreach ( $products as $vendor )
 
                                                                         <li class="wow fadeInUp" data-wow-delay="0.1s">
                                                                             <div class="featured-restaurant-box">
@@ -519,7 +519,7 @@
             </div>
         </section>
         <footer>
-            <div class="block top-padd80 bottom-padd80 dark-bg">
+            <div class="block top-padd80 bottom-padd80 dark-bg" id="contact">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -711,8 +711,8 @@
                     processData: false,
                     dataType: 'json',
                     contentType: false,
-                    
-                    console.log("yes im here");
+
+                    console.log("yes ");
                     alert("No way");
                     // beforeSend: function() {
 

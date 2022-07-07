@@ -42,6 +42,10 @@ class HomeController extends Controller
             $products = Products::where('vendor_id', '=', $vendor->id)->count();
             $orders = Orders::where('vendor_id', '=', $vendor->id)->count();
 
+            // $notifications = auth()->user()->unreadnotifications->count();
+
+            // return response()->json($notifications);
+
             return view('dashboard', compact('products', 'orders'));
         } else {
             $vendors = Vendor::whereStatus(1)->get();
@@ -53,5 +57,13 @@ class HomeController extends Controller
         }
 
 
+    }
+
+    public function markNotification() {
+        $notifications = auth()->user()->notifications;
+
+        $notifications->markAsRead();
+
+        return redirect()->route('orders.index');
     }
 }

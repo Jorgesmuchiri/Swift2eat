@@ -17,9 +17,9 @@ class OrderNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($vendor)
     {
-        // $this->order = $order;
+        $this->vendor = $vendor;
     }
 
     /**
@@ -30,7 +30,7 @@ class OrderNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -44,7 +44,7 @@ class OrderNotification extends Notification
         return (new MailMessage)
                     ->subject('Order Notification')
                     ->line('A new order has just been made.')
-                    ->action('Order Action', url('/orders'))
+                    ->action('Order Action', url('/markNotification'))
                     ->line('Thank you for using our application!');
     }
 
@@ -57,7 +57,7 @@ class OrderNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            // 'order' => $this->order,
+            'vendor' => $this->vendor,
         ];
     }
 }

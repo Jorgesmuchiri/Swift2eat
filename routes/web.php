@@ -32,6 +32,7 @@ Route::get('reset_password/{token}', ['as' => 'reset_password', 'uses' => 'App\H
 Route::post('update_password', ['as' => 'update_password', 'uses' => 'App\Http\Controllers\UserController@submitResetPasswordForm']);
 Route::post('instruction', ['as' => 'instruction', 'uses' => 'App\Http\Controllers\CartController@add_instruction']);
 Route::post('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
+// Route::post('user_logout', ['as' => 'user_logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
 
 // Auth::routes();
 
@@ -67,7 +68,14 @@ Route::group(['middleware' => 'auth'], function () {
 	    Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	    Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
+        Route::get('markNotification', ['as' => 'markNotification', 'uses' => 'App\Http\Controllers\HomeController@markNotification']);
+        Route::get('product.change_status/{id}', ['as' => 'product.change_status', 'uses' => 'App\Http\Controllers\ProductsController@change_status']);
+
+
 	});
+
+    // Route::post('user_logout', ['as' => 'user_logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
+
 
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 

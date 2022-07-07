@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css"> --}}
 
@@ -303,8 +303,8 @@
                         <div class="input-field brd-rd2"><i class="fa fa-calendar"></i> <input class="datepicker" id="datetimepicker" type="text" name="date" placeholder="SELECT DATE"></div>
                     </div> --}}
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-field brd-rd2"><i class="fa fa-clock-o"></i> <input id="timepicker" type="text" placeholder="SELECT TIME" name="time"></div>
-                    </div> 
+                        <div class="input-field brd-rd2"><i class="fa fa-clock-o"></i> <input id="timepicker" type="time" placeholder="SELECT TIME" name="time"></div>
+                    </div>
                     <div class="col-md-12 col-sm-12 col-lg-12">
                         <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction"></textarea></div>
                     </div>
@@ -369,13 +369,13 @@
         // }
         $(document).ready(function(){
             $('#timepicker').on('click', function() {
-                jQuery('#list').show(); 
+                jQuery('#list').show();
             });
         });
     </script>
     </main>
 
-    
+
 
 </body>
 </html>
@@ -391,7 +391,7 @@
     $(function() {
         $('#datetimepicker').datetimepicker();
     });
-</script>  
+</script>
 
 <script type="text/javascript">
 	$('#checkoutOrder').click(function(e)

@@ -74,20 +74,20 @@
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
+                    <div class="logo"><h1 itemprop="headline"><a href="{{ url('/') }}" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
                     <nav>
                         <div class="menu-sec">
                             <ul>
-                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
+                                <li class="menu-item-has-children"><a href="{{ url('/') }}" title="home" itemprop="url"><span></span>HOME</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
                                         <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     {{-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -99,7 +99,7 @@
                                     </ul> --}}
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                             @auth
                                 <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
@@ -189,7 +189,7 @@
                 <div class="fixed-bg" style="background-image: url(https://images.unsplash.com/photo-1580218863909-d882fbb62d7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);"></div>
                 <div class="restaurant-searching style2 text-center">
                     <div class="restaurant-searching-inner">
-						<span>Swyft2 <i style="color:orange;">Eat</i> </span>
+						<span style="font-family: 'Times New Roman'">Swyft2<i style="color:orange;">Eat</i> </span>
                         <h2 itemprop="headline">Why wait and you can order</h2>
                         <!-- <form class="restaurant-search-form2 brd-rd30">
                             <input class="brd-rd30" type="text" placeholder="RESTAURANT NAME">
@@ -303,7 +303,7 @@
         </section>
 
         <section>
-            <div class="block">
+            <div class="block" id="rest">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -383,7 +383,7 @@
         </section><!-- red section -->
 
         <footer>
-            <div class="block top-padd80 bottom-padd80 dark-bg">
+            <div class="block top-padd80 bottom-padd80 dark-bg" id="contact">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-12">

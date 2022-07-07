@@ -27,7 +27,8 @@ class Orders extends Model
         'total',
         'phone',
         'email',
-        'instruction'
+        'instruction',
+        'pickup_time'
     ];
 
     public function products()

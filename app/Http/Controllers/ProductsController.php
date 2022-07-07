@@ -175,4 +175,18 @@ class ProductsController extends Controller
         $products->delete();
         return redirect()->route('products.index')->with('sucess', 'Product deleted successfully');
     }
+
+    public function change_status($id) {
+        $product = Products::find($id);
+
+        if ($product->status == 0) {
+            $product->status = 1;
+            $product->save();
+        } else {
+            $product->status = 0;
+            $product->save();
+        }
+
+        return redirect()->back()->with('success', 'Product Status changed successfully');
+    }
 }

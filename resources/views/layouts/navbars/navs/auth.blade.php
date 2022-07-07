@@ -14,20 +14,20 @@
                         <span class="d-lg-none">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
-                <!-- <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="nc-icon nc-planet"></i>
-                        <span class="notification">5</span>
-                        <span class="d-lg-none">{{ __('Notification') }}</span>
+                <li class="dropdown nav-item">
+                    <a href="{{route('markNotification')}}" class="nav-link">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification">{{ auth()->user()->unreadnotifications->count() }}</span>
+                        {{-- <span class="d-lg-none">{{ __('Notification') }}</span> --}}
                     </a>
-                    <ul class="dropdown-menu">
+                    {{-- <ul class="dropdown-menu">
                         <a class="dropdown-item" href="#">{{ __('Notification 1') }}</a>
                         <a class="dropdown-item" href="#">{{ __('Notification 2') }}</a>
                         <a class="dropdown-item" href="#">{{ __('Notification 3') }}3</a>
                         <a class="dropdown-item" href="#">{{ __('Notification 4') }}</a>
                         <a class="dropdown-item" href="#">{{ __('Another notification') }}</a>
-                    </ul>
-                </li> -->
+                    </ul> --}}
+                </li>
                 <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nc-icon nc-zoom-split"></i>
@@ -46,7 +46,7 @@
                         <span class="no-icon">{{auth()->user()->name}} </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Log out') }}</a>

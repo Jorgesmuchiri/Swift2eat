@@ -69,6 +69,9 @@
                     {{ __('Order Date') }}
                   </th>
                   <th>
+                    {{  __('Pickup Time') }}
+                  </th>
+                  <th>
                     {{ __('Actions') }}
                   </th>
 
@@ -118,6 +121,10 @@
 
                     <td>
                         {{ $order->created_at->format('d/m/Y') }}
+                      </td>
+
+                      <td>
+                        {{ $order->pickup_time }}
                       </td>
 
 

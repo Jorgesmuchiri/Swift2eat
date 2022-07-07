@@ -10,6 +10,7 @@ use App\Models\Products;
 use App\Models\Vendor;
 use App\Notifications\OrderNotification;
 use App\Models\User;
+use Notification;
 use App\Notifications\OrderCompleteNotification;
 
 class OrdersController extends Controller
@@ -60,6 +61,8 @@ class OrdersController extends Controller
     {
         $cart = session()->get('cart');
 
+        // dd($request['time']);
+
         foreach ($cart as $cart_item) {
             Orders::create([
                 'product_id' => $cart_item['prod_id'],
@@ -70,18 +73,21 @@ class OrdersController extends Controller
                 'total' => $cart_item['quantity'] * $cart_item['price'],
                 'phone' => $request['phone'],
                 'email' => $request['email'],
+                'pickup_time' => $request['time'],
                 'instruction' => $request['instruction'],
             ]);
 
             $vendor = Vendor::find($cart_item['vendor_id']);
-            $vendor->notify(new OrderNotification());
+            $user_vendor = User::find($vendor->user_id);
+            Notification::send($user_vendor, new OrderNotification($vendor));
+            // $vendor->notify(new OrderNotification($vendor));
         }
 
 
         // Delete the cart session after an order is made
         $request->session()->forget('cart');;
 
-        return redirect()->back()->with('success', 'Order Placed successfully!');
+        return redirect()->route('my_orders')->with('success', 'Order Placed successfully!');
 
     }
 

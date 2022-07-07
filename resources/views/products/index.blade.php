@@ -56,8 +56,12 @@
                   <th>
                     {{ __('Price') }}
                   </th>
-                  <th>
+                  {{-- <th>
                     {{ __('Quantity') }}
+                  </th> --}}
+
+                  <th>
+                    {{ __('Available?') }}
                   </th>
 
 
@@ -92,8 +96,12 @@
                       {{$product->price }}
                     </td>
 
-                    <td>
+                    {{-- <td>
                       {{$product->quantity}}
+                    </td> --}}
+
+                    <td>
+                        <a title="{{ $product->status == 1 ? 'Change to Unavailable' : 'Change to Available' }}" href="{{ route('product.change_status', $product->id) }}" style="color: #eba14e"><i class="{{ $product->status == 1 ? 'fa fa-check' : 'fa fa-times'}}"></i></a>
                     </td>
 
 
