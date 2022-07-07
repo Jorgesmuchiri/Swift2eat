@@ -309,7 +309,13 @@
                                                                                     </ul> -->
                                                                                 </div>
                                                                                 <div class="ord-btn">
+                                                                                    @auth
                                                                                     <a class="brd-rd2" href="{{ route('add_to_cart', [$vendor->id,$vendors]) }}" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
+
+                                                                                    @else
+                                                                                    <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Order Now</a>
+
+                                                                                @endauth
                                                                                 </div>
                                                                             </div>
                                                                         </li>
@@ -433,15 +439,18 @@
 
                                                                 <li>
                                                                     <div class="dish-name">
-                                                                        {{-- <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" /> --}}
-                                                                        <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <span style="width: 3px">{{ $details['quantity'] }}</span> <span class="price">{{$details['price']*$details['quantity'] }}</span>
+                                                                     
+                                                                        <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity"   style="width: 50px;"/>
+                                                                                                <span class="price">{{$details['price']*$details['quantity'] }}</span>
                                                                     </div>
 
+
+                                                             
                                                                     <div class="mor-ingredients">
                                                                         <a class="red-clr" href="{{ route('remove_from_cart', $details['prod_id']) }}" title="" itemprop="url">Remove</a>
                                                                     </div>
                                                                 </li>
-                                                                @php
+                                                                @php    
 
                                                                 $total += $details['price'] * $details['quantity'];
                                                                 @endphp

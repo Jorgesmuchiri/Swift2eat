@@ -66,18 +66,21 @@
                     </div>
                 </div>
 
-                   <div class="row pb-3">
-                              <label for="category" class="col-sm-2 col-form-label">
-                                  {{ __('Category') }}
-                              </label>
-                              <div class="col-sm-7">
-                                  <select name="category_id" class="form-control">
-                                      @foreach($category as $data)
-                                          <option value=" {{ $data->id }} "> {{ $data->category_name }} </option>
-                                      @endforeach
-                                  </select>
-                              </div>
-                          </div>
+                 
+                          <div class="row pb-3">
+                            <label for="category" class="col-sm-2 col-form-label">
+                                {{ __('Category') }}
+                            </label>
+                            <div class="col-sm-7">
+                                <select name="category_id" class="form-control">
+                                    @foreach($category as $data)
+                                        <option value=" {{ $data->id }} "> {{ $data->category_name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+              
 
                           <div class="row mt-3">
                             <label class="col-sm-2 col-form-label">{{ __('Edited Category?') }}</label>
@@ -89,6 +92,8 @@
                                 @endif --}}
                                 </div>
                             </div>
+                          </div>
+                     
 
                           @if (Auth::user()->role_id == 1)
 

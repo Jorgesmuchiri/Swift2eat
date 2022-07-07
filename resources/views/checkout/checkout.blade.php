@@ -197,7 +197,10 @@
 
 	<div class="row m-0 p-2 justify-content-center">
 		<div class="col-lg-6 col-md-6 col-sm-12">
-			<p class="text-center h4">Order Details</p>
+
+        <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Details</h4>
+
+			<!-- <p class="text-center h4">Order </p> -->
 			  <table id="cart" class="table table-hover table-condensed">
 			        <thead>
 			        <tr>
@@ -229,11 +232,13 @@
 			                            </div>
 			                        </div>
 			                    </td>
-			                    <td data-th="Price">${{ $details['price'] }}</td>
+			                    <td data-th="Price">Kshs.{{ $details['price'] }}</td>
 			                    <td data-th="Quantity" class="text-center">
-			                        {{ $details['quantity'] }}
+                                <input type="number"   oninput="myFunction()"  name="prod_qty[]" value=" {{ $details['quantity'] }} " style="width:60%"  >
+
+			                      
 			                    </td>
-			                    <td data-th="Subtotal" class="text-center">$<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
+			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
 
 			                </tr>
                             @php
@@ -252,27 +257,32 @@
    			 </table>
 		</div>
 		<div class="col-md-6 col-lg-6 col-sm-12">
-			<p>Order Information</p>
+        <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Information</h4>
+
+        
+        
+
+            <div class="book-table">
 			<form method="post" action="{{ route('store_order') }}">
                 @method('post')
                 @csrf
 					{{-- <div class="form-group">
 					    <label for="inputname">Name</label>
-					    <input type="text" class="form-control" id="inputAddress" placeholder="Name" value=" {{ Auth::user()->name }} ">
+					    <input type="text" class="input-field brd-rd2" id="inputAddress" placeholder="Name" value=" {{ Auth::user()->name }} ">
 					</div>
 				  <div class="form-row">
 				    <div class="form-group col-md-6">
 				      <label for="inputEmail4">Email</label>
-				      <input type="email" class="form-control" id="inputEmail4" value=" {{ Auth::user()->email }} ">
+				      <input type="email" class="input-field brd-rd2" id="inputEmail4" value=" {{ Auth::user()->email }} ">
 				    </div>
 				    <div class="form-group col-md-6">
 				      <label for="inputPassword4">Telephone</label>
-				      <input type="text" class="form-control" id="inputPassword4" value=" {{ Auth::user()->phone_number }} ">
+				      <input type="text" class="input-field brd-rd2" id="inputPassword4" value=" {{ Auth::user()->phone_number }} ">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="inputAddress">Address</label>
-				    <input type="text" class="form-control" id="inputAddress" placeholder="Utawala, Nairobi">
+				    <input type="text" class="input-field brd-rd2" id="inputAddress" placeholder="Utawala, Nairobi">
 				  </div>
 
 				  <button type="submit" class="btn btn-primary"Information>Confirm Billing Information</button> --}}
@@ -324,7 +334,7 @@
                         <label class="col-sm-4 col-form-label">{{ __('Phone Number') }}</label>
                              <div class="col-sm-8">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                  <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="phonenumber" id="phone_number" type="text" placeholder="{{ __('2547') }}" value=" {{ Auth::user()->phone_number }} " required="true" aria-required="true"/>
+                                  <input class="input-field brd-rd2{{ $errors->has('name') ? ' is-invalid' : '' }}" name="phonenumber" id="phone_number" type="text" placeholder="{{ __('2547') }}" value=" {{ Auth::user()->phone_number }} " required="true" aria-required="true"/>
                                   @if ($errors->has('name'))
                                     <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
                                   @endif
@@ -341,6 +351,7 @@
             	</form>
 
 
+                </div>
             	 <div class="recieving-payment" style="font-size:24px; display: none">
             	  Recieving Payment <i class="fa fa-circle-o-notch fa-spin btn-loading"></i>
             	  </div>
@@ -394,6 +405,17 @@
 </script>
 
 <script type="text/javascript">
+
+
+function getTotal()
+{
+
+    var total = 0;
+    
+
+
+}
+
 	$('#checkoutOrder').click(function(e)
 	{
 		e.preventDefault();

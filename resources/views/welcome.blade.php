@@ -99,16 +99,20 @@
                                     </ul> --}}
                                 </li>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
+                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+
                             @auth
-                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
-                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li> --}}
+
+
+
+                            <li class="menu-item-has-children"> <a href="#"  itemprop="url" style="color: orange;">{{ auth()->user()->name }}</a>
                                 <ul class="sub-dropdown">
                                     <li><a href="{{ route('logout') }}" >Log Out</a></li>
                                 </ul>
                                 @else
 
+                            </li>
+                            </ul>
                                 <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                             @endauth
                         </div>
@@ -329,6 +333,7 @@
                                                 <h4 itemprop="headline"><a href="{{ route('restaurant-detail',$vendor->id) }}" title="" itemprop="url">{{$vendor->vendor_name}}</a></h4>
                                                 <!-- <p itemprop="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p> -->
                                                 <!-- <span class="price">$85.00</span> -->
+
                                                 <a class="brd-rd4 " href="{{ route('restaurant-detail',$vendor->id) }}" title="Order Now" itemprop="url">Order Now</a>
                                                 <div class="restaurant-info">
                                                     <!-- <img src="assets/images/resource/restaurant-logo1.png" alt="restaurant-logo1.png" itemprop="image"> -->

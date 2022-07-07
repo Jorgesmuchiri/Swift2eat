@@ -31,8 +31,7 @@ Route::post('password_reset', ['as' => 'password_reset', 'uses' => 'App\Http\Con
 Route::get('reset_password/{token}', ['as' => 'reset_password', 'uses' => 'App\Http\Controllers\UserController@showResetPasswordForm']);
 Route::post('update_password', ['as' => 'update_password', 'uses' => 'App\Http\Controllers\UserController@submitResetPasswordForm']);
 Route::post('instruction', ['as' => 'instruction', 'uses' => 'App\Http\Controllers\CartController@add_instruction']);
-Route::post('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
-// Route::post('user_logout', ['as' => 'user_logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
 
 // Auth::routes();
 
