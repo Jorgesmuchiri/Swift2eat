@@ -211,7 +211,7 @@
 			            <th style="width:10%"></th>
 			        </tr>
 			        </thead>
-			        <tbody>
+			        <tbody style="height: 130px">
 
 			        <?php $total = 0 ?>
 
@@ -220,25 +220,29 @@
 
 			                <?php $total += $details['price'] * $details['quantity'] ?>
 
-			                <input type="hidden" name="prod_id[]" value=" {{ $details['prod_id'] }} " id="product_id">
+			                {{-- <input type="hidden" name="prod_id[]" value=" {{ $details['prod_id'] }} " id="product_id">
 			                <input type="hidden" name="prod_qty[]" value=" {{ $details['quantity'] }} ">
-			                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+			                <input type="hidden" name="user_id" value="{{Auth::user()->id}}"> --}}
 			                <tr>
 			                    <td data-th="Product">
 			                        <div class="row">
-			                            <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $details['photo'] }}" width="80px" height="80px" class="img-responsive"/></div>
+			                            <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $details['photo'] }}" width="100px" height="100px" class="img-responsive"/></div>
 			                            <div class="col-sm-9">
 			                                <h4 class="nomargin">{{ $details['name'] }}</h4>
 			                            </div>
 			                        </div>
 			                    </td>
-			                    <td data-th="Price">Kshs.{{ $details['price'] }}</td>
-			                    <td data-th="Quantity" class="text-center">
-                                <input type="number"   oninput="myFunction()"  name="prod_qty[]" value=" {{ $details['quantity'] }} " style="width:60%"  >
 
-			                      
+                                @php
+                                    $price  = $details['price'];
+                                @endphp
+
+			                    <td data-th="Price" id="price">Kshs.{{ $details['price'] }}</td>
+			                    <td data-th="Quantity" class="text-center">
+                                    <input type="number" min="1" id="quant" oninput="myFunction({{ $details['price'] }}, {{ $details['prod_id'] }})" value="1" style="width:60%">
 			                    </td>
-			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
+                                {{-- <td id="tot"></td> --}}
+			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal" id="total">{{ $details['price'] }}</span></td>
 
 			                </tr>
                             @php
@@ -259,8 +263,8 @@
 		<div class="col-md-6 col-lg-6 col-sm-12">
         <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Information</h4>
 
-        
-        
+
+
 
             <div class="book-table">
 			<form method="post" action="{{ route('store_order') }}">
@@ -373,11 +377,21 @@
 	</div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
+        function myFunction(standardPrice,productId) {
+            var x = document.getElementById("quant").value;
+            updatePrice(x,standardPrice,productId);
+        }
+
+        function updatePrice(quantity, standardPrice,productId){
+            document.getElementById("total").innerHTML = quantity*standardPrice;
+        }
+
         // $(function()) {
         //     $('#timepicker').on('click', function(e) {
         //         console.log('Clicked');
         //     });
         // }
+        // TODO: Return This Section line 399 - 403
         $(document).ready(function(){
             $('#timepicker').on('click', function() {
                 jQuery('#list').show();
@@ -411,7 +425,7 @@ function getTotal()
 {
 
     var total = 0;
-    
+
 
 
 }

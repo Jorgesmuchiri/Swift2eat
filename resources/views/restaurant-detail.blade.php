@@ -439,18 +439,18 @@
 
                                                                 <li>
                                                                     <div class="dish-name">
-                                                                     
+
                                                                         <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity"   style="width: 50px;"/>
                                                                                                 <span class="price">{{$details['price']*$details['quantity'] }}</span>
                                                                     </div>
 
 
-                                                             
+
                                                                     <div class="mor-ingredients">
                                                                         <a class="red-clr" href="{{ route('remove_from_cart', $details['prod_id']) }}" title="" itemprop="url">Remove</a>
                                                                     </div>
                                                                 </li>
-                                                                @php    
+                                                                @php
 
                                                                 $total += $details['price'] * $details['quantity'];
                                                                 @endphp
