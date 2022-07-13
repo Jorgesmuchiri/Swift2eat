@@ -239,10 +239,10 @@
 
 			                    <td data-th="Price" id="price">Kshs.{{ $details['price'] }}</td>
 			                    <td data-th="Quantity" class="text-center">
-                                    <input type="number" min="1" id="quant" oninput="myFunction({{ $details['price'] }}, {{ $details['prod_id'] }})" value="1" style="width:60%">
+                                    <input type="number" min="1" id={{ "quant".$details['prod_id'] }} oninput="myFunction({{ $details['price'] }}, {{ $details['prod_id'] }})" value="1" style="width:60%" name="quantity">
 			                    </td>
                                 {{-- <td id="tot"></td> --}}
-			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal" id="total">{{ $details['price'] }}</span></td>
+			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal" id={{ "total".$details['prod_id'] }}>{{ $details['price'] }}</span></td>
 
 			                </tr>
                             @php
@@ -378,12 +378,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
         function myFunction(standardPrice,productId) {
-            var x = document.getElementById("quant").value;
+            var x = document.getElementById("quant"+productId).value;
             updatePrice(x,standardPrice,productId);
         }
 
         function updatePrice(quantity, standardPrice,productId){
-            document.getElementById("total").innerHTML = quantity*standardPrice;
+            document.getElementById('total'+productId).innerHTML = quantity*standardPrice;
         }
 
         // $(function()) {

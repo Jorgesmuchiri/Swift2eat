@@ -61,6 +61,8 @@ class OrdersController extends Controller
     {
         $cart = session()->get('cart');
 
+        dd($request['quantity']);
+
         // dd($request['time']);
 
         foreach ($cart as $cart_item) {
