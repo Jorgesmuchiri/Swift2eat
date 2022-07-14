@@ -57,7 +57,6 @@ class CustomerController extends Controller
     }
 
     public function logout(Request $request) {
-        // dd(Auth::user());
         $request->session()->flush();
 
         Auth::logout();
