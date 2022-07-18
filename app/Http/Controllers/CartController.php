@@ -121,11 +121,11 @@ class CartController extends Controller
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
-        // Checks if the user is ordering from the same or different vendor. 
+        // Checks if the user is ordering from the same or different vendor.
         if ($cart) {
             if ($vend_id != $cart[array_key_first($cart)]['vendor_id']) {
                 return back()->with('error', 'You are trying to order a meal from two different vendors. Kindly finish an order from one vendor before proceeding to the next.');
-    
+
             } else {
                 // if cart not empty then check if this product exist then increment quantity
                 if(isset($cart[$id])) {
@@ -160,6 +160,17 @@ class CartController extends Controller
 
                 return back()->with('success', 'Product added to cart successfully!');
             }
+        }
+    }
+
+    public function updateCart(Request $request) {
+        dd('Reqquest received');
+
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
         }
     }
 
