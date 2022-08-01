@@ -32,7 +32,7 @@ Route::get('reset_password/{token}', ['as' => 'reset_password', 'uses' => 'App\H
 Route::post('update_password', ['as' => 'update_password', 'uses' => 'App\Http\Controllers\UserController@submitResetPasswordForm']);
 Route::post('instruction', ['as' => 'instruction', 'uses' => 'App\Http\Controllers\CartController@add_instruction']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\CustomerController@logout']);
-Route::patch('update.cart', ['as' => 'update.cart', 'uses' => 'App\Http\Controllers\CartController@updateCart']);
+Route::put('update.cart', ['as' => 'update.cart', 'uses' => 'App\Http\Controllers\CartController@updateCart']);
 
 // Auth::routes();
 

@@ -79,6 +79,8 @@ class CartController extends Controller
             return back()->with('error', 'Kindly Add an item to the cart');
         }
 
+        //dd(session('cart'));
+
         return view('checkout.checkout');
     }
 
@@ -164,12 +166,14 @@ class CartController extends Controller
     }
 
     public function updateCart(Request $request) {
-        dd('Reqquest received');
+        //dd('Request received');
+        //dd(session()->get('cart'));
 
         if($request->id && $request->quantity){
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
+            return $cart;
             session()->flash('success', 'Cart updated successfully');
         }
     }
