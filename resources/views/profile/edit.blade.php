@@ -31,7 +31,7 @@
                                         <label class="form-control-label" for="input-name">
                                             <i class="w3-xxlarge fa fa-user"></i>{{ __('Name') }}
                                         </label>
-                                        <input type="text" name="name" id="input-name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ $vendor->vendor_name }}" required autofocus>
+                                        <input type="text" name="name" id="input-name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ Auth::user()->role_id==2 ? $vendor->vendor_name : Auth::user()->name  }}" required autofocus>
 
                                         @include('alerts.feedback', ['field' => 'name'])
                                     </div>
@@ -127,17 +127,21 @@
                             </div>
                             <div class="card-body">
                                 <div class="author">
+                                    @if(Auth::user()->role_id == 2)
                                     <a href="#">
                                         <img class="avatar border-gray" src="/images/vendors/{{ $vendor->vendor_logo }}" alt="...">
                                         <h5 class="title">{{ $vendor->vendor_name }}</h5>
                                     </a>
+                                    @endif
                                     <p class="description">
-                                        {{ $vendor->email }}
+                                        {{ Auth::user()->role_id == 2 ? $vendor->email : Auth::user()->email }}
                                     </p>
                                 </div>
                                 <p class="description text-center">
+                                 @if(Auth::user()->role_id == 2)
                                 {{ $vendor->location }}
-                                    <br> {{ $vendor->phone_no }}
+                                @endif
+                                    <br> {{ Auth::user()->role_id == 2 ? $vendor->phone_no : Auth::user()->phone_no }}
                                     {{-- <br> {{ __('I am in that two seat Lambo') }} --}}
                                 </p>
                             </div>

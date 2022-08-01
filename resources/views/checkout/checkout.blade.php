@@ -71,10 +71,10 @@
                         </select>
                     </div> -->
                     <div class="topbar-register">
-                    <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
+                    {{-- <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
 
                         <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
-                    </div>
+                    </div> --}}
                     <div class="social1">
                         <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
                         <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -95,9 +95,9 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -109,7 +109,7 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                             @auth
                                 <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
@@ -162,9 +162,9 @@
                 <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
 
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -179,9 +179,9 @@
                                 <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                 </div>
-                <div class="topbar-register">
+                {{-- <div class="topbar-register">
                 <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
-                </div>
+                </div> --}}
                 <div class="social1">
                     <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
                     <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -220,7 +220,7 @@
 			        @if(session('cart'))
 			            @foreach((array) session('cart') as $id => $details)
 
-			                <?php $total += $details['price'] * $details['quantity'] ?>
+			                <?php $total += $details['price'] * $details['quantity']; ?>
 
 			                {{-- <input type="hidden" name="prod_id[]" value=" {{ $details['prod_id'] }} " id="product_id">
 			                <input type="hidden" name="prod_qty[]" value=" {{ $details['quantity'] }} ">
@@ -383,35 +383,39 @@
 	</div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         function myFunction(standardPrice,productId) {
             var x = document.getElementById("quant"+productId).value;
             updatePrice(x,standardPrice,productId);
+            getCart(productId,x);
         }
 
         function updatePrice(quantity, standardPrice,productId){
             document.getElementById('total'+productId).innerHTML = quantity*standardPrice;
         }
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $(".update-cart").change(function (e) {
+        function getCart(prod_id, quantity){
+            $(document.getElementById("quant"+prod_id)).change(function (e) {
             e.preventDefault();
             // console.log = 'hihs';
             // alert('Yesyes');
             var ele = $(this);
+            // var prod_quantity = document.getElementById(<?php echo ("quant".$details['prod_id']); ?>).innerHTML;
+            // console.log(prod_quantity);
             // var ele = $(this);
             $.ajax({
                 url: "{{ route('update.cart') }}",
-                method: "patch",
+                type: "PUT",
                 dataType: 'json',
                 data: {
-                    _token: '{{ csrf_token() }}',
-                    id: 1,
-                    quantity: 30
+                    // _token: '{{ csrf_token() }}',
+                    id: prod_id,
+                    quantity: quantity
                 },
                 // alert('data');
                 success: function (data) {
@@ -421,10 +425,13 @@
 
                 error: function(data) {
                     // console.log('Error: ', thrownError);
-                    console.log('Error: ', data);
+                    // alert('fghjhghjhjhj');
+                    alert('Error: ', data);
                 }
             });
         });
+    }
+        
 
         // $(function()) {
         //     $('#timepicker').on('click', function(e) {

@@ -9,6 +9,27 @@
     <title>Swyft2eat</title>
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
 
+     <script>
+        function addToCart(productId, vendors){
+            // alert("working");
+            console.log(vendors);
+            var url = '{{ route("add_to_cart", [":productId", ":vendors"]) }}';
+            url = url.replace(':productId', productId);
+            url = url.replace(':vendors', vendors.user_id);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function(){
+                    console.log("Success");
+                },
+                error: function(){
+                    console.log(url);
+                    console.log("Failed");
+                }
+            });
+            }
+    </script>
 
     <link rel="stylesheet" href="{{asset('/assets/css/icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
@@ -64,11 +85,11 @@
                             <option>Los Angeles</option>
                         </select>
                     </div> -->
-                    <div class="topbar-register">
+                    {{-- <div class="topbar-register">
                     <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
 
                         <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
-                    </div>
+                    </div> --}}
                     <div class="social1">
                         <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
                         <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -89,9 +110,9 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="{{ url('/') }}" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="{{ url('/#rest') }}" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -104,18 +125,33 @@
                                 </li>
 
                                 <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                            
+                                @auth
+
+                                    <li class="menu-item-has-children"> <a href="#"  itemprop="url" style="color: orange;">{{ auth()->user()->name }}</a>
+                                        <ul class="sub-dropdown">
+                                            <li><a href="{{ route('logout') }}" >Log Out</a></li>
+                                        </ul>
+                                        @else
+
+                                    </li>
                             </ul>
-                            @auth
-                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
+                                        <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                                    @endauth
+                            {{-- @auth
+                                <a class="menu-item-has-children" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="{{ route('logout') }}" >Log Out</a></li>
+                                </ul>
                                 {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
                                 <ul class="sub-dropdown">
                                     <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
                                     <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
                                 </ul> --}}
-                                @else
+                                {{-- @else --}} 
 
-                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
-                            @endauth
+                                {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                            @endauth --}}
 
                             {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
                         </div>
@@ -152,30 +188,28 @@
             <div class="responsive-menu">
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
-                <ul>
-                <li><a href="{{ url('/') }}" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+                    <ul>
+                        <li><a href="{{ url('/') }}" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+                        <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
+                        <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                            <!-- <ul class="sub-dropdown">
+                                <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
+                                <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
+                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
+                                <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
+                                <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
+                                <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
+                                <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
+                            </ul> -->
+                        </li>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
-
-                                <li class="menu-item-has-children"><a href="#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
-                                </li>
-
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
+                        <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                    </ul>
                 </div>
-                <div class="topbar-register">
+                {{-- <div class="topbar-register">
                 <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
-                </div>
+                </div> --}}
                 <div class="social1">
                     <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
                     <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -299,6 +333,8 @@
                                                                                     <a href="#" title="" itemprop="url"><img src="/images/product/{{$vendor->image}}" alt="{{$vendor->product_name}}" itemprop="image"></a>
                                                                                 </div>
                                                                                 <div class="featured-restaurant-info">
+                                                                                    {{-- <input type="hidden" value="{{$vendor->id }}">
+                                                                                    <input type="hidden" value="{{$vendors}}" --}}
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$vendor->product_name}}</a></h4>
                                                                                     {{-- <input type="text" placeholder="quantity" name="quantity"> --}}
                                                                                     <span class="price">{{$vendor->price}}</span>
@@ -311,7 +347,7 @@
                                                                                 <div class="ord-btn">
                                                                                     @auth
                                                                                     <a class="brd-rd2" href="{{ route('add_to_cart', [$vendor->id,$vendors]) }}" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
-
+                                                                                    {{-- <a class="brd-rd2" onclick="addToCart({{$vendor->id}}, {{$vendors}})" id={{"submit". $vendor->id}} title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a> --}}
                                                                                     @else
                                                                                     <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Order Now</a>
 
@@ -440,7 +476,8 @@
                                                                 <li>
                                                                     <div class="dish-name">
 
-                                                                        <i></i> <h6 itemprop="headline">{{$details['name'] }}</h6> <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity"   style="width: 50px;"/>
+                                                                        <h6 itemprop="headline">{{$details['name'] }}</h6> 
+                                                                        {{-- <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity"   style="width: 50px;"/> --}}
                                                                                                 <span class="price">{{$details['price']*$details['quantity'] }}</span>
                                                                     </div>
 
@@ -676,11 +713,9 @@
 
 
     </main><!-- Main Wrapper -->
-    {{-- @section('scripts') --}}
+    {{-- @section('scripts')
 
-
-
-    {{-- @endsection --}}
+    @endsection --}}
 
     {{-- <script type="text/javascript">
         $('#instruction').submit(function(e) {
@@ -709,6 +744,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        
+            
         $(function(){
             $('#instruction').on('submit', function(e) {
                 e.preventDefault();

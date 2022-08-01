@@ -61,7 +61,7 @@ class OrdersController extends Controller
     {
         $cart = session()->get('cart');
 
-        dd($request['quantity']);
+        // dd($request['quantity']);
 
         // dd($request['time']);
 
@@ -78,16 +78,14 @@ class OrdersController extends Controller
                 'pickup_time' => $request['time'],
                 'instruction' => $request['instruction'],
             ]);
-
-            $vendor = Vendor::find($cart_item['vendor_id']);
-            $user_vendor = User::find($vendor->user_id);
-            Notification::send($user_vendor, new OrderNotification($vendor));
-            // $vendor->notify(new OrderNotification($vendor));
         }
-
+        $vendor = Vendor::find($cart_item['vendor_id']);
+        $user_vendor = User::find($vendor->user_id);
+        Notification::send($user_vendor, new OrderNotification($vendor));
+        //$vendor->notify(new OrderNotification($vendor));
 
         // Delete the cart session after an order is made
-        $request->session()->forget('cart');;
+        $request->session()->forget('cart');
 
         return redirect()->route('my_orders')->with('success', 'Order Placed successfully!');
 
