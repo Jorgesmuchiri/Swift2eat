@@ -62,6 +62,7 @@ class VendorController extends Controller
         $vendor->user_id = $request->user_id;
         $vendor->vendor_logo = $image_name;
         $vendor->location = $request->location;
+        $vendor->till_no = $request->tillno;
         // $vendor->password = Hash::make('swyft2eat');
 
         try {

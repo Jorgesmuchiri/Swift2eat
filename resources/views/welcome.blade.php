@@ -5,8 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="Swyft2eat: Why wait and you can order?" />
+    <meta name="keywords" content="Swyft2eat, Swyft2eat.co.ke, Swyft, food, food delivery, 
+    Nairobi,food delivery in Nairobi, 
+    order, order now, fries, chips, soda, offer" />
+    <meta name="author" content="Swyft2eat, Swyft2eat">
     <title>Swyft2eat</title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 
@@ -119,7 +122,7 @@
             </div><!-- Logo Menu Section -->
         </header><!-- Header -->
 
-        {{-- <div class="responsive-header">
+        <div class="responsive-header">
             <div class="responsive-topbar">
                 <!-- <div class="select-wrp">
                     <select data-placeholder="Feel Like Eating">
@@ -184,7 +187,7 @@
                 <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
-        </div><!-- Responsive Header --> --}}
+        </div><!-- Responsive Header -->
 
         <section>
             <div class="block blackish opac50">

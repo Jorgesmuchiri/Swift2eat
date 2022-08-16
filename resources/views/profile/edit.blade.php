@@ -62,6 +62,15 @@
                                             @include('alerts.feedback', ['field' => 'location'])
                                         </div>
 
+                                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-location">
+                                                <i class="w3-xxlarge bi bi-cash"></i>{{ __('Till Number') }}
+                                            </label>
+                                            <input type="text" name="tillno" id="input-location" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Till Number') }}" value="{{ old('name', $vendor->till_no) }}" autofocus>
+
+                                            @include('alerts.feedback', ['field' => 'tillno'])
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="form-control-label">
                                                 <i class="w3-xxlarge fa fa-file-image-o"></i>{{ __('Vendor Logo') }}</label>

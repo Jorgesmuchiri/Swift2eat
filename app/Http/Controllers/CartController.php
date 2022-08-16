@@ -79,7 +79,7 @@ class CartController extends Controller
             return back()->with('error', 'Kindly Add an item to the cart');
         }
 
-        //dd(session('cart'));
+        // dd(session('cart'));
 
         return view('checkout.checkout');
     }
