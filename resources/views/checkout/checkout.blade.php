@@ -252,7 +252,7 @@
 
 			                </tr>
                             @php
-                                $total += $details['price'] * $details['quantity'];
+                                // $total += $details['price'] * $details['quantity'];
                             @endphp
 			            @endforeach
 			        @endif
@@ -269,8 +269,21 @@
 		<div class="col-md-6 col-lg-6 col-sm-12">
         <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Information</h4>
 
-
-
+            <div style="margin: 2%;">
+                <h5>BUY GOODS TILL NUMBER: 
+                @php
+                $vendor = session('cart');
+                $vendor_id = reset($vendor)['vendor_id'];
+                $till_no = DB::table('vendors')->where('id', $vendor_id)->value('till_no');
+                $food = 0.9 * $total;
+                $comission = 0.1 * $total;
+                echo $till_no;
+                
+                @endphp </h5>
+                <h5 >Food: <span id="food">{{ $food }}</span> </h5>
+                <h5 >Comission: <span id="comission">{{ $comission }}</span> </h5>
+                <h5 >Amount: <span id="total">{{ $total }}</span> </h5>
+            </div>
 
             <div class="book-table">
 			<form method="post" action="{{ route('store_order') }}">
@@ -418,9 +431,24 @@
                     quantity: quantity
                 },
                 // alert('data');
+
                 success: function (data) {
-                    console.log('Success: ', data);
+                    
+                    
+                    // <?php echo $total;?>;
+                    let total = 0;
+                    // console.log(Object.entries(data));
+                    Object.entries(data).forEach(element => {
+                        const quantity = element[1]['quantity'];
+                        const price = element[1]['price']
+                        total += price * quantity;
+                    });
+                    document.getElementById("total").innerHTML = total;
+                    document.getElementById("food").innerHTML = 0.9 * total;
+                    document.getElementById("comission").innerHTML = 0.1 * total;
+                    // console.log('Success: ', data);
                     // window.location.reload();
+                    
                 },
 
                 error: function(data) {

@@ -53,6 +53,7 @@ class ProfileController extends Controller
             $vendor->email = $request->email;
             $vendor->phone_no = $request->phone_no;
             $vendor->location = $request->location;
+            $vendor->till_no = $request->tillno;
             // $vendor->vendor_logo = $image_name;
 
             try{
