@@ -33,6 +33,10 @@ class CustomerController extends Controller
         }
     }
 
+    public function signup() {
+        return view('users.signup');
+    }
+
     public function login(Request $request) {
         $request->validate([
             'email' => 'required',

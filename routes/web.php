@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MpesaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });
+// });	
 // Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\FrontEndController@index')->name('welcome');
@@ -25,6 +26,7 @@ Route::post('login', ['as' => 'login', 'uses' => 'App\Http\Controllers\CustomerC
 Route::post('vendor_login', ['as' => 'vendor_login', 'uses' => 'App\Http\Controllers\VendorController@login']);
 Route::get('my_orders', ['as' => 'my_orders', 'uses' => 'App\Http\Controllers\OrdersController@show_orders']);
 Route::get('vendorLogin', ['as' => 'vendorLogin', 'uses' => 'App\Http\Controllers\VendorController@vendor_login']);
+Route::get('signup', ['as' => 'signup', 'uses' => 'App\Http\Controllers\CustomerController@signup']);
 
 Route::get('forget_password', ['as' => 'forget_password', 'uses' => 'App\Http\Controllers\UserController@forget_password']);
 Route::post('password_reset', ['as' => 'password_reset', 'uses' => 'App\Http\Controllers\UserController@forgetPasswordForm']);
@@ -87,6 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::post('post_review', ['as' => 'post_review', 'uses' => 'App\Http\Controllers\ReviewController@store']);
+	Route::post('stkpush', [MpesaController::class, 'stkPush']);
 
 });
 

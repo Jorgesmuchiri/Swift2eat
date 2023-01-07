@@ -136,7 +136,7 @@
 
                                     </li>
                             </ul>
-                                        <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                                        <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                                     @endauth
                             {{-- @auth
                                 <a class="menu-item-has-children" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
@@ -182,7 +182,7 @@
                 </div> -->
             </div>
             <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <div class="logo"><h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
             </div>
             <div class="responsive-menu">
@@ -217,7 +217,7 @@
                 </div>
                 <div class="register-btn">
 
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
@@ -349,7 +349,7 @@
                                                                                     <a class="brd-rd2" href="{{ route('add_to_cart', [$vendor->id,$vendors]) }}" title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a>
                                                                                     {{-- <a class="brd-rd2" onclick="addToCart({{$vendor->id}}, {{$vendors}})" id={{"submit". $vendor->id}} title="Order Now" itemprop="url" style="background-color: orange;">Order Now</a> --}}
                                                                                     @else
-                                                                                    <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Order Now</a>
+                                                                                    <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url" style="background-color: orange;">Order Now</a>
 
                                                                                 @endauth
                                                                                 </div>

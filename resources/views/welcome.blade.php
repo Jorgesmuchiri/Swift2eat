@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('flash-message')
+   
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, shrink-to-fit=no, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Swyft2eat: Why wait and you can order?" />
     <meta name="keywords" content="Swyft2eat, Swyft2eat.co.ke, Swyft, food, food delivery, 
     Nairobi,food delivery in Nairobi, 
@@ -23,6 +23,7 @@
 </head>
 <body itemscope>
     <main>
+         @include('flash-message')
         <!-- <div class="preloader">
             <div id="cooking">
                 <div class="bubble"></div>
@@ -114,7 +115,7 @@
 
                             </li>
                             </ul>
-                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                                <a class="" href="{{ route('vendorLogin')}}" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                             @endauth
                         </div>
                     </nav><!-- Navigation -->
@@ -144,7 +145,7 @@
                 </div> -->
             </div>
             <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <div class="logo"><h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
             </div>
             <div class="responsive-menu">
@@ -158,9 +159,9 @@
                                     </ul> -->
                                 </li>
 
-                                <li><a href="#con" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                <li><a href="/#con" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                                     <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
@@ -175,16 +176,16 @@
                                 <li><a href="#con" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
                             </ul>
                 </div>
-                <div class="topbar-register">
+                {{-- <div class="topbar-register">
                 <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
-                </div>
+                </div> --}}
                 <div class="social1">
                     <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
                     <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
                     <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
                 </div>
                 <div class="register-btn">
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                <a class="" href="{{ route('vendorLogin')}}" title="Login" itemprop="url" style="background-color: orange;">Login</a>
                 </div>
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
@@ -431,7 +432,7 @@
                                         <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
                                             <h4 class="widget-title" itemprop="headline">GET IN TOUCH</h4>
                                             <ul>
-                                               <li><i class="fa fa-map-marker" style="color: orange;"></i> Nairobi,Kenya</li>
+                                               <li><i class="fa fa-map-marker" style="color: orange;"></i> Nairobi, Kenya</li>
                                                <li><i class="fa fa-phone" style="color: orange;"></i> +254 711 281774 | +254 797 309416</li>
                                                <li><i class="fa fa-envelope" style="color: orange;"></i> <a href="#" title="" itemprop="url">info@swyft2eat.co.ke</a></li>
                                             </ul>

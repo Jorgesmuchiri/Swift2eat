@@ -42,8 +42,8 @@ class VendorCreateNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('Swyft2eat Vendor Account Creation')
-                    ->line("Congratulations!! Your Vendor Account has been created succesfully. You can now log in using your email, and the default password as 'swyft2eat'. Please make sure to change the default password immediately after first login.")
-                    ->action('Log In Here', url('/login'))
+                    ->line("Congratulations!! Your Vendor Account has been created succesfully. You can now log in using your email, and the password that you used when creating your user account.")
+                    ->action('Log In Here', url('/vendorLogin'))
                     ->line('Thank you for using our application!');
     }
 
