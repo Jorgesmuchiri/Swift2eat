@@ -33,6 +33,10 @@ class CustomerController extends Controller
         }
     }
 
+    public function signup() {
+        return view('users.signup');
+    }
+
     public function login(Request $request) {
         $request->validate([
             'email' => 'required',
@@ -51,8 +55,8 @@ class CustomerController extends Controller
             }
         }
 
-        return redirect("/")
-                ->with('error', 'Oppes! You have entered invalid credentials');
+        return redirect("/vendorLogin")
+                ->with('error', 'Oops! You have entered invalid credentials');
 
     }
 

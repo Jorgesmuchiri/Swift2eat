@@ -19,13 +19,14 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css"> --}}
 
 
-    <link rel="stylesheet" href="{{asset('/assets/css/icons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/red-color.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/yellow-color.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/red-color.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/yellow-color.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/responsive.css') }}">
 </head>
+
 <body itemscope>
     <main>
         <!-- <div class="preloader">
@@ -71,34 +72,44 @@
                         </select>
                     </div> -->
                     <div class="topbar-register">
-                    {{-- <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
+                        {{-- <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
 
                         <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
                     </div> --}}
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <div class="social1">
+                            <a href="#" title="Facebook" itemprop="url" target="_blank"><i
+                                    class="fa fa-facebook-square"></i></a>
+                            <a href="#" title="Twitter" itemprop="url" target="_blank"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a href="#" title="Google Plus" itemprop="url" target="_blank"><i
+                                    class="fa fa-instagram"></i></a>
+                        </div>
                     </div>
-                </div>
-            </div><!-- Topbar -->
-            <div class="logo-menu-sec">
-                <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="{{asset('assets/images/logo5.png')}}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
-                    <nav>
-                        <div class="menu-sec">
-                            <ul>
-                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
-                                    <!-- <ul class="sub-dropdown">
+                </div><!-- Topbar -->
+                <div class="logo-menu-sec">
+                    <div class="container">
+                        <div class="logo">
+                            <h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img
+                                        src="{{ asset('assets/images/logo5.png') }}" alt="logo.png" itemprop="image"
+                                        style="width: 80px;"></a></h1>
+                        </div>
+                        <nav>
+                            <div class="menu-sec">
+                                <ul>
+                                    <li class="menu-item-has-children"><a href="/" title="home"
+                                            itemprop="url"><span></span>HOME</a>
+                                        <!-- <ul class="sub-dropdown">
                                         <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
                                         <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
                                     </ul> -->
-                                </li>
+                                    </li>
 
-                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                                    <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT
+                                            US</a></li>
 
-                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
+                                    <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS"
+                                            itemprop="url"><span></span>RESTAURANTS</a>
+                                        <!-- <ul class="sub-dropdown">
                                         <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
                                         <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
                                         <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
@@ -107,27 +118,29 @@
                                         <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
                                         <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
                                     </ul> -->
-                                </li>
+                                    </li>
 
-                                <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
-                            @auth
-                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
-                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
-                                <ul class="sub-dropdown">
-                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
-                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
-                                </ul> --}}
-                                @else
+                                    <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT
+                                            US</a></li>
+                                    @auth
 
-                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
-                            @endauth
+                                        <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                                style="color: orange;">{{ auth()->user()->name }}</a>
+                                            <ul class="sub-dropdown">
+                                                <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                            </ul>
+                                        @else
+                                        </li>
+                                    </ul>
+                                    <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                                        style="background-color: orange;">Login</a>
+                                @endauth
 
-                            {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
-                        </div>
-                    </nav><!-- Navigation -->
-                </div>
-            </div><!-- Logo Menu Section -->
+                                {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
+                            </div>
+                        </nav><!-- Navigation -->
+                    </div>
+                </div><!-- Logo Menu Section -->
         </header><!-- Header -->
 
         <div class="responsive-header">
@@ -152,144 +165,162 @@
                 </div> -->
             </div>
             <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <div class="logo">
+                    <h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img
+                                src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1>
+                </div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
             </div>
             <div class="responsive-menu">
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
-                <ul>
-                <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+                    <ul>
+                        <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
 
 
-                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                        <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
-                                </li>
+                        <li><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                        </li>
 
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
+                        <li><a href="contact.html" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                        @auth
+
+                            <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                    style="color: orange;">{{ auth()->user()->name }}</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                </ul>
+                            @else
+                            </li>
+                        </ul>
+                        <div class="register-btn">
+                            <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                                style="background-color: orange;">Login</a>
+                        </div>
+                    @endauth
                 </div>
                 {{-- <div class="topbar-register">
                 <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
                 </div> --}}
                 <div class="social1">
-                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i
+                            class="fa fa-facebook-square"></i></a>
+                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i
+                            class="fa fa-twitter"></i></a>
+                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i
+                            class="fa fa-google-plus"></i></a>
                 </div>
-                <div class="register-btn">
 
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
-                </div>
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
-<br>
-<br>
-<br><br><br><br><br><br><br><br><br>
+        <br>
+        <br>
+        <br><br><br><br><br><br><br><br><br>
 
-	<div class="row m-0 p-2 justify-content-center">
-		<div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="row m-0 p-2 justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12">
 
-        <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Details</h4>
+                <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Details
+                </h4>
 
-			<!-- <p class="text-center h4">Order </p> -->
-			  <table id="cart" class="table table-hover table-condensed">
-			        <thead>
-			        <tr>
-			            <th style="width:50%">Product</th>
-			            <th style="width:10%">Price</th>
-			            <th style="width:8%">Quantity</th>
-			            <th style="width:22%" class="text-center">Subtotal</th>
-			            <th style="width:10%"></th>
-			        </tr>
-			        </thead>
-			        <tbody style="height: 130px">
+                <!-- <p class="text-center h4">Order </p> -->
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width:50%">Product</th>
+                            <th style="width:10%">Price</th>
+                            <th style="width:8%">Quantity</th>
+                            <th style="width:22%" class="text-center">Subtotal</th>
+                            <th style="width:10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody style="height: 130px">
 
-			        <?php $total = 0 ?>
+                        <?php $total = 0; ?>
 
-			        @if(session('cart'))
-			            @foreach((array) session('cart') as $id => $details)
+                        @if (session('cart'))
+                            @foreach ((array) session('cart') as $id => $details)
+                                <?php $total += $details['price'] * $details['quantity']; ?>
 
-			                <?php $total += $details['price'] * $details['quantity']; ?>
-
-			                {{-- <input type="hidden" name="prod_id[]" value=" {{ $details['prod_id'] }} " id="product_id">
+                                {{-- <input type="hidden" name="prod_id[]" value=" {{ $details['prod_id'] }} " id="product_id">
 			                <input type="hidden" name="prod_qty[]" value=" {{ $details['quantity'] }} ">
 			                <input type="hidden" name="user_id" value="{{Auth::user()->id}}"> --}}
-			                <tr data-id="{{ $details['prod_id'] }}">
-			                    <td data-th="Product">
-			                        <div class="row">
-			                            <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $details['photo'] }}" width="100px" height="100px" class="img-responsive"/></div>
-			                            <div class="col-sm-9">
-			                                <h4 class="nomargin">{{ $details['name'] }}</h4>
-			                            </div>
-			                        </div>
-			                    </td>
+                                <tr data-id="{{ $details['prod_id'] }}">
+                                    <td data-th="Product">
+                                        <div class="row">
+                                            <div class="col-sm-3 hidden-xs"><img
+                                                    src="/images/product/{{ $details['photo'] }}" width="100px"
+                                                    height="100px" class="img-responsive" /></div>
+                                            <div class="col-sm-9">
+                                                <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                            </div>
+                                        </div>
+                                    </td>
 
-                                @php
-                                    $price  = $details['price'];
-                                @endphp
+                                    @php
+                                        $price = $details['price'];
+                                    @endphp
 
-			                    <td data-th="Price" id="price">Kshs.{{ $details['price'] }}</td>
-			                    <td data-th="Quantity" class="text-center">
-                                    <input type="number" min="1" id={{ "quant".$details['prod_id'] }} oninput="myFunction({{ $details['price'] }}, {{ $details['prod_id'] }})" value="1" style="width:60%" name="quantity" class="update-cart qty">
-			                    </td>
-                                {{-- <td>
+                                    <td data-th="Price" id="price">Kshs.{{ $details['price'] }}</td>
+                                    <td data-th="Quantity" class="text-center">
+                                        <input type="number" min="1" id={{ 'quant' . $details['prod_id'] }}
+                                            oninput="myFunction({{ $details['price'] }}, {{ $details['prod_id'] }})"
+                                            value="1" style="width:60%" name="quantity"
+                                            class="">
+                                    </td>
+                                    {{-- <td>
                                     <button class="btn btn-info btn-sm update-cart" data-token="{{ csrf_token() }}" data-id="{{ $details['prod_id']}}">Update Cart</button>
                                 </td> --}}
 
-                                {{-- <td id="tot"></td> --}}
-			                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal" id={{ "total".$details['prod_id'] }}>{{ $details['price'] }}</span></td>
+                                    {{-- <td id="tot"></td> --}}
+                                    <td data-th="Subtotal" class="text-center">Kshs.<span class="product-subtotal"
+                                            id={{ 'total' . $details['prod_id'] }}>{{ $details['price'] }}</span></td>
 
-			                </tr>
-                            @php
-                                // $total += $details['price'] * $details['quantity'];
-                            @endphp
-			            @endforeach
-			        @endif
+                                </tr>
+                                @php
+                                    // $total += $details['price'] * $details['quantity'];
+                                @endphp
+                            @endforeach
+                        @endif
 
-			        </tbody>
-				        <tfoot>
-				        <tr class="visible-xs">
-				            <td class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
-				        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="visible-xs">
+                            {{-- <td class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td> --}}
+                        </tr>
 
-				        </tfoot>
-   			 </table>
-		</div>
-		<div class="col-md-6 col-lg-6 col-sm-12">
-        <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Information</h4>
-
-            <div style="margin: 2%;">
-                <h5>BUY GOODS TILL NUMBER: 
-                @php
-                $vendor = session('cart');
-                $vendor_id = reset($vendor)['vendor_id'];
-                $till_no = DB::table('vendors')->where('id', $vendor_id)->value('till_no');
-                $food = 0.9 * $total;
-                $comission = 0.1 * $total;
-                echo $till_no;
-                
-                @endphp </h5>
-                <h5 >Food: <span id="food">{{ $food }}</span> </h5>
-                <h5 >Comission: <span id="comission">{{ $comission }}</span> </h5>
-                <h5 >Amount: <span id="total">{{ $total }}</span> </h5>
+                    </tfoot>
+                </table>
             </div>
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Order</span> Information
+                </h4>
 
-            <div class="book-table">
-			<form method="post" action="{{ route('store_order') }}">
-                @method('post')
-                @csrf
-					{{-- <div class="form-group">
+                <div style="margin: 2%;">
+                    <h5>BUY GOODS TILL NUMBER:
+                        @php
+                            $vendor = session('cart');
+                            $vendor_id = reset($vendor)['vendor_id'];
+                            $till_no = DB::table('vendors')
+                                ->where('id', $vendor_id)
+                                ->value('till_no');
+                            $food = 0.95 * $total;
+                            $comission = ceil(0.05 * $total);
+                            $new_total = $total + $comission;
+                            echo $till_no;
+                            
+                        @endphp </h5>
+                    <h5>Food: <span id="food">{{ $total }}</span> </h5>
+                    <h5>Comission: <span id="comission">{{ $comission }}</span> </h5>
+                    <h5>Amount: <span id="total">{{ $new_total }}</span> </h5>
+                </div>
+
+                <div class="book-table">
+                    <form method="post" action="{{ route('store_order') }}">
+                        @method('post')
+                        @csrf
+                        {{-- <div class="form-group">
 					    <label for="inputname">Name</label>
 					    <input type="text" class="input-field brd-rd2" id="inputAddress" placeholder="Name" value=" {{ Auth::user()->name }} ">
 					</div>
@@ -309,14 +340,15 @@
 				  </div>
 
 				  <button type="submit" class="btn btn-primary"Information>Confirm Billing Information</button> --}}
-                  <div class="row">
-                    {{-- <div class="col-md-6 col-sm-6 col-lg-6">
+                        <div class="row">
+                            {{-- <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-field brd-rd2"><i class="fa fa-user"></i> <input type="text" placeholder="NAME"></div>
                     </div> --}}
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-field brd-rd2"><i class="fa fa-phone"></i> <input type="text" placeholder="PHONE" name="phone"></div>
-                    </div>
-                    <!-- <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-field brd-rd2"><i class="fa fa-phone"></i> <input type="text"
+                                        placeholder="PHONE" name="phone"></div>
+                            </div>
+                            <!-- <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="select-wrp2">
                             <select>
                                 <option>Questions</option>
@@ -326,28 +358,32 @@
                             </select>
                         </div>
                     </div> -->
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email" placeholder="EMAIL" name="email"></div>
-                    </div>
-                    {{-- <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-field brd-rd2"><i class="fa fa-envelope"></i> <input type="email"
+                                        placeholder="EMAIL" name="email"></div>
+                            </div>
+                            {{-- <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-field brd-rd2"><i class="fa fa-number"></i> <input type="time" placeholder="PickUp Time"></div>
                     </div> --}}
-                    {{-- <div class="col-md-6 col-sm-6 col-lg-6">
+                            {{-- <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="input-field brd-rd2"><i class="fa fa-calendar"></i> <input class="datepicker" id="datetimepicker" type="text" name="date" placeholder="SELECT DATE"></div>
                     </div> --}}
-                    <div class="col-md-6 col-sm-6 col-lg-6">
-                        <div class="input-field brd-rd2"><i class="fa fa-clock-o"></i> <input id="timepicker" type="time" placeholder="SELECT TIME" name="time"></div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-lg-12">
-                        <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i> <textarea placeholder="Your Instruction" name="instruction"></textarea></div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-lg-12">
-                        <button class="btn btn-primary" type="submit">Send Order</button>
-                    </div>
-                    </div>
-				</form>
-		</div>
-		{{-- <div class="col-md-10 col-lg-10 col-sm-12 mt-3 jumbotron pb-3 text-center">
+                            <div class="col-md-6 col-sm-6 col-lg-6">
+                                <div class="input-field brd-rd2"><i class="fa fa-clock-o"></i> <input id="timepicker"
+                                        type="time" placeholder="SELECT TIME" name="time"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="textarea-field brd-rd2"><i class="fa fa-pencil"></i>
+                                    <textarea placeholder="Your Instruction" name="instruction"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <button class="btn btn-primary" type="submit">Send Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{-- <div class="col-md-10 col-lg-10 col-sm-12 mt-3 jumbotron pb-3 text-center">
 			 <form>
             		@csrf
             		<input type="hidden" name="id" value="{{ Auth::user()->id }}" id="user_id">
@@ -393,252 +429,260 @@
             		Order Has Been Processed.... Thank you for Shopping with Us...
             	</div>
 		</div> --}}
-	</div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        function myFunction(standardPrice,productId) {
-            var x = document.getElementById("quant"+productId).value;
-            updatePrice(x,standardPrice,productId);
-            getCart(productId,x);
-        }
+            </div>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/bootstrap.min.js"></script>
+            <script src="assets/js/plugins.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script type="text/javascript">
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-        function updatePrice(quantity, standardPrice,productId){
-            document.getElementById('total'+productId).innerHTML = quantity*standardPrice;
-        }
-
-
-        function getCart(prod_id, quantity){
-            $(document.getElementById("quant"+prod_id)).change(function (e) {
-            e.preventDefault();
-            // console.log = 'hihs';
-            // alert('Yesyes');
-            var ele = $(this);
-            // var prod_quantity = document.getElementById(<?php echo ("quant".$details['prod_id']); ?>).innerHTML;
-            // console.log(prod_quantity);
-            // var ele = $(this);
-            $.ajax({
-                url: "{{ route('update.cart') }}",
-                type: "PUT",
-                dataType: 'json',
-                data: {
-                    // _token: '{{ csrf_token() }}',
-                    id: prod_id,
-                    quantity: quantity
-                },
-                // alert('data');
-
-                success: function (data) {
-                    
-                    
-                    // <?php echo $total;?>;
-                    let total = 0;
-                    // console.log(Object.entries(data));
-                    Object.entries(data).forEach(element => {
-                        const quantity = element[1]['quantity'];
-                        const price = element[1]['price']
-                        total += price * quantity;
-                    });
-                    document.getElementById("total").innerHTML = total;
-                    document.getElementById("food").innerHTML = 0.9 * total;
-                    document.getElementById("comission").innerHTML = 0.1 * total;
-                    // console.log('Success: ', data);
-                    // window.location.reload();
-                    
-                },
-
-                error: function(data) {
-                    // console.log('Error: ', thrownError);
-                    // alert('fghjhghjhjhj');
-                    alert('Error: ', data);
+                function myFunction(standardPrice, productId) {
+                    var x = document.getElementById("quant" + productId).value;
+                    updatePrice(x, standardPrice, productId);
+                    getCart(productId, x);
                 }
-            });
-        });
-    }
-        
 
-        // $(function()) {
-        //     $('#timepicker').on('click', function(e) {
-        //         console.log('Clicked');
-        //     });
-        // }
-        // TODO: Return This Section line 399 - 403
-        $(document).ready(function(){
-            $('#timepicker').on('click', function() {
-                jQuery('#list').show();
-            });
-        });
-    </script>
+                function updatePrice(quantity, standardPrice, productId) {
+                    document.getElementById('total' + productId).innerHTML = quantity * standardPrice;
+                }
+
+
+                function getCart(prod_id, quantity) {
+                    $(document.getElementById("quant" + prod_id)).change(function(e) {
+                        e.preventDefault();
+                        // console.log = 'hihs';
+                        // alert('Yesyes');
+                        var ele = $(this);
+                        // var prod_quantity = document.getElementById(<?php echo 'quant' . $details['prod_id']; ?>).innerHTML;
+                        // console.log(prod_quantity);
+                        // var ele = $(this);
+                        $.ajax({
+                            url: "{{ route('update.cart') }}",
+                            type: "PUT",
+                            dataType: 'json',
+                            data: {
+                                // _token: '{{ csrf_token() }}',
+                                id: prod_id,
+                                quantity: quantity
+                            },
+                            // alert('data');
+
+                            success: function(data) {
+
+
+                                // <?php echo $total; ?>;
+                                let total = 0;
+                                // console.log(Object.entries(data));
+                                Object.entries(data).forEach(element => {
+                                    const quantity = element[1]['quantity'];
+                                    const price = element[1]['price']
+                                    total += price * quantity;
+                                });
+                                document.getElementById("total").innerHTML = total + Math.round(0.05 * total);
+                                document.getElementById("comission").innerHTML = Math.round(0.05 * total);
+                                document.getElementById("food").innerHTML = total;
+                                // console.log('Success: ', data);
+                                // window.location.reload();
+
+                            },
+
+                            error: function(data) {
+                                // console.log('Error: ', thrownError);
+                                // alert('fghjhghjhjhj');
+                                alert('Error: ', data);
+                            }
+                        });
+                    });
+                }
+
+
+                // $(function()) {
+                //     $('#timepicker').on('click', function(e) {
+                //         console.log('Clicked');
+                //     });
+                // }
+                // TODO: Return This Section line 399 - 403
+                $(document).ready(function() {
+                    $('#timepicker').on('click', function() {
+                        jQuery('#list').show();
+                    });
+                });
+            </script>
     </main>
 
 
 
 </body>
+
 </html>
 {{-- @endsection --}}
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('#datetimepicker').datetimepicker();
+        });
+    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $('#datetimepicker').datetimepicker();
-    });
-</script>
+    <script type="text/javascript">
+        function getTotal() {
 
-<script type="text/javascript">
-
-
-function getTotal()
-{
-
-    var total = 0;
+            var total = 0;
 
 
 
-}
+        }
 
-	$('#checkoutOrder').click(function(e)
-	{
-		e.preventDefault();
+        $('#checkoutOrder').click(function(e) {
+            e.preventDefault();
 
-		// console.log('clicked');
+            // console.log('clicked');
 
-		var product_id = document.getElementsByName('prod_id[]');
-		var product_qty = document.getElementsByName('prod_qty[]');
+            var product_id = document.getElementsByName('prod_id[]');
+            var product_qty = document.getElementsByName('prod_qty[]');
 
-		var datasend_id = {};
-		var datasend_qty = {};
-		var user_id = document.getElementsByName('user_id')[0].value;
+            var datasend_id = {};
+            var datasend_qty = {};
+            var user_id = document.getElementsByName('user_id')[0].value;
 
-		var total = document.getElementById('total').value;
-		var phone_number = document.getElementById('phone_number').value;
-		// console.log(phone_number);
-
-
-		$('.recieving-payment').show();
-
-		//AJAX CALL TO INITIATE M-PESA STK-PUSH REQUEST
-
-		$.ajax({
-
-				// url:'  ',
-				type:"POST",
-				data:{
-						"_token": "{{ csrf_token() }}",
-						user_id:user_id,
-						total:2,
-						phonenumber:phone_number,
-				},
-				success:function(response)
-				{
-					console.log(response);
-					// var checkout_id = response;
-					$('.recieving-payment').hide();
-					$('.confirm-payment').show();
-
-					//TIMEOUT ALLOWS USER TO COMPLETE TRANSACTION BEFORE AUTOMATICALLY VALIDATING THE TRANSACTION
-
-					setTimeout(function(e)
-					{
-
-					//AJAX CALL TO CHECK THE TRANSACTION STATUS
-
-						$.ajax({
-
-						// url:' ',
-						type:"POST",
-						data:{
-								"_token": "{{ csrf_token() }}",
-								user_id:user_id,
-								// request_id:checkout_id,
-							  },
-						success:function(response)
-						{
-							console.log(response);
-
-							$('.confirm-payment').hide();
-
-							if (response == 0)
-							{
-								$('.processing-order').show();
-
-								for (var i=0; i < product_id.length; i++)
-								{
-									datasend_id[i] = product_id[i].value;
-									datasend_qty[i] = product_qty[i].value;
-								}
-
-								//AJAX CALL TO PLACE ORDER AUTOMATICALLY
-
-									$.ajax({
-
-										// url:'',
-										type:"POST",
-										data:{
-												"_token": "{{ csrf_token() }}",
-												datasend_id:datasend_id,
-												datasend_qty:datasend_qty,
-												user_id:user_id,
-										},
-										dataType:"json",
-										success:function(response)
-										{
-											console.log(response);
-
-											//AJAX CALL TO REMOVE THE ORDER ITEMS FROM CART
-											for (var i = 0; i < product_id.length; i++)
-											{
-												// console.log(product_id[i].value);
-
-												$.ajax({
-													//  url: '',
-							                    type: "DELETE",
-							                    data: {
-							                            "_token": '{{ csrf_token() }}',
-							                            id: product_id[i].value,
-							                          },
-							                    dataType: "json",
-							                    success: function (response)
-							                    {
-							                     	console.log('item removed from cart');
-							                     	window.location.href = "  ";
-							                    }
-
-												});
-
-											}
-
-											$('.processing-order').hide();
-											$('.order-processed').show();
-										}
-
-									});
-							}else
-							{
-								$('.mpesa-failed').show();
-							}
-
-						}
-
-						});
-
-					},8000);
-
-				}
-
-		});
-
-		// console.log(user_id);
+            var total = document.getElementById('total').value;
+            var phone_number = document.getElementById('phone_number').value;
+            // console.log(phone_number);
 
 
-	});
-</script>
+            $('.recieving-payment').show();
+
+            //AJAX CALL TO INITIATE M-PESA STK-PUSH REQUEST
+
+            $.ajax({
+
+                // url:'  ',
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    user_id: user_id,
+                    total: 2,
+                    phonenumber: phone_number,
+                },
+                success: function(response) {
+                    console.log(response);
+                    // var checkout_id = response;
+                    $('.recieving-payment').hide();
+                    $('.confirm-payment').show();
+
+                    //TIMEOUT ALLOWS USER TO COMPLETE TRANSACTION BEFORE AUTOMATICALLY VALIDATING THE TRANSACTION
+
+                    setTimeout(function(e) {
+
+                        //AJAX CALL TO CHECK THE TRANSACTION STATUS
+
+                        $.ajax({
+
+                            // url:' ',
+                            type: "POST",
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                user_id: user_id,
+                                // request_id:checkout_id,
+                            },
+                            success: function(response) {
+                                console.log(response);
+
+                                $('.confirm-payment').hide();
+
+                                if (response == 0) {
+                                    $('.processing-order').show();
+
+                                    for (var i = 0; i < product_id.length; i++) {
+                                        datasend_id[i] = product_id[i].value;
+                                        datasend_qty[i] = product_qty[i].value;
+                                    }
+
+                                    //AJAX CALL TO PLACE ORDER AUTOMATICALLY
+
+                                    $.ajax({
+
+                                        // url:'',
+                                        type: "POST",
+                                        data: {
+                                            "_token": "{{ csrf_token() }}",
+                                            datasend_id: datasend_id,
+                                            datasend_qty: datasend_qty,
+                                            user_id: user_id,
+                                        },
+                                        dataType: "json",
+                                        success: function(response) {
+                                            console.log(response);
+
+                                            //AJAX CALL TO REMOVE THE ORDER ITEMS FROM CART
+                                            for (var i = 0; i <
+                                                product_id.length; i++
+                                            ) {
+                                                // console.log(product_id[i].value);
+
+                                                $.ajax({
+                                                    //  url: '',
+                                                    type: "DELETE",
+                                                    data: {
+                                                        "_token": '{{ csrf_token() }}',
+                                                        id: product_id[
+                                                                i
+                                                            ]
+                                                            .value,
+                                                    },
+                                                    dataType: "json",
+                                                    success: function(
+                                                        response
+                                                    ) {
+                                                        console
+                                                            .log(
+                                                                'item removed from cart'
+                                                            );
+                                                        window
+                                                            .location
+                                                            .href =
+                                                            "  ";
+                                                    }
+
+                                                });
+
+                                            }
+
+                                            $('.processing-order')
+                                                .hide();
+                                            $('.order-processed')
+                                                .show();
+                                        }
+
+                                    });
+                                } else {
+                                    $('.mpesa-failed').show();
+                                }
+
+                            }
+
+                        });
+
+                    }, 8000);
+
+                }
+
+            });
+
+            // console.log(user_id);
+
+
+        });
+    </script>
 @endsection

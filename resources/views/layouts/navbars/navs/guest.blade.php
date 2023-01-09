@@ -20,11 +20,11 @@
                         <i class="nc-icon nc-badge"></i> {{ __('Register') }}
                     </a>
                 </li> -->
-                <li class="nav-item @if($activePage == 'login') active @endif">
+                {{-- <li class="nav-item @if($activePage == 'login') active @endif">
                     <a href="{{ route('login') }}" class="nav-link">
                         <i class="nc-icon nc-mobile"></i> {{ __('Login') }}
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -47,8 +47,11 @@ class VendorController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $image_name = $request->image->getClientOriginalName();
-            $path = $request->image->move(public_path() . '/images/vendors', $image_name);
+            // $image_name = $request->image->getClientOriginalName();
+            // $path = $request->image->move(public_path() . '/images/vendors', $image_name);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = Str::random(20).'.'.$extension;
+            $request->file('image')->storeAs('public_html/images/vendors', $fileName);
         } else {
             $image_name = null;
             $path = null;

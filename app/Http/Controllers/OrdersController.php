@@ -61,10 +61,6 @@ class OrdersController extends Controller
     {
         $cart = session()->get('cart');
 
-        // dd($request['quantity']);
-
-        // dd($request['time']);
-
         foreach ($cart as $cart_item) {
             Orders::create([
                 'product_id' => $cart_item['prod_id'],
