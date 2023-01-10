@@ -51,7 +51,7 @@ class VendorController extends Controller
             // $path = $request->image->move(public_path() . '/images/vendors', $image_name);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = Str::random(20).'.'.$extension;
-            $request->file('image')->storeAs('public_html/images/vendors', $fileName);
+            $request->file('image')->storeAs('assets/images/vendors', $fileName);
         } else {
             $image_name = null;
             $path = null;
@@ -63,7 +63,7 @@ class VendorController extends Controller
         $vendor->email = $request->email;
         $vendor->phone_no = $request->phone_no;
         $vendor->user_id = $request->user_id;
-        $vendor->vendor_logo = $image_name;
+        $vendor->vendor_logo = $fileName;
         $vendor->location = $request->location;
         $vendor->till_no = $request->tillno;
         // $vendor->password = Hash::make('swyft2eat');

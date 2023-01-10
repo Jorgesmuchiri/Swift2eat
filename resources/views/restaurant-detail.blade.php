@@ -281,7 +281,7 @@
                                                     <div class="restaurant-detail-thumb">
                                                         <ul class="restaurant-detail-img-carousel">
                                                             <li><img class="brd-rd3"
-                                                                    src="{{ asset('https://img.freepik.com/free-photo/fried-chicken-with-french-fries-nuggets-meal_1339-78221.jpg?w=2000') }}"
+                                                                    src="assets/images/vendors/{{ $vendors->vendor_logo }}"
                                                                     alt="restaurant-detail-big-img1-1.jpg"
                                                                     itemprop="image"></li>
                                                         </ul>
@@ -367,7 +367,7 @@
                                                                                         <a href="#"
                                                                                             title=""
                                                                                             itemprop="url"><img
-                                                                                                src="/images/product/{{ $vendor->image }}"
+                                                                                                src="assets/images/products/{{ $vendor->image }}"
                                                                                                 alt="{{ $vendor->product_name }}"
                                                                                                 itemprop="image"></a>
                                                                                     </div>

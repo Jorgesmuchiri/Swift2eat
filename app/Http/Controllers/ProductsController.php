@@ -57,7 +57,7 @@ class ProductsController extends Controller
         ]);
         if ($request->hasFile('image')) {
             $image_name = $request->image->getClientOriginalName();
-            $path = $request->image->move(public_path() . '/images/product', $image_name);
+            $path = $request->image->move(public_path() . 'assets/images/product', $image_name);
         } else {
             $image_name = null;
             $path = null;

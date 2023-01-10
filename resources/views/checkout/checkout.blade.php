@@ -250,7 +250,7 @@
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-sm-3 hidden-xs"><img
-                                                    src="/images/product/{{ $details['photo'] }}" width="100px"
+                                                    src="assets/images/products/{{ $details['photo'] }}" width="100px"
                                                     height="100px" class="img-responsive" /></div>
                                             <div class="col-sm-9">
                                                 <h4 class="nomargin">{{ $details['name'] }}</h4>

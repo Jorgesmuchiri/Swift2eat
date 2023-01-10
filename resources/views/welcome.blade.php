@@ -119,19 +119,19 @@
                                 <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a>
                                 </li>
 
-                                @auth
+                            @auth
 
-                                    <li class="menu-item-has-children"> <a href="#" itemprop="url"
-                                            style="color: orange;">{{ auth()->user()->name }}</a>
-                                        <ul class="sub-dropdown">
-                                            <li><a href="{{ route('logout') }}">Log Out</a></li>
-                                        </ul>
-                                    @else
-                                    </li>
-                                </ul>
-                                <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
-                                    style="background-color: orange;">Login</a>
-                            @endauth
+                                <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                        style="color: orange;">{{ auth()->user()->name }}</a>
+                                    <ul class="sub-dropdown">
+                                        <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                    </ul>
+                                @else
+                                </li>
+                            </ul>
+                            <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                                style="background-color: orange;">Login</a>
+                        @endauth
                         </div>
                     </nav><!-- Navigation -->
                 </div>
@@ -139,26 +139,6 @@
         </header><!-- Header -->
 
         <div class="responsive-header">
-            <div class="responsive-topbar">
-                <!-- <div class="select-wrp">
-                    <select data-placeholder="Feel Like Eating">
-                        <option>FEEL LIKE EATING</option>
-                        <option>Burger</option>
-                        <option>Pizza</option>
-                        <option>Fried Rice</option>
-                        <option>Chicken Shots</option>
-                    </select>
-                </div> -->
-                <!-- <div class="select-wrp">
-                    <select data-placeholder="Choose Location">
-                        <option>CHOOSE LOCATION</option>
-                        <option>New york</option>
-                        <option>Washington</option>
-                        <option>Chicago</option>
-                        <option>Los Angeles</option>
-                    </select>
-                </div> -->
-            </div>
             <div class="responsive-logomenu">
                 <div class="logo">
                     <h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img
@@ -232,29 +212,6 @@
                 </div><!-- Restaurant Searching -->
             </div>
         </section>
-
-        <!-- <section>
-            <div class="block no-padding overlape-45">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-lg-12">
-                            <div class="top-restaurants-wrapper">
-                                <ul class="restaurants-wrapper style2">
-                                    <li class="wow bounceIn" data-wow-delay="0.2s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 1" itemprop="url"><img src="assets/images/resource/top-restaurant1.png" alt="top-restaurant1.png" itemprop="image"></a></div></li>
-                                    <li class="wow bounceIn" data-wow-delay="0.4s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 2" itemprop="url"><img src="assets/images/resource/top-restaurant2.png" alt="top-restaurant2.png" itemprop="image"></a></div></li>
-                                    <li class="wow bounceIn" data-wow-delay="0.6s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 3" itemprop="url"><img src="assets/images/resource/top-restaurant3.png" alt="top-restaurant3.png" itemprop="image"></a></div></li>
-                                    <li class="wow bounceIn" data-wow-delay="0.8s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 4" itemprop="url"><img src="assets/images/resource/top-restaurant4.png" alt="top-restaurant4.png" itemprop="image"></a></div></li>
-                                    <li class="wow bounceIn" data-wow-delay="1s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 5" itemprop="url"><img src="assets/images/resource/top-restaurant5.png" alt="top-restaurant5.png" itemprop="image"></a></div></li>
-                                    <li class="wow bounceIn" data-wow-delay="1.2s"><div class="top-restaurant"><a class="brd-rd50" href="#" title="Restaurant 5" itemprop="url"><img src="assets/images/resource/top-restaurant6.png" alt="top-restaurant6.png" itemprop="image"></a></div></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <!-- top returents -->
 
         <section>
             <div class="block remove-bottom">

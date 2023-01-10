@@ -10,13 +10,14 @@
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
 
 
-    <link rel="stylesheet" href="{{asset('/assets/css/icons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/red-color.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/yellow-color.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/red-color.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/yellow-color.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/responsive.css') }}">
 </head>
+
 <body itemscope>
     <main>
         <!-- <div class="preloader">
@@ -67,52 +68,50 @@
                         <!-- <a class="" href="login" title="Login" itemprop="url"> VENDOR LOGIN</a> -->
                     </div> --}}
                     <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i
+                                class="fa fa-facebook-square"></i></a>
+                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i
+                                class="fa fa-twitter"></i></a>
+                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i
+                                class="fa fa-instagram"></i></a>
                     </div>
                 </div>
             </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="{{asset('assets/images/logo5.png')}}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
+                    <div class="logo">
+                        <h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img
+                                    src="{{ asset('assets/images/logo5.png') }}" alt="logo.png" itemprop="image"
+                                    style="width: 80px;"></a></h1>
+                    </div>
                     <nav>
                         <div class="menu-sec">
                             <ul>
-                                <li class="menu-item-has-children"><a href="/" title="home" itemprop="url"><span></span>HOME</a>
-                                    <!-- <ul class="sub-dropdown">
-                                        <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
-                                        <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
-                                    </ul> -->
+                                <li><a href="/" title="home" itemprop="url"><span></span>HOME</a>
                                 </li>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
-
-                                <li class="menu-item-has-children"><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a>
                                 </li>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
-                            @auth
-                                <a class="log-popup-btn" href="#"  itemprop="url" style="background-color: orange;">{{ auth()->user()->name }}</a>
-                                {{-- <li class="menu-item-has-children" style="background-color: orange">{{ auth()->user()->name }}</a></li>
-                                <ul class="sub-dropdown">
-                                    <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">Log Out</a></li>
-                                    <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">Log Out</a></li>
-                                </ul> --}}
-                                @else
+                                <li><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
+                                </li>
 
-                                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                                <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a>
+                                </li>
+                                @auth
+
+                                    <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                            style="color: orange;">{{ auth()->user()->name }}</a>
+                                        <ul class="sub-dropdown">
+                                            <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                        </ul>
+                                    @else
+                                    </li>
+                                </ul>
+                                <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                                    style="background-color: orange;">Login</a>
                             @endauth
+
 
                             {{-- <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">{{ Auth::user() }}</a> --}}
                         </div>
@@ -143,58 +142,62 @@
                 </div> -->
             </div>
             <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                <div class="logo">
+                    <h1 itemprop="headline"><a href="/" title="Home" itemprop="url"><img
+                                src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1>
+                </div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
             </div>
             <div class="responsive-menu">
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
-                <ul>
-                <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
+                    <ul>
+                        <li><a href="/" title="HOME" itemprop="url"> <span></span> HOME</a></li>
 
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
+                        <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
-                                    <!-- <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
-                                </li>
+                        <li><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
 
-                                <li><a href="#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
-                            </ul>
+                        </li>
+
+                        <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
+                        @auth
+
+                            <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                    style="color: orange;">{{ auth()->user()->name }}</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                </ul>
+                            @else
+                            </li>
+                        </ul>
+                        <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                            style="background-color: orange;">Login</a>
+                    @endauth
                 </div>
-                {{-- <div class="topbar-register">
-                <a class="ornage-bg brd-rd4" href="login" title="Register" itemprop="url">VENDOR LOGIN</a>
-                </div> --}}
+
                 <div class="social1">
-                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <div class="register-btn">
-
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url" style="background-color: orange;">Login</a>
+                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i
+                            class="fa fa-facebook-square"></i></a>
+                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i
+                            class="fa fa-twitter"></i></a>
+                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i
+                            class="fa fa-google-plus"></i></a>
                 </div>
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
 
         <section>
             <div class="block">
-				<div class="fixed-bg" style="background-image: url(/assets/images/topbg.jpg);"></div>
+                <div class="fixed-bg" style="background-image: url(/assets/images/topbg.jpg);"></div>
                 <div class="page-title-wrapper text-center">
-					<div class="col-md-12 col-sm-12 col-lg-12">
-						<div class="page-title-inner">
-							<h1 itemprop="headline">My Orders</h1>
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="page-title-inner">
+                            <h1 itemprop="headline">My Orders</h1>
 
-						</div>
-					</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -214,22 +217,24 @@
                 <thead>
                     <tr>
                         <th style="width:50%">Product</th>
-			            <th style="width:10%">Price</th>
-			            <th style="width:8%">Quantity</th>
+                        <th style="width:10%">Price</th>
+                        <th style="width:8%">Quantity</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Instruction</th>
-			            <th style="width:22%">Subtotal</th>
-			            <th style="width:10%">Order Date</th>
+                        <th style="width:22%">Subtotal</th>
+                        <th style="width:10%">Order Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $total = 0 ?>
+                    <?php $total = 0; ?>
                     @foreach ($orders as $order)
-                    <?php $total += $order['total'] ?>
+                        <?php $total += $order['total']; ?>
                         <tr>
                             <td data-th="Product">
                                 <div class="row">
-                                    <div class="col-sm-3 hidden-xs"><img src="/images/product/{{ $order->products['image'] }}" width="80px" height="80px" class="img-responsive"/></div>
+                                    <div class="col-sm-3 hidden-xs"><img
+                                            src="assets/images/products/{{ $order->products['image'] }}" width="80px"
+                                            height="80px" class="img-responsive" /></div>
                                     <div class="col-sm-9">
                                         <h4 class="nomargin">{{ $order->products['product_name'] }}</h4>
                                     </div>
@@ -246,7 +251,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td class="text-center">Total ${{ $total }}</td>
+                        <td class="text-center">Total Ksh. {{ $total }}</td>
                     </tr>
                 </tfoot>
 
@@ -329,7 +334,7 @@
                                                                     <!-- <span class="post-rate red-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span> -->
 
                                                                     <ul class="dishes-list">
-                                                                    @foreach ( $vendors->products as $vendor )
+                                                                    @foreach ($vendors->products as $vendor)
 
                                                                         <li class="wow fadeInUp" data-wow-delay="0.1s">
                                                                             <div class="featured-restaurant-box">
@@ -359,7 +364,7 @@
                                                                 <div class="customer-review-wrapper">
                                                                     <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Customer</span> Reviews</h4>
                                                                     <ul class="comments-thread customer-reviews">
-                                                                        @foreach ($reviews as $review )
+                                                                        @foreach ($reviews as $review)
                                                                          @if ($reviews->isEmpty())
 
                                                                           <p> No customer reviews found</p>
@@ -456,7 +461,7 @@
                                                             @php
                                                                 $total = 0;
                                                             @endphp
-                                                            @if(session('cart'))
+                                                            @if (session('cart'))
                                                                 @foreach (session('cart') as $id => $details)
 
                                                                 <li>
@@ -514,13 +519,22 @@
                                 <div class="row">
                                     <div class="col-md-3 col-sm-6 col-lg-3">
                                         <div class="widget about_widget wow fadeIn" data-wow-delay="0.1s">
-                                            <div class="logo"><h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1></div>
+                                            <div class="logo">
+                                                <h1 itemprop="headline"><a href="#" title="Home"
+                                                        itemprop="url"><img src="/assets/images/logo5.png"
+                                                            alt="logo.png" itemprop="image"></a></h1>
+                                            </div>
                                             <!-- <p itemprop="description">Food Ordering is a Premium HTML Template. Best choice for your online store. Let purchase it to enjoy now</p> -->
                                             <div class="social2">
-                                                <a class="brd-rd50" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i></a>
-                                                <a class="brd-rd50" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                                                <a class="brd-rd50" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                                                <a class="brd-rd50" href="#" title="Pinterest" itemprop="url" target="_blank"><i class="fa fa-pinterest"></i></a>
+                                                <a class="brd-rd50" href="#" title="Facebook" itemprop="url"
+                                                    target="_blank"><i class="fa fa-facebook"></i></a>
+                                                <a class="brd-rd50" href="#" title="Google Plus"
+                                                    itemprop="url" target="_blank"><i
+                                                        class="fa fa-google-plus"></i></a>
+                                                <a class="brd-rd50" href="#" title="Twitter" itemprop="url"
+                                                    target="_blank"><i class="fa fa-twitter"></i></a>
+                                                <a class="brd-rd50" href="#" title="Pinterest" itemprop="url"
+                                                    target="_blank"><i class="fa fa-pinterest"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -528,7 +542,8 @@
                                         <div class="widget information_links wow fadeIn" data-wow-delay="0.2s">
                                             <h4 class="widget-title" itemprop="headline">About Swyft2Eat</h4>
                                             <ul>
-                                                <li><a href="#" title="" itemprop="url">Our Story</a></li>
+                                                <li><a href="#" title="" itemprop="url">Our Story</a>
+                                                </li>
 
                                             </ul>
                                         </div>
@@ -538,7 +553,8 @@
                                             <h4 class="widget-title" itemprop="headline">How to join</h4>
                                             <ul>
                                                 <li><a href="#" title="" itemprop="url">Vendors</a></li>
-                                                <li><a href="#" title="" itemprop="url">Customers</a></li>
+                                                <li><a href="#" title="" itemprop="url">Customers</a>
+                                                </li>
                                                 <li><a href="#" title="" itemprop="url">Partners</a></li>
 
                                             </ul>
@@ -548,9 +564,10 @@
                                         <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
                                             <h4 class="widget-title" itemprop="headline">GET IN TOUCH</h4>
                                             <ul>
-                                               <li><i class="fa fa-map-marker"></i> Nairobi,Kenya</li>
-                                               <li><i class="fa fa-phone"></i> +254 711 281774 | +254 797 309416</li>
-                                               <li><i class="fa fa-envelope"></i> <a href="#" title="" itemprop="url">info@swyft2eat.co.ke</a></li>
+                                                <li><i class="fa fa-map-marker"></i> Nairobi,Kenya</li>
+                                                <li><i class="fa fa-phone"></i> +254 711 281774 | +254 797 309416</li>
+                                                <li><i class="fa fa-envelope"></i> <a href="#" title=""
+                                                        itemprop="url">info@swyft2eat.co.ke</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -571,7 +588,8 @@
         <div class="log-popup text-center">
             <div class="sign-popup-wrapper brd-rd5">
                 <div class="sign-popup-inner brd-rd5">
-                    <a class="log-close-btn" href="#" title="" itemprop="url"><i class="fa fa-close"></i></a>
+                    <a class="log-close-btn" href="#" title="" itemprop="url"><i
+                            class="fa fa-close"></i></a>
                     <div class="sign-popup-title text-center">
                         <h4 itemprop="headline">SIGN IN</h4>
                         <img src="/assets/images/logo5.png">
@@ -595,9 +613,11 @@
                                 <button class="orange-bg brd-rd3" type="submit">SIGN IN</button>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <a class="sign-popup-btn" href="#" title="Register" itemprop="url">Not a member? Sign up</a>
+                                <a class="sign-popup-btn" href="#" title="Register" itemprop="url">Not a
+                                    member? Sign up</a>
                                 <!-- <a class="sign-btn" href="#" title="" itemprop="url">Not a member? Sign up</a> -->
-                                <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a>
+                                <a class="recover-btn" href="#" title="" itemprop="url">Recover my
+                                    password</a>
                             </div>
                         </div>
                     </form>
@@ -608,7 +628,8 @@
         <div class="sign-popup text-center">
             <div class="sign-popup-wrapper brd-rd5">
                 <div class="sign-popup-inner brd-rd5">
-                    <a class="sign-close-btn" href="#" title="" itemprop="url"><i class="fa fa-close"></i></a>
+                    <a class="sign-close-btn" href="#" title="" itemprop="url"><i
+                            class="fa fa-close"></i></a>
                     <div class="sign-popup-title text-center">
                         <h4 itemprop="headline">SIGN UP</h4>
                         <img src="/assets/images/logo5.png">
@@ -621,7 +642,8 @@
                     </div> -->
                     <!-- <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span> -->
 
-                    <form method="post" action="{{ route('register') }}" autocomplete="off" class="sign-form" enctype="multipart/form-data" >
+                    <form method="post" action="{{ route('register') }}" autocomplete="off" class="sign-form"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('post')
                         <div class="row">
@@ -635,13 +657,15 @@
                                 <input class="brd-rd3" type="password" placeholder="Password" name="password">
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <input class="brd-rd3" type="password" placeholder="Confirm Password" >
+                                <input class="brd-rd3" type="password" placeholder="Confirm Password">
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <button class="orange-bg brd-rd3" type="submit" style="color: white;">REGISTER NOW</button>
+                                <button class="orange-bg brd-rd3" type="submit" style="color: white;">REGISTER
+                                    NOW</button>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12">
-                                <a class="sign-btn" href="#" title="" itemprop="url">Already Registered? Sign in</a>
+                                <a class="sign-btn" href="#" title="" itemprop="url">Already Registered?
+                                    Sign in</a>
                                 <!-- <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a> -->
                             </div>
                         </div>
@@ -657,12 +681,12 @@
 
     </main><!-- Main Wrapper -->
 
-    <script src="{{asset('/assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('/assets/js/plugins.js')}}"></script>
-    <script src="{{asset('https://maps.googleapis.com/maps/api/js?v=3.exp')}}"></script>
-    <script src="{{asset('/assets/js/google-map-int.js')}}"></script>
-    <script src="{{asset('/assets/js/main.js')}}"></script>
+    <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?v=3.exp') }}"></script>
+    <script src="{{ asset('/assets/js/google-map-int.js') }}"></script>
+    <script src="{{ asset('/assets/js/main.js') }}"></script>
 </body>
 
 </html>
