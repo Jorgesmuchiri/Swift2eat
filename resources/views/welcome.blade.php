@@ -119,19 +119,19 @@
                                 <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a>
                                 </li>
 
-                            @auth
+                                @auth
 
-                                <li class="menu-item-has-children"> <a href="#" itemprop="url"
-                                        style="color: orange;">{{ auth()->user()->name }}</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="{{ route('logout') }}">Log Out</a></li>
-                                    </ul>
-                                @else
-                                </li>
-                            </ul>
-                            <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
-                                style="background-color: orange;">Login</a>
-                        @endauth
+                                    <li class="menu-item-has-children"> <a href="#" itemprop="url"
+                                            style="color: orange;">{{ auth()->user()->name }}</a>
+                                        <ul class="sub-dropdown">
+                                            <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                        </ul>
+                                    @else
+                                    </li>
+                                </ul>
+                                <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                                    style="background-color: orange;">Login</a>
+                            @endauth
                         </div>
                     </nav><!-- Navigation -->
                 </div>
@@ -145,19 +145,25 @@
                                 src="/assets/images/logo5.png" alt="logo.png" itemprop="image"></a></h1>
                 </div>
                 <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
+                <span style="margin-right: 10%; ">
+                    @auth
+                    <a href="#" itemprop="url" style="color: orange;">{{ auth()->user()->name }}</a>
+                    @else
+                    <a class="menu-item-has-children" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
+                            style="background-color: orange; font-size: 115%">Login</a>
+                    @endauth
+                </span>
             </div>
             <div class="responsive-menu">
                 <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
                 <div class="menu-lst">
                     <ul>
-                        <li><a href="/" title="home"
-                                itemprop="url"><span></span>HOME</a>
+                        <li><a href="/" title="home" itemprop="url"><span></span>HOME</a>
                         </li>
 
                         <li><a href="/#contact" title="CONTACT US" itemprop="url"> <span></span> ABOUT US</a></li>
 
-                        <li><a href="/#rest" title="RESTAURANTS"
-                                itemprop="url"><span></span>RESTAURANTS</a>
+                        <li><a href="/#rest" title="RESTAURANTS" itemprop="url"><span></span>RESTAURANTS</a>
                         </li>
 
                         <li><a href="/#contact" title="CONTACT US" itemprop="url"><span></span>CONTACT US</a></li>
@@ -173,7 +179,7 @@
                         </ul>
                         <div class="register-btn">
                             <a class="" href="{{ route('vendorLogin') }}" title="Login" itemprop="url"
-                            style="background-color: orange;">Login</a>
+                                style="background-color: orange;">Login</a>
                         </div>
                     @endauth
                 </div>
@@ -195,7 +201,7 @@
             </div><!-- Responsive Menu -->
         </div><!-- Responsive Header -->
 
-        <section>
+        {{-- <section>
             <div class="block blackish opac50">
                 <div class="fixed-bg"
                     style="background-image: url(https://images.unsplash.com/photo-1580218863909-d882fbb62d7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);">
@@ -211,9 +217,9 @@
                     </div>
                 </div><!-- Restaurant Searching -->
             </div>
-        </section>
+        </section> --}}
 
-        <section>
+        {{-- <section>
             <div class="block remove-bottom">
                 <div class="container">
                     <div class="row">
@@ -246,7 +252,7 @@
                     </div>
                 </div>
             </div>
-        </section><!-- welcome section -->
+        </section><!-- welcome section --> --}}
 
         <section>
             <div class="block blackish low-opacity">
@@ -295,7 +301,8 @@
                                         </div><!-- Step Box -->
                                     </div>
                                 </div>
-                            </div></ul>
+                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -228,7 +228,7 @@
                         </div>
                     @endauth
                 </div>
-                
+
                 <div class="social1">
                     <a href="#" title="Facebook" itemprop="url" target="_blank"><i
                             class="fa fa-facebook-square"></i></a>
@@ -281,7 +281,7 @@
                                                     <div class="restaurant-detail-thumb">
                                                         <ul class="restaurant-detail-img-carousel">
                                                             <li><img class="brd-rd3"
-                                                                    src="assets/images/vendors/{{ $vendors->vendor_logo }}"
+                                                                    src="/assets/images/vendors/{{ $vendors->vendor_logo }}"
                                                                     alt="restaurant-detail-big-img1-1.jpg"
                                                                     itemprop="image"></li>
                                                         </ul>
@@ -367,7 +367,7 @@
                                                                                         <a href="#"
                                                                                             title=""
                                                                                             itemprop="url"><img
-                                                                                                src="assets/images/products/{{ $vendor->image }}"
+                                                                                                src="/assets/images/products/{{ $vendor->image }}"
                                                                                                 alt="{{ $vendor->product_name }}"
                                                                                                 itemprop="image"></a>
                                                                                     </div>
@@ -498,14 +498,16 @@
                                                                                         class="fa fa-envelope"></i>
                                                                                     <input type="email"
                                                                                         placeholder="EMAIL"
-                                                                                        name="email"></div>
+                                                                                        name="email">
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-sm-6 col-lg-6">
                                                                                 <div class="input-field brd-rd2"><i
                                                                                         class="fa fa-number"></i>
                                                                                     <input type="number"
                                                                                         placeholder="Quantity"
-                                                                                        name="number"></div>
+                                                                                        name="number">
+                                                                                </div>
                                                                             </div>
 
                                                                             <div class="col-md-12 col-sm-12 col-lg-12">
